@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Chris Choi</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- JAVASCRIPT -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('body').hide().fadeIn();
+            $('section#physics').hide();
+            $('section#cs').hide();
+
+            $('a#physics').hover(
+                function() {
+                    $('section#physics').fadeIn();
+                },
+                function() {
+                    $('section#physics').hide();
+                }
+            )
+
+            $('a#cs').hover(
+                function() {
+                    $('section#cs').fadeIn();
+                },
+                function() {
+                    $('section#cs').hide();
+                }
+            )
+
+            
+
+        });   
+    </script>
+
+
+
+</head>
+<body>
+    <header>
+        I <img width="45"src="imgs/heart.png" alt="Love" /> CODE  
+    </header>
+    <section id="tips">
+        <section id="physics">
+            BSc Computational Physics at <u>Heriot Watt University</u>
+        </section>
+        <section id="cs">
+            MSc Advanced Computer Science at <u>University of St. Andrews</u>
+        </section>
+    </section>
+    <section id="about">
+        <h3>Who am I?</h3>
+I am a motivated student with a background in <a id="physics" href="#physics">Physics</a> and <a id="cs" href="#cs">Computer Science</a> interested in Data Mining and Robotics. I am also interested in designing and programming Embedded Systems.
+
+        <h3>Why Data Mining, Robotics or Embedded Systems?</h3>
+
+        <h3>What Skills Do I have?</h3>
+        <img id="skills" width="100%" src="imgs/skills_collage.png" alt="skills" />
+
+        <h3>Current Projects:</h3>
+        <ul id="projects">
+<li class="archdoc"><a href="https://github.com/chutsu/ArchDoc">ArchDoc</a>: a tool to help software developers and software architects design and document the software architecture of the system.</li>
+<li class="mineframe"><a href="https://github.com/chutsu/mineframe">Mineframe</a>: is a data mining framework written in Python and uses R to perform most of the statistical and machine learning operations, with the aim to automate most of the data mining processes.</li>
+            <li class="mineview"><a href="https://github.com/chutsu/mineframe">Mineview</a>: is a web-based interface meant to be used on top of mineframe.</li>
+        </ul>
+        <h3>How to Reach Me?</h3>
+    </section>
+    <section id="archdoc">
+        
+    </section>
+    <section id="mineframe">
+        
+    </section>
+    <section id="mineview">
+        
+    </section>
+    <footer>
+        Designed By Chris Choi
+    </footer>
+</body>

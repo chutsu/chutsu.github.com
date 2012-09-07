@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    text-align: justify;
+    font-size: 14px;
+    font-family: Verdana, Arial;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+li {
+    font-weight: bold;
+}
+
+ul#projects {
+    text-align: left;
+}
+
+ul#projects li {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+h1, h2, h3 {
+    margin-top: 30px;
+
+}
+
+a:link, a:visited {
+    color: #104E8B;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+}
+
+img#skills {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.small {
+
+    font-size: 10px;
+}
+
+header {
+    margin-bottom: 20px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+section {
+
+
+}
+
+section#tips {
+    height: 20px; 
+    margin-bottom: 20px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 7px;
+    padding-bottom: 0px;
+    text-align: center;
+    font-size: 11px;
+    color: #EEE;
+    background: #222;
+    border-radius: 10px;
+}
+
+section#projects {
+    margin-top: 20px;
+
+}
+
+footer {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    border-top: 1px dotted #555;
+}
