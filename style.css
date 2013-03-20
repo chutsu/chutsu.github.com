@@ -4,7 +4,7 @@
 }
 
 body {
-    width: 450px;
+    width: 500px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
@@ -97,10 +97,34 @@ section#tips {
     border-radius: 10px;
 }
 
-section#projects {
+ul#projects {
     margin-top: 20px;
 
 }
+
+ul#presentations {
+    font-size: 12px;
+}
+
+ul#presentations li {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: normal;
+}
+
+ul#presentations li a {
+    font-size: 12px;
+}
+
+ul#presentations li.year {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
 
 footer {
     font-size: 10px;
