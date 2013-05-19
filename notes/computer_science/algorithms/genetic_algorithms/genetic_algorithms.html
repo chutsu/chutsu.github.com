@@ -1,0 +1,77 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta content="text/html" charset="UTF-8" http-equiv="Content-Type" />
+
+    <!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: { equationNumbers: { autoNumber: "AMS" }}
+        });
+    </script>
+    <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- CSS -->
+    <style type="text/css">
+        body {
+            width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.8em;
+            font-family: Helvetica, Arial;
+            text-align: justify;
+            color: #222;
+        }
+
+        pre {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 2px;
+            border: 1px solid #AAA;
+        }
+
+        h1, h2 {
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 23px;
+
+        }
+
+        img {
+            display: block;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+<h1>Genetic Algorithms</h1>
+<h2>Introduction</h2>
+<p>Genetic Algorithms (GA) are a family of computational models inspired by evolution. These algorithms encode a potential solution to a specific problem on a simple chromosome-like data structure and apply recombination operators to these structures so as to preserve critical information. Genetic algorithms are often viewed as function optimizers, although the range of problems to which genetic algorithms have been applied is quite broad.</p>
+<p>An implementation of a genetic algorithm begins with a population of (typically random) chromosomes. One then evaluates these structures and allocates reproductive opportunities in such a way that those chromosomes which represent a better solution to the target problem are given more chances to "reproduce" than those chromosomes which are poorer solutions. The "goodness" of a solution is typically defined with respect to the current population.</p>
+<h2>Description of Genetic Algorithms</h2>
+<p>The description of a GA is intentionally vague, there are two widely known meanings:</p>
+<ul>
+<li>A strict model introduced and investigated by John Holland (1975) and his student of Holland (e.g. DeJong 1975).</li>
+<li>A broader usage of the term, where a GA is any population based model that uses selection and recombination operators to generate new sample joints in a search space.</li>
+</ul>
+<h2>Encodings and Optimization Problems</h2>
+<p>Usually there are only two main components of most genetic algorithms that are problem dependent: </p>
+<ul>
+<li>Problem of encoding </li>
+<li>Evaluation function (or fitness function)</li>
+</ul>
+</body>
+</html>

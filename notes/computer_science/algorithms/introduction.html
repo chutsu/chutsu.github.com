@@ -1,0 +1,128 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta content="text/html" charset="UTF-8" http-equiv="Content-Type" />
+
+    <!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: { equationNumbers: { autoNumber: "AMS" }}
+        });
+    </script>
+    <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- CSS -->
+    <style type="text/css">
+        body {
+            width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.8em;
+            font-family: Helvetica, Arial;
+            text-align: justify;
+            color: #222;
+        }
+
+        pre {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 2px;
+            border: 1px solid #AAA;
+        }
+
+        h1, h2 {
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 23px;
+
+        }
+
+        img {
+            display: block;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+<p>Data structure is a representation of the logical relationship among individual elements of data. There are some classic data structures that form the building blocks for more sophisticated structures. A scalar item for example is the simplest of all, moving onto the most common which is an array which supports variable indexing of information.</p>
+<h2>Algorithms</h2>
+<p>There are two approaches</p>
+<ul>
+<li>
+<p><strong>Top Down</strong>: where design is the incremental approach to construction of program structure. Modules are integrated by moving downward through the control hierarchy. Starting module is the main program.</p>
+</li>
+<li>
+<p><strong>Bottom up</strong>: opposite of top down approach. Starting with specific modules and build them into more complex structrues, ending at the top.</p>
+</li>
+</ul>
+<p>The algorithm is the basic step in designing phase to find a solution of a problem, an algorithm is defined as the finite sequence of instructions, each of which has a clear meaning and can be performed with a finite amount of effort in a finite length of time. (Think cooking recipe)</p>
+<h2>Algorithm Complexity</h2>
+<p>An algorithm has two complexities to consider:</p>
+<ul>
+<li>
+<p><strong>Time Complexity</strong>: is the amount of time it needs to run to completion. To measure the (time complexity) accurately, we can count the all sorts of operations performed in an algorithm. If we know the time for each one of the primitive operations performed on a given computer, we can easily compute the time taken by an algorithm to complete its execution.</p>
+</li>
+<li>
+<p><strong>Space Complexity</strong>: is the amount of memory it needs to run to completion. The total space needed by a program can be divided into two parts. 1) A fixed part that is independent of a particular problem, and includes instruction space, space for constants, simple varialbes and fixed size structured variables. 2) A variable part that include structured variables whose size depends on the particular problem being solved.</p>
+</li>
+</ul>
+<p>There may be more than one approach to solve a problem. One such approach may require more space but takes less time to copmlete its execution, The second approach may require less space but takes more time to compute. A trade off needs to be made, depending on the requirements.</p>
+<h2>Size of a Problem Instance</h2>
+<p>An instance of a problem is a particular input data set to which a program is applied. In most problems, the execution time of a program increases with teh size of the encoding of the instance being solved. At the same time, overly compact representations (possibly using compression techniques) may unnecessarily slow down the execution of a program. It is surprisingly difficult to define the optimal way to encode an instance because probelms occur in the real world.</p>
+<h2>Analysis in the Best, Average and Wrost Cases</h2>
+<p>To provide some guidance of algorithmic behaviour aside from complexity, algorithms are typically presented with three common cases in mind:</p>
+<ul>
+<li>
+<p><strong>Worst Case</strong>: Defines a class of input instances for which an algorithm exhibits its worst behavior. Instead of trying to identify the specific input, alogirhtm designers typically describe <em>properties</em> of the input that prevent an algorithm from running efficiently.</p>
+</li>
+<li>
+<p><strong>Average Case</strong>: Defines the expected behaviour when executing the algorithm on random input instances. Informally, while some input problems will require greater time to complete because of some special cases, the vast majority of input problems will not. This measure describes the expectation an average user of the algorithm should have.</p>
+</li>
+<li>
+<p><strong>Best Case</strong>: Defines a class of input instances for which an algorithm exhibits its best runtime behavior. For these input instances, the algorithm does the least work. In reality, the best rarely occurs.</p>
+</li>
+</ul>
+<p>By knowing the performance of an algorithm under each of these cases, you can judge whether an algorithm is appropriate for use in yoru specific situation.</p>
+<h2>Algorithm Classification</h2>
+<p>The following common classifications are used to describe the efficiency in both time and space complexity of an algorithm. In order of decreasing efficiency:</p>
+<ul>
+<li>
+<p><strong>Constant O(1)</strong>: is where, for example, comparing whether two 32-bit numbers <code>x</code> and <code>y</code> are the same value, this comparison should have the same performance regardless of the actual values of <code>x</code> and <code>y</code>. A constant operation is defined to have <code>O(1)</code> performance.</p>
+</li>
+<li>
+<p><strong>Logarithmic Log(n)</strong>: logarithmic algorithms are extrememly efficient because they rapidly converge on a solution by reducing the size of the problem by about <strong>half</strong> <em>each time</em>.</p>
+</li>
+<li>
+<p><strong>Sublinear O(n^d) Behaviour for d &lt; 1</strong>: In some cases, the behavior of an algorithm is bettern than <em>linear</em>, yet not as efficient as <em>logarithmic</em>.</p>
+</li>
+<li>
+<p><strong>Linear</strong>: is where the complexity is directly proportional to the nubmer of digits <code>n</code> in the larger number. It is commonly denoted as <code>O(n)</code>.</p>
+</li>
+<li>
+<p><strong>n log (n) Performance</strong>: to explain this behavior occurs in practice, let's solve an input problem instance of size <code>n</code>. An efficient way to solve a problem is the "divide and conquer" method, in which a problem of size <code>n</code> is divided into (roughly equal) sub problems of size <code>n/2</code>, which are solved recursively, and their solutions merged together in some form to result in the solution to the orignal problem of size <code>n</code>.</p>
+</li>
+<li>
+<p><strong>Quadratic</strong>:</p>
+</li>
+<li>
+<p><strong>Polynomial</strong>:</p>
+</li>
+<li>
+<p><strong>Exponential</strong>:</p>
+</li>
+</ul>
+</body>
+</html>

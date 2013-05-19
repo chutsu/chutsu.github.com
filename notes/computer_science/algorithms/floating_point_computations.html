@@ -1,0 +1,89 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta content="text/html" charset="UTF-8" http-equiv="Content-Type" />
+
+    <!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: { equationNumbers: { autoNumber: "AMS" }}
+        });
+    </script>
+    <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- CSS -->
+    <style type="text/css">
+        body {
+            width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.8em;
+            font-family: Helvetica, Arial;
+            text-align: justify;
+            color: #222;
+        }
+
+        pre {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 2px;
+            border: 1px solid #AAA;
+        }
+
+        h1, h2 {
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 23px;
+
+        }
+
+        img {
+            display: block;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+<h2>Floating-Point Computations</h2>
+<p>Computers are finite machines that have been designed to perform basic computations on values stored in registers by a Central Processing Unit (CPU). The size of these registers have evolved as computer architectures have grown from the popular 8-bit Intel processors from the 1970s to today's widspread acceptance of 64-bit architectures (such as Intel's Itanium and Sun Microsystems Sparc processor). The CPU often supports basic operations such as ADD, MULT, DIVIDE, and SUB, over integer values stored within these registers. Flaoting Point Units (FPUs) can efficiently process floating point computations according to the IEEE Standard for Binary Floating-Point Arithmetic (IEEE 754).</p>
+<p>Computations over integer-based values have traditionally been the most efficient computations performed by the processor. Efficient programs that execute on computer architectures often take advatnage of the perfomance differential between integer based and floating point-based arithmetic. There are important issues that developers must be aware when programming using floating point arithmetic. Next we focus on the important issues that we consider in the algorithms and supporting code.</p>
+<h3>Rounding Error</h3>
+<p>Any computation using floating-point values may introduce rounding errors because of the nature of the floating-point representation. In general, a floating-point is a finite representation that is designed to approximate a real number whose representation may be infinite.</p>
+<p>Since most floating-point calculations ahve rounding error anyway, does it matter if the basic arithmetic operations intorduce a little bit more roudning error than necessary? That question is a main theme throughout this section.</p>
+<h3>Types of Rounding</h3>
+<p>Typical rounding problems are:</p>
+<ul>
+<li>
+<p>Approximating an irrational number by a fraction (e.g. $pi$ by $\frac{22}{7}$</p>
+</li>
+<li>
+<p>Approximating a fraction with periodic decimal expansion by a finite decimal fraction (e.g. $\frac{5}{3}$ by 1.6667)</p>
+</li>
+<li>
+<p>Replaceing rational number by a fraction with smaller numerator and denominator (e.g. $\frac{3122}{9417}$ by $\frac{1}{3}$)</p>
+</li>
+<li>
+<p>Replacing a fractional decimal number by one with fewer digits (e.g. 2.1784 dollars by 2.18 dollars)</p>
+</li>
+<li>
+<p>Replacing decimal integer by an integer with more trailing zeros (e.g. 23,217 people by 23,200 people)</p>
+</li>
+<li>
+<p>Replacing a value by a multiple of a specific amount (e.g. 27.2 seconds by 30 seconds; multiple of 15)</p>
+</li>
+</ul>
+</body>
+</html>

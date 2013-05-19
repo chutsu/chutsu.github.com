@@ -1,0 +1,89 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta content="text/html" charset="UTF-8" http-equiv="Content-Type" />
+
+    <!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: { equationNumbers: { autoNumber: "AMS" }}
+        });
+    </script>
+    <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- CSS -->
+    <style type="text/css">
+        body {
+            width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.8em;
+            font-family: Helvetica, Arial;
+            text-align: justify;
+            color: #222;
+        }
+
+        pre {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 2px;
+            border: 1px solid #AAA;
+        }
+
+        h1, h2 {
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 23px;
+
+        }
+
+        img {
+            display: block;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+<h1>Median Sort</h1>
+<ul>
+<li>Class: Sorting</li>
+<li>Data Structure: Array</li>
+<li>Worst case: $O(n^2)$</li>
+<li>Best case: $O(n log n)$</li>
+<li>Average case: $O(n log n)$</li>
+</ul>
+<p>MEDIAN SORT sorts an array <code>A</code> of $n \leq 1$ elements by swapping the median element $A[med]$ with the middle element of $A$, creating a left and right half of the array. MEDIAN SORT then swaps elements in the left half that are larger than $A[mid]$ with elements in the right half that are smaller or equal to $A[mid]$. This subdivides the original array into two distinct subarrays of about half the size that each need to be sorted. Then MEDIAN SORT is recursively applied on each subarray.</p>
+<p>At each step, there are twice as many problems to solve, but each problem size has been cut in about half. Since the sub problems are independent of each other, the final sorted result is produce once the recursion ends. </p>
+<h2>Pseudo Code</h2>
+<pre><code>MEDIAN-SORT(A, left, right)
+
+if (left &lt; right)
+        find median value A[median] in A[left, right]
+        mid = (right + left) / 2
+        swap(A[middle], A[median])
+
+        for (i = left to mid - 1)
+            if (A[i] &gt; A[middle]) 
+                find A[k] &lt;= A[middle] where k &gt; middle
+                swap(A[i], A[k])
+
+        MEDIAN-SORT(A, left, middle - 1)
+        MEDIAN-SORT(A, middle + 1, right)
+</code></pre>
+<h2>Consequences</h2>
+<p>MEDIAN SORT does more work than it should. Although the generated sub problems are optimal (since they are both about half the size of the original problem), the extra cost in producing these sub problems add up.</p>
+</body>
+</html>

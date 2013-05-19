@@ -1,0 +1,127 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta content="text/html" charset="UTF-8" http-equiv="Content-Type" />
+
+    <!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: { equationNumbers: { autoNumber: "AMS" }}
+        });
+    </script>
+    <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- CSS -->
+    <style type="text/css">
+        body {
+            width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.8em;
+            font-family: Helvetica, Arial;
+            text-align: justify;
+            color: #222;
+        }
+
+        pre {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 2px;
+            border: 1px solid #AAA;
+        }
+
+        h1, h2 {
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 23px;
+
+        }
+
+        img {
+            display: block;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+<h1>Solenoid Design: Winding Efficiency</h1>
+<p><img alt="Efficiency of the Winding" src="images/solenoid_design_2.png" /></p>
+<h2>Wind Space Efficiency</h2>
+<h3>In 2-Dimensions</h3>
+<p>In the following, we discuss the wind's space efficiency of a coil given a specific area.</p>
+<p>In Fig. 4 and 5 let $L$ be the length of the winding, $M$ be the depth of the coil, $P$ the radius of the core, and $d$ the diameter of the wire. If the turns of the wire lie strictly with respect to each other as shown in Fig. 4, each turn would occupy a sectional area $d^{2}$. In practice the turns lie more nearly as shown in Fig. 5, and each turn will then occupy a sectional area, say $kd^{2}$, where $k$ is a constant denoting the efficiency of making full use of area $ML$ while winding the wire in Fig. 5. Let the winding of Fig. 5 have $T$ turns, :</p>
+<div>
+\begin{equation}
+    \text{Cross sectional area available for the turns} = ML = kd^{2}T
+\end{equation}
+
+\begin{equation}
+    \text{Cross sectional area occupied by the turns} = 0.785 d^{2}T
+\end{equation}
+
+\begin{equation}
+    \label{eq:space efficiency}
+    \text{Space efficiency of the winding} = \frac{\text{Area occupied by the turns}}{\text{Area available for the turns}}
+\end{equation}
+
+\begin{equation}
+    \label{eq:space efficiency simplified}
+    \text{Space efficiency of the winding} = \frac{0.785 d^{2} T}{M L} = 0.785k
+\end{equation}
+
+The number $0.785$ is the packing efficiency $P.E.$ of a square lattice of four circles (unit cell). Where $P.E = \pi r^{2} / (2r)^{2} = \pi / 4 = 0.7854$. For a theoretically efficient wind, the value of $k$ is approximately $0.9$ and efficiency about $0.87$.
+</div>
+
+<h3>In 3-Dimensions</h3>
+<p>Taking the the above even further and considering the efficiency in <strong>3-dimensions</strong>, lets assume:</p>
+<div>
+\begin{equation}
+    \text{Section area by a turn of wire} = A = \frac{\pi d^{2}}{4}
+\end{equation}
+
+\begin{equation}
+    \text{Section area occupied by a turn of wire} = k d^{2}
+\end{equation}
+
+\begin{equation}
+    \text{Number of turns} = T = \frac{LM}{kd^{2}}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+    \text{Volume of wire in winding } V & = \\
+    V & = \pi L \{ (M + P)^{2} - P^{2} \} \frac{\pi}{4k} \\
+    V & = \frac{\pi^{2}}{4 k} LM (M + 2P)
+    \end{aligned}
+\end{equation}
+</div>
+
+<p><strong>Note</strong>: the volume of the wire in winding works out the full volume of the winding, regardless of wasted space. Then it is multiplied by the <em>packing efficiency</em> $P.E.$ previously worked out $\frac{\pi}{4}$, and also multipled by $\frac{1}{k}$ because as the winding efficiency $k$ increases the volume decreases; $k$ is inversely proportional to $V$. Now that we know the volume of the wire in the winding we can obtain the length.</p>
+<div>
+\begin{equation}
+    \begin{aligned}
+    \text{Length of wire in winding} & = \frac{\text{Volume of wire in winding}}{\text{Section area by a turn of wire}} \\
+        & = \frac{\pi^{2}}{4k} LM(M + 2P)/\frac{\pi d^{2}}{4} \\
+        & = \frac{\pi}{k} \frac{LM(M + 2P)}{d^{2}} \\
+        & = \pi T (M + 2P)
+\end{aligned}
+\end{equation}
+</div>
+
+<h3>References</h3>
+<p>Higgs, P.J. The Design of Solenoid Electromagnets. (1925). J. Sci. Instrum. Vol.2 No.10.</p>
+</body>
+</html>

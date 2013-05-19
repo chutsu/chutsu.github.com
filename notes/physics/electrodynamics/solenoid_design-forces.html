@@ -1,0 +1,215 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta content="text/html" charset="UTF-8" http-equiv="Content-Type" />
+
+    <!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: { equationNumbers: { autoNumber: "AMS" }}
+        });
+    </script>
+    <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- CSS -->
+    <style type="text/css">
+        body {
+            width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.8em;
+            font-family: Helvetica, Arial;
+            text-align: justify;
+            color: #222;
+        }
+
+        pre {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 7px;
+            padding-right: 7px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 2px;
+            border: 1px solid #AAA;
+        }
+
+        h1, h2 {
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 23px;
+
+        }
+
+        img {
+            display: block;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+<h1>Solenoid Design: Forces</h1>
+<h2>Calculating the Force Generated from Pulling/Pusing of a Magnet inside a Solenoid</h2>
+<p>Lets imagine a solenoid with a magnetic core, we can calculate the force from the amount of work done; when the solenoid is empty, when its filled with the magnet. We know that:</p>
+<p>\begin{equation}
+    \label{eq: force of a solenoid}
+    F = \frac{\Delta{U}}{s}
+\end{equation}</p>
+<p>Where $\Delta{U}$ is the change in energy, and $s$ is the distance traveled by the magnetic core. Let $\Delta{U}$ be:</p>
+<p>\begin{equation}
+    \label{eq: difference in energy in a solenoid}
+    \Delta{U } = \Delta{U_{filled}} - \Delta{U_{empty}}
+\end{equation}</p>
+<p><strong>But note</strong> instead of working out the energy of the coil as a whole, we are <strong>only interested in the energy deep inside/within the coil</strong>. We can find that out through the energy density of the coil, using this equation:</p>
+<p>\begin{equation}
+    \label{eq: energy density of a coil}
+    \text{Energy Density} = \frac{Energy}{Volume}
+\end{equation}</p>
+<p>We can eaily workout the volume of the solenoid, so the problem now is we need to work out the energy inside the solenoid core. We know that from the power equation:</p>
+<p>\begin{equation}
+    P = VI = I L \frac{dI}{dt}
+\end{equation}</p>
+<p>Where $L \frac{dI}{dt}$ is the inductance of the coil. And we know that energy $E$ is just the integral of power $P$ over time:</p>
+<div>
+\begin{equation}
+\begin{aligned}
+    \label{eq: energy in an inductor}
+    E & = \int^{t}_{0} P dt \\
+        & = \int^{t}_{0} (I L \frac{dI}{dt}) dt \\
+        & = L \int^{I}_{0} I dI \\
+        E & = \frac{1}{2} LI^{2}
+\end{aligned}
+\end{equation}
+</div>
+
+<p>Now we need to know what the inductance $L$ is in the inductor. Luckily Faraday defined the electromotive force $\text{e.m.f}$ as</p>
+<div>
+\begin{equation}
+\begin{aligned}
+    \label{eq: emf of solenoid}
+    \text{Electromotive force } \epsilon & = -N \frac{d\phi_{B}}{dt} \\
+        & = -NA \frac{dB}{dt}
+\end{aligned}
+\end{equation}
+</div>
+
+<p>Where $N$ is the number of turns, $A$ is the area, $\phi$ is the magnetic flux, and finally $B$ is the magnetic field of the solenoid. And Ampere defined the magnetic field $B$ of a solenoid as:</p>
+<div>
+\begin{equation}
+    \label{eq: B of solenoid}
+    B = \mu \frac{N}{L} I \\
+    \frac{dB}{dI} = \mu \frac{N}{L} dI
+\end{equation}
+</div>
+
+<p>Where $\mu$ is the magnetic permeability of the solenoid core, and $L$ is the length of the solenoid. If we combined equations \ref{eq: emf of solenoid} and \ref{eq: B of solenoid}, we have:</p>
+<p>\begin{equation}
+    \epsilon = - N A \frac{\mu \frac{N}{L} dI}{dt}
+\end{equation}</p>
+<p>\begin{equation}
+    \epsilon = - \frac{\mu N^{2} A}{L} \frac{dI}{dt}
+\end{equation}</p>
+<p>Now if we comare with equation \ref{eq: energy in an inductor}, we can deduce that inductance $L$ is:</p>
+<p>\begin{equation}
+    \label{eq: inductance of solenoid}
+    L = \frac{\mu N^{2} A}{L}
+\end{equation}</p>
+<p>Going back to calculating the energy density of the coil with equation \ref{eq: energy density of a coil}, with equation \ref{eq: energy in an inductor}:</p>
+<p>\begin{equation}
+    \label{eq: energy density step 2}
+    \text{Energy Density} = \frac{Energy}{Volume} = \frac{\frac{1}{2}L I^2}{A L}
+\end{equation}</p>
+<p>And since we know what $I$ and $L$ from equations \ref{eq: B of solenoid} and \ref{eq: inductance of solenoid}:</p>
+<p>\begin{equation}
+    I = \frac{BL}{\mu N}
+\end{equation}</p>
+<p>\begin{equation}
+    L = \frac{\mu N^2 A}{L}
+\end{equation}</p>
+<p>Equation \ref{eq: energy density step 2} becomes:</p>
+<div>
+\begin{equation}
+\begin{aligned}
+    \text{Energy Density} & = \frac{\frac{1}{2} \left( \frac{\mu N^2 A}{L} \right) \left( \frac{B L}{\mu N} \right)^2}{A L} \\
+    \text{Energy Density} & = \frac{B^2}{2 \mu}
+\end{aligned}
+\end{equation}
+</div>
+
+<p>Now that we have the energy density of a solenoid's core, we can work out the energy stored in the solenoid when <strong>empty</strong> and when its <strong>filled</strong> with an iron bar or similar. Using equation \ref{eq: difference in energy in a solenoid}:</p>
+<div>
+\begin{equation*}
+   \Delta U =  \Delta{U}_{filled} - \Delta{U}_{empty}
+\end{equation*}
+</div>
+
+<p>when the core of the solenoid is <strong>empty</strong>:</p>
+<div>
+\begin{equation*}
+   \Delta{U}_{empty} = \left( \text{Volume} \right) 
+        \left( \frac{B^2}{2 \mu_{0}} \right)
+\end{equation*}
+</div>
+
+<p>where $\mu = \mu_{0}$, but when the core of the solenoid is <strong>filled</strong>, one must use the magnetic permeability of that substance to calculate the energy of that magnetic field.</p>
+<p>\begin{equation}
+    \mu = k \mu_{0}
+\end{equation}</p>
+<p>where <strong>relative permeability $k$</strong> is:</p>
+<p>\begin{equation}
+    k = \frac{\mu_{m}}{\mu_{0}}
+\end{equation}</p>
+<p>so:</p>
+<p>\begin{equation}
+    \mu = \left( \frac{\mu_{m}}{\mu_{0}} \right) \mu_{0}
+\end{equation}</p>
+<p>and:</p>
+<div>
+\begin{equation}
+\begin{aligned}
+   \Delta{U}_{filled} & = \left( \text{Volume} \right) 
+        \left( \frac{B^2}{2 \mu_{0}} \right)
+        \left( \frac{k^2}{k} \right) \\
+   \Delta{U}_{filled} & = \left( \text{Volume} \right) 
+        \left( \frac{B^2}{2 \mu_{0}} \right)
+        \left( \frac{\mu_{m}}{\mu_{0}} \right) \\
+\end{aligned}
+\end{equation}
+</div>
+
+<p><strong>Note</strong>: $\mu$ in $B$ is now $\mu_{0}$ because we took the $k$ out.</p>
+<p>Finally:</p>
+<div>
+\begin{equation}
+\begin{aligned}
+    \Delta{U} & = \Delta{U}_{filled} - \Delta{U}_{empty} \\ 
+    \Delta{U} & = \left( L \pi R^{2} \right) 
+            \left( \frac{B^{2}}{2 \mu_{0}} \right)
+            \left( \frac{\mu_{m}}{\mu_{0}} - 1 \right) \\
+    \Delta{U} & = \frac{L \pi R^{2} B^{2}}{2 \mu_{0}}
+            \left( \frac{\mu_{m}}{\mu_{0}} - 1 \right) 
+\end{aligned}
+\end{equation}
+</div>
+
+<p>And to work out the force, using equation \ref{eq: force of a solenoid}:</p>
+<div>
+\begin{equation}
+\begin{aligned}
+    F & = \frac{\Delta{U}}{L} \\
+    F & = \frac{\pi R^{2} B^{2}}{2 \mu_{0}}
+        \left( \frac{\mu_{m}}{\mu_{0}} - 1 \right) \\
+\end{aligned}
+\end{equation}
+</div>
+</body>
+</html>
