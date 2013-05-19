@@ -1,21 +1,19 @@
-<!DOCTYPE>
+<!DOCTYPE DOCTYPE>
+
 <html>
 <head>
-    <meta content="text/html" charset="UTF-8" http-equiv="Content-Type" />
-
-    <!-- MATHJAX -->
-    <script type="text/x-mathjax-config">
+<meta charset="utf-8" content="text/html" http-equiv="Content-Type"/>
+<!-- MATHJAX -->
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
             TeX: { equationNumbers: { autoNumber: "AMS" }}
         });
     </script>
-    <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-
-    <!-- CSS -->
-    <style type="text/css">
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<!-- CSS -->
+<style type="text/css">
         body {
             width: 550px;
             margin-left: auto;
@@ -58,7 +56,7 @@
 </head>
 <body>
 <h1>Solenoid Design: Electrical Perspective</h1>
-<p><img alt="Efficiency of the Winding" src="images/solenoid_design_2.png" /></p>
+<p><img alt="Efficiency of the Winding" src="./images/solenoid_design_2.png"/></p>
 <h2>Electrical Resistance from the winding</h2>
 <p>Taking Fig. 5 as our model solenoid, we can approximate the eletrical resistance of the winding as follows:</p>
 <div>
@@ -66,8 +64,7 @@
     \text{Resistance of winding} = \rho \times \frac{\text{Length}}{\text{Area}} \\
 \end{equation}
 </div>
-
-<p>Previously we have worked out the length and area of the winding <a href="solenoid_design-winding_efficiency.html">here</a> to be:</p>
+<p>Previously we have worked out the length and area of the winding <a href="./solenoid_design-winding_efficiency.html">here</a> to be:</p>
 <div>
 \begin{equation}
     \text{Length of wire in winding} =
@@ -78,19 +75,17 @@
     \text{Section area by a turn of wire} = A = \frac{\pi d^{2}}{4}
 \end{equation}
 </div>
-
 <p>And so the resistance of the winding is:</p>
 <div>
 \begin{equation}
 \begin{aligned}
-    \text{Resistance of winding } R & = \rho \times \frac{\text{Length}}{\text{Area}} \\
-        & = \rho \frac{\pi}{k} \frac{LM(M + 2P)}{d^{2}} / \frac{\pi d^{2}}{4} \\
-        & = \frac{4}{k}\rho  \frac{LM(M + 2P)}{d^{4}} \\
-        R & = \frac{4 \rho LM(M + 2P)}{kd^{4}} 
+    \text{Resistance of winding } R &amp; = \rho \times \frac{\text{Length}}{\text{Area}} \\
+        &amp; = \rho \frac{\pi}{k} \frac{LM(M + 2P)}{d^{2}} / \frac{\pi d^{2}}{4} \\
+        &amp; = \frac{4}{k}\rho  \frac{LM(M + 2P)}{d^{4}} \\
+        R &amp; = \frac{4 \rho LM(M + 2P)}{kd^{4}} 
 \end{aligned}
 \end{equation}
 </div>
-
 <p>Where $\rho$ is the <em>specific resistance of the wire</em>.</p>
 <h2>Electrical Decisions</h2>
 <p>Windings may be designed to operate either with:</p>
@@ -104,13 +99,12 @@
 <div>
 \begin{equation}
 \begin{aligned}
-    \text{Current } I & = \frac{\text{Voltage } V}{\text{Resistance of winding } R} \\
-        & = V / \frac{4 \rho LM(M + 2P)}{kd^{4}} \\
-        I & = \frac{Vkd^4}{4 \rho LM(M + 2P)}
+    \text{Current } I &amp; = \frac{\text{Voltage } V}{\text{Resistance of winding } R} \\
+        &amp; = V / \frac{4 \rho LM(M + 2P)}{kd^{4}} \\
+        I &amp; = \frac{Vkd^4}{4 \rho LM(M + 2P)}
 \end{aligned}
 \end{equation}
 </div>
-
 <p>\begin{equation}
     \text{Number of turns } T = \frac{LM}{kd^{2}}
 \end{equation}</p>

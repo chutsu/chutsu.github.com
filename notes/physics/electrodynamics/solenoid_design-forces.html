@@ -1,21 +1,19 @@
-<!DOCTYPE>
+<!DOCTYPE DOCTYPE>
+
 <html>
 <head>
-    <meta content="text/html" charset="UTF-8" http-equiv="Content-Type" />
-
-    <!-- MATHJAX -->
-    <script type="text/x-mathjax-config">
+<meta charset="utf-8" content="text/html" http-equiv="Content-Type"/>
+<!-- MATHJAX -->
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
             TeX: { equationNumbers: { autoNumber: "AMS" }}
         });
     </script>
-    <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-
-    <!-- CSS -->
-    <style type="text/css">
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<!-- CSS -->
+<style type="text/css">
         body {
             width: 550px;
             margin-left: auto;
@@ -83,25 +81,23 @@
 \begin{equation}
 \begin{aligned}
     \label{eq: energy in an inductor}
-    E & = \int^{t}_{0} P dt \\
-        & = \int^{t}_{0} (I L \frac{dI}{dt}) dt \\
-        & = L \int^{I}_{0} I dI \\
-        E & = \frac{1}{2} LI^{2}
+    E &amp; = \int^{t}_{0} P dt \\
+        &amp; = \int^{t}_{0} (I L \frac{dI}{dt}) dt \\
+        &amp; = L \int^{I}_{0} I dI \\
+        E &amp; = \frac{1}{2} LI^{2}
 \end{aligned}
 \end{equation}
 </div>
-
 <p>Now we need to know what the inductance $L$ is in the inductor. Luckily Faraday defined the electromotive force $\text{e.m.f}$ as</p>
 <div>
 \begin{equation}
 \begin{aligned}
     \label{eq: emf of solenoid}
-    \text{Electromotive force } \epsilon & = -N \frac{d\phi_{B}}{dt} \\
-        & = -NA \frac{dB}{dt}
+    \text{Electromotive force } \epsilon &amp; = -N \frac{d\phi_{B}}{dt} \\
+        &amp; = -NA \frac{dB}{dt}
 \end{aligned}
 \end{equation}
 </div>
-
 <p>Where $N$ is the number of turns, $A$ is the area, $\phi$ is the magnetic flux, and finally $B$ is the magnetic field of the solenoid. And Ampere defined the magnetic field $B$ of a solenoid as:</p>
 <div>
 \begin{equation}
@@ -110,7 +106,6 @@
     \frac{dB}{dI} = \mu \frac{N}{L} dI
 \end{equation}
 </div>
-
 <p>Where $\mu$ is the magnetic permeability of the solenoid core, and $L$ is the length of the solenoid. If we combined equations \ref{eq: emf of solenoid} and \ref{eq: B of solenoid}, we have:</p>
 <p>\begin{equation}
     \epsilon = - N A \frac{\mu \frac{N}{L} dI}{dt}
@@ -139,19 +134,17 @@
 <div>
 \begin{equation}
 \begin{aligned}
-    \text{Energy Density} & = \frac{\frac{1}{2} \left( \frac{\mu N^2 A}{L} \right) \left( \frac{B L}{\mu N} \right)^2}{A L} \\
-    \text{Energy Density} & = \frac{B^2}{2 \mu}
+    \text{Energy Density} &amp; = \frac{\frac{1}{2} \left( \frac{\mu N^2 A}{L} \right) \left( \frac{B L}{\mu N} \right)^2}{A L} \\
+    \text{Energy Density} &amp; = \frac{B^2}{2 \mu}
 \end{aligned}
 \end{equation}
 </div>
-
 <p>Now that we have the energy density of a solenoid's core, we can work out the energy stored in the solenoid when <strong>empty</strong> and when its <strong>filled</strong> with an iron bar or similar. Using equation \ref{eq: difference in energy in a solenoid}:</p>
 <div>
 \begin{equation*}
    \Delta U =  \Delta{U}_{filled} - \Delta{U}_{empty}
 \end{equation*}
 </div>
-
 <p>when the core of the solenoid is <strong>empty</strong>:</p>
 <div>
 \begin{equation*}
@@ -159,7 +152,6 @@
         \left( \frac{B^2}{2 \mu_{0}} \right)
 \end{equation*}
 </div>
-
 <p>where $\mu = \mu_{0}$, but when the core of the solenoid is <strong>filled</strong>, one must use the magnetic permeability of that substance to calculate the energy of that magnetic field.</p>
 <p>\begin{equation}
     \mu = k \mu_{0}
@@ -176,37 +168,35 @@
 <div>
 \begin{equation}
 \begin{aligned}
-   \Delta{U}_{filled} & = \left( \text{Volume} \right) 
+   \Delta{U}_{filled} &amp; = \left( \text{Volume} \right) 
         \left( \frac{B^2}{2 \mu_{0}} \right)
         \left( \frac{k^2}{k} \right) \\
-   \Delta{U}_{filled} & = \left( \text{Volume} \right) 
+   \Delta{U}_{filled} &amp; = \left( \text{Volume} \right) 
         \left( \frac{B^2}{2 \mu_{0}} \right)
         \left( \frac{\mu_{m}}{\mu_{0}} \right) \\
 \end{aligned}
 \end{equation}
 </div>
-
 <p><strong>Note</strong>: $\mu$ in $B$ is now $\mu_{0}$ because we took the $k$ out.</p>
 <p>Finally:</p>
 <div>
 \begin{equation}
 \begin{aligned}
-    \Delta{U} & = \Delta{U}_{filled} - \Delta{U}_{empty} \\ 
-    \Delta{U} & = \left( L \pi R^{2} \right) 
+    \Delta{U} &amp; = \Delta{U}_{filled} - \Delta{U}_{empty} \\ 
+    \Delta{U} &amp; = \left( L \pi R^{2} \right) 
             \left( \frac{B^{2}}{2 \mu_{0}} \right)
             \left( \frac{\mu_{m}}{\mu_{0}} - 1 \right) \\
-    \Delta{U} & = \frac{L \pi R^{2} B^{2}}{2 \mu_{0}}
+    \Delta{U} &amp; = \frac{L \pi R^{2} B^{2}}{2 \mu_{0}}
             \left( \frac{\mu_{m}}{\mu_{0}} - 1 \right) 
 \end{aligned}
 \end{equation}
 </div>
-
 <p>And to work out the force, using equation \ref{eq: force of a solenoid}:</p>
 <div>
 \begin{equation}
 \begin{aligned}
-    F & = \frac{\Delta{U}}{L} \\
-    F & = \frac{\pi R^{2} B^{2}}{2 \mu_{0}}
+    F &amp; = \frac{\Delta{U}}{L} \\
+    F &amp; = \frac{\pi R^{2} B^{2}}{2 \mu_{0}}
         \left( \frac{\mu_{m}}{\mu_{0}} - 1 \right) \\
 \end{aligned}
 \end{equation}
