@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Chris Choi - About</title>
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            text-align: justify;
+            font-family: Verdana, Arial;
+        }
+
+        nav ul {
+            display: block;
+            height: 10px;
+        }
+
+        nav li {
+            float: left;
+            margin-right: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav li#logo a:link, nav li#logo a:visited {
+            float: left;
+            margin-right: 60px;
+            font-size: 1.4em;
+        }
+
+        nav li.link a:link, nav li.link a:visited {
+            color: #333;
+            text-decoration: none;
+        }
+
+        nav li.link a:hover {
+            color: #777;
+        }
+
+        ul {
+            list-style-type: none;
+            font-size: 12px;
+        }
+
+        ul#projects {
+            text-align: left;
+        }
+
+        ul#projects li {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        ul#presentations {
+            text-align: left;
+            font-size: 12px;
+        }
+
+        ul#presentations a {
+            font-size: 12px;
+        }
+
+        ul#presentations li.year {
+            font-weight: bold;
+        }
+
+        ul#presentations li.listing {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        ul.list {
+            list-style-type: disc;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        ul.list li {
+            margin-left: 30px;
+        }
+
+        b.author {
+            color: #C80000;
+        }
+
+        p {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: #222;
+        }
+
+        p.center_contact {
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 0;
+            color: #222;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        a:link, a:visited {
+            color: #104E8B;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .small {
+            font-size: 10px;
+        }
+
+        .quote {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 13px;
+        }
+
+        header {
+            float: left;
+            margin-right: 10%;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        header a {
+            text-decoration: none;
+        }
+
+        section {
+            clear: both;
+            margin-top: 30px;
+        }
+
+        section#blog {
+            clear: both;
+            margin-top: 30px;
+        }
+
+        section.post {
+            font-size: 1em;
+
+        }
+
+        img {
+            display: block;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 2px;
+        }
+
+        footer {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding-top: 10px;
+            border-top: 1px dotted #555;
+        }
+    </style>
+
+
+    <!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+                TeX: { equationNumbers: { autoNumber: "AMS" }}
+            });
+        </script>
+    <script
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+        type="text/javascript">
+    </script>
+
+    <!-- JAVASCRIPT -->
+    <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js">
+    </script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('body').hide().fadeIn();
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li id="logo">
+                <a href="./index.html">Chris Choi</a>
+            </li>
+            <li class="link">
+                <a href="./index.html">blog</a>
+            </li>
+            <li class="link">
+                <a href="./projects.html">projects</a>
+            </li>
+            <li class="link">
+                <a href="./about.html">about</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <h3>Who am I?</h3>
+        <p>My name is Chris Choi, I am a motivated student with a background in
+        Physics and Computer Science interested in data mining and robotics. In
+        specific, attempt to apply data mining techniques to robotics.</p>
+
+        <h3>Education</h3>
+        <ul class="list">
+            <li>MSc Computer Science - University of St. Andrews</li>
+            <li>BSc Computational Physics - Heriot Watt University</li>
+        </ul>
+
+        <h3>Research Interests</h3>
+        <ul class="list">
+            <li>Knowledge Discovery/ Data Mining</li>
+            <li>Computer Vision</li>
+            <li>Control Theory</li>
+        </ul>
+
+        <h3>Why Data Mining, Robotics or Embedded Systems?</h3>
+        <p>For the past half century we have been making our lives easier with
+        computers, we have even attempted to make computers think the way we do
+        to solve complex problems (i.e. Artificial Intelligence). In the 1970s
+        Computer Scientists have promised robots in our homes by now, but they
+        have very much underestimated the complexity in achieving that goal, as
+        Moravec once said:</p>
+
+        <div class="quote">
+            "We are all prodigious Olympians in perceptual and
+            motor areas, so good that we make the difficult look easy.
+            Abstract thought, though, is a new trick, perhaps less than 100
+            thousand years old. We have not yet mastered it. It is not all
+            that intrinsically difficult; it just seems so when we do it."
+        </div>
+
+        <p>I believe data mining is one approach in making robots or
+        intelligence systems more intelligent. Data mining is all about
+        finding patterns in data and creating models that predicts the outcome
+        under new conditions, but which model is the <b><i>best</i></b>
+        remains to be undefined.</p>
+
+        <p>However if one were able to define <b><i>the best</i></b> model,
+        that in turn allows the intelligent system to <b><i>think</i></b> for
+        it-self and choose freely. This is contrary to the traditional
+        <u>static</u> intelligent systems, where the decision making is done
+        by a collection of predefine algorithms, to the <u>dynamic</u> Data
+        Mining approach I envision.</p>
+
+        <h3>Contact</h3>
+        <p class="center_contact">chutsu (at) gmail.com</p>
+
+        <h3>Presentations</h3>
+        <ul id="presentations">
+            <li class="year">2013</li>
+            <li class="listing">
+                <b class="author">Choi, C</b>. & Voss, A. (2013, March).
+                <a href="http://chutsu.github.com/presentations/isgc-2013">
+                    Twirp: a Twitter Mining Workbench, and experiences with NoSQL databases
+                </a>.
+                Presented at the International Symposium on Grids and Clouds
+                (ISGC), Taipei, Taiwan.
+            </li>
+        </ul>
+    </section> <!-- end of about -->
+
+    <footer>
+        Designed By Chris Choi
+    </footer>
+</body>
+</html>

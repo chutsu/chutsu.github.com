@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Chris Choi</title>
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            text-align: justify;
+            font-family: Verdana, Arial;
+        }
+
+        nav ul {
+            display: block;
+            height: 10px;
+        }
+
+        nav li {
+            float: left;
+            margin-right: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav li#logo a:link, nav li#logo a:visited {
+            float: left;
+            margin-right: 60px;
+            font-size: 1.4em;
+        }
+
+        nav li.link a:link, nav li.link a:visited {
+            color: #333;
+            text-decoration: none;
+        }
+
+        nav li.link a:hover {
+            color: #777;
+        }
+
+        ul {
+            list-style-type: none;
+            font-size: 12px;
+        }
+
+        ul#projects {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        ul#projects li {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        ul#presentations {
+            text-align: left;
+            font-size: 12px;
+        }
+
+        ul#presentations a {
+            font-size: 12px;
+        }
+
+        ul#presentations li.year {
+            font-weight: bold;
+        }
+
+        ul#presentations li.listing {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        ul.list {
+            list-style-type: disc;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        ul.list li {
+            margin-left: 30px;
+        }
+
+        b.author {
+            color: #C80000;
+        }
+
+        p {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: #222;
+        }
+
+        p.center_contact {
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 0;
+            color: #222;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        a:link, a:visited {
+            color: #104E8B;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .small {
+            font-size: 10px;
+        }
+
+        .quote {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 13px;
+        }
+
+        header {
+            float: left;
+            margin-right: 10%;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        header a {
+            text-decoration: none;
+        }
+
+        section {
+            clear: both;
+            margin-top: 30px;
+        }
+
+        section#blog {
+            clear: both;
+            margin-top: 30px;
+        }
+
+        section.post {
+            font-size: 1em;
+
+        }
+
+        img {
+            display: block;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 2px;
+        }
+
+        footer {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding-top: 10px;
+            border-top: 1px dotted #555;
+        }
+    </style>
+
+    <!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+                TeX: { equationNumbers: { autoNumber: "AMS" }}
+            });
+        </script>
+    <script
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+        type="text/javascript">
+    </script>
+
+    <!-- JAVASCRIPT -->
+    <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js">
+    </script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('body').hide().fadeIn();
+
+            $('section#projects').hide();
+            $('section#about').hide();
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li id="logo">
+                <a href="../index.html">Chris Choi</a>
+            </li>
+            <li class="link">
+                <a href="../index.html">blog</a>
+            </li>
+            <li class="link">
+                <a href="../projects.html">projects</a>
+            </li>
+            <li class="link">
+                <a href="../about.html">about</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section id="blog">
+        
+            <section class="post">
+                <h1>The Need for a More Sophisticated Humanoid Robot Foot</h1>
+<ul>
+<li>tags: #robotics #humanoid-robot #running #bio-mechanics #ideas</li>
+</ul>
+<p>Having a look around at the humanoid robots, I've noticed that they are all
+"flat footed". Asimo, often regarded as one of the the most sophisticated
+humanoid runs like this:</p>
+<iframe width="100%" height="400" src="http://www.youtube.com/embed/g9p7-OPvs1c"
+frameborder="0" allowfullscreen>
+</iframe>
+
+<p>Don't get me wrong it is fast, but its not all that natural, it looks as if the
+robot is squatting and running both at the same time. But as an avid runner I
+would say it lacks the full running motion we would consider real running. For
+example, the robot doesn't actually swing its foot backwards and forwards,
+project itself up in the air to increase the stride length.</p>
+<p>The challenge for the engineer is the <strong>air time</strong>, it is difficult to engineer
+a robot that could co-ordinate it-self to <strong>push-off</strong> with one of their legs,
+<strong>project itself</strong> in the air and land on the other <strong>in balance</strong>.</p>
+<p><img alt="Running Sequence" src="./images/running_sequence.png" /></p>
+<h2>But why the foot?</h2>
+<p>Now the reason why I emphasised the foot, is because I believe the foot holds
+the key to the whole running motion. When we run we know what <strong>feels right</strong>
+and what <strong>doesn't</strong>, not because of the motion sensors in our ears, but
+perhaps from our feedback from our foot, legs, arms and body posture. To
+reiterate the problem of push-off and landing, the foot in my opinion is one of
+the most important body part that dictates the success of this phase, a flat
+footed robot (without sensors) is not going to help with this. And here is why:</p>
+<h3>Brain's Perception of Our Body</h3>
+<p>There is a reason why our brains perceive our hands and foot the most. That is
+because there is more sensory cortex devoted to these areas. This helps you
+make finer movements and have a better sense of touch. So the distances on your
+hands, thumb, and cheeks should be smaller compared to your back or your legs
+because they are more sensitive.</p>
+<p><img alt="Homunculus" src="./images/homunculus.jpg" /></p>
+<p>This above person is called a Homunculus. It is an interesting word. It means
+little man.  A Canadian doctor by the name of Wilder Penfield while studying
+patients with epilepsy created maps of the brain. </p>
+<h3>Our Feet are Amazing!</h3>
+<p>Look at your feet, imagine how difficult it would be to run if you wore wooden
+slippers, compared to running on bare feet. With a single foot, there are
+exactly <strong>26 bones</strong>, <strong>33 joints</strong> (20 of which are actively articulated), and
+more than <strong>a hundred muscles</strong>, <strong>tendons</strong>, and <strong>ligaments</strong>. Nature has't
+simply done this by <strong>accident</strong>, there is a reason behind the complex
+structure of our foot.</p>
+<h1>Summary</h1>
+<p>In summary, through evolution we have been able to do many amazing complex
+things without much thought. Translating our lower motor functions to robots is
+one of the most difficult challenges in robotics, as Moravec (1998: 15-16)
+said:</p>
+<blockquote>
+<p>"We are all prodigious Olympians in perceptual and motor areas, so good that
+we make the difficult look easy. Abstract thought, though, is a new trick,
+perhaps less than 100 thousand years old. We have not yet mastered it. It is
+not all that intrinsically difficult; it just seems so when we do it."</p>
+</blockquote>
+<p>In the future, I hope to prove the above with some experimental models that
+prove the points above, through <strong>Genetic/Evolutionary algorithms</strong> and a <strong>3D
+simulation</strong>. Further more, I hope to one day produce a real humanoid robot
+that can actually <strong>run</strong>! :)</p>
+            </section><!-- end of post -->
+        
+    </section><!-- end of blog -->
+
+    <footer>
+        Designed By Chris Choi
+    </footer>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Chris Choi - Projects</title>
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            text-align: justify;
+            font-family: Verdana, Arial;
+        }
+
+        nav ul {
+            display: block;
+            height: 10px;
+        }
+
+        nav li {
+            float: left;
+            margin-right: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav li#logo a:link, nav li#logo a:visited {
+            float: left;
+            margin-right: 60px;
+            font-size: 1.4em;
+        }
+
+        nav li.link a:link, nav li.link a:visited {
+            color: #333;
+            text-decoration: none;
+        }
+
+        nav li.link a:hover {
+            color: #777;
+        }
+
+        ul {
+            list-style-type: none;
+            font-size: 12px;
+        }
+
+        ul#projects {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        ul#projects li {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        ul#presentations {
+            text-align: left;
+            font-size: 12px;
+        }
+
+        ul#presentations a {
+            font-size: 12px;
+        }
+
+        ul#presentations li.year {
+            font-weight: bold;
+        }
+
+        ul#presentations li.listing {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        ul.list {
+            list-style-type: disc;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        ul.list li {
+            margin-left: 30px;
+        }
+
+        b.author {
+            color: #C80000;
+        }
+
+        p {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: #222;
+        }
+
+        p.center_contact {
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 0;
+            color: #222;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        a:link, a:visited {
+            color: #104E8B;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .small {
+            font-size: 10px;
+        }
+
+        .quote {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 13px;
+        }
+
+        header {
+            float: left;
+            margin-right: 10%;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        header a {
+            text-decoration: none;
+        }
+
+        section {
+            clear: both;
+            margin-top: 30px;
+        }
+
+        section#blog {
+            clear: both;
+            margin-top: 30px;
+        }
+
+        section.post {
+            font-size: 1em;
+
+        }
+
+        img {
+            display: block;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 2px;
+        }
+
+        footer {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding-top: 10px;
+            border-top: 1px dotted #555;
+        }
+    </style>
+
+    <!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+                TeX: { equationNumbers: { autoNumber: "AMS" }}
+            });
+        </script>
+    <script
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+        type="text/javascript">
+    </script>
+
+    <!-- JAVASCRIPT -->
+    <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js">
+    </script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('body').hide().fadeIn();
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li id="logo">
+                <a href="./index.html">Chris Choi</a>
+            </li>
+            <li class="link">
+                <a href="./index.html">blog</a>
+            </li>
+            <li class="link">
+                <a href="./projects.html">projects</a>
+            </li>
+            <li class="link">
+                <a href="./about.html">about</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section id="projects">
+        <h3>Current Projects:</h3>
+        <ul id="projects">
+            <li>
+                <a href="https://github.com/chutsu/evolve">evolve</a>: Genetic Algorithm
+                implemented in C.
+            </li>
+            <li>
+                <a href="https://github.com/chutsu/al">al</a>: generic algorithms
+                such as sort and search implemented in C.
+            </li>
+            <li>
+                <a href="https://github.com/chutsu/dstruct">dstruct</a>: useful
+                common data structures in C.
+            </li>
+            <li>
+                <a href="https://github.com/chutsu/munit">munit</a>: useful minimal
+                unit testing in C.
+            </li>
+            <li>
+                <a href="https://github.com/chutsu/dbg">dbg</a>: debug macros in C.
+            </li>
+        </ul>
+
+        <h3>Past Projects:</h3>
+        <ul id="projects">
+            <li>
+                <a href="https://github.com/chutsu/mineframe">Mineframe</a>:
+                is a data mining framework written in Python and uses R to perform
+                most of the statistical and machine learning operations, with the
+                aim to automate most of the data mining processes.
+            </li>
+            <li>
+                <a href="https://github.com/chutsu/mineframe">Mineview</a>:
+                is a web-based interface meant to be used on top of
+                mineframe.
+            </li>
+        </ul>
+    </section> <!-- end of projects -->
+
+    <footer>
+        Designed By Chris Choi
+    </footer>
+</body>
+</html>

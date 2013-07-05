@@ -1,0 +1,8 @@
+{
+    "blog" : {
+        "input dir" : ".",
+        "output dir": "../blog_html",
+        "template": "../templates/base.html",
+        "posts per page": 5
+    }
+}
