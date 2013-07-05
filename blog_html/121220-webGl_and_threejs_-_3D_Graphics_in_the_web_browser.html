@@ -94,28 +94,6 @@
             margin-left: 30px;
         }
 
-        li.post_listing {
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 10px;
-        }
-
-        span.date {
-            width: 20%;
-            margin-top: 2px;
-            margin-right: 10px;
-            color: #777;
-        }
-
-        span.title {
-            width: 70%;
-        }
-
-        span.title a {
-            font-size: 13px;
-        }
-
         b.author {
             color: #C80000;
         }
@@ -190,7 +168,6 @@
         section#blog {
             clear: both;
             margin-top: 30px;
-            padding-top: 20px;
         }
 
         section.post {
@@ -209,7 +186,6 @@
         }
 
         footer {
-            clear: both;
             font-size: 10px;
             text-align: center;
             margin-top: 50px;
@@ -249,80 +225,91 @@
     <nav>
         <ul>
             <li id="logo">
-                <a href="./index.html">Chris Choi</a>
+                <a href="../index.html">Chris Choi</a>
             </li>
             <li class="link">
-                <a href="./index.html">blog</a>
+                <a href="../index.html">blog</a>
             </li>
             <li class="link">
-                <a href="./projects.html">projects</a>
+                <a href="../projects.html">projects</a>
             </li>
             <li class="link">
-                <a href="./about.html">about</a>
+                <a href="../about.html">about</a>
             </li>
         </ul>
-    </nav><!-- end of nav -->
+    </nav>
 
     <section id="blog">
-        <ul>
-            
-            <li class="post_listing">
-                    <span class="date">20 DEC 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121220-webGl_and_three.js_-_3D_Graphics_in_the_web_browser.html">webGl and three.js - 3D Graphics in the web browser</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">19 DEC 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121219-Fingers_Crossed.html">Fingers Crossed</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">05 DEC 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121205-what_is_MapReduce_or_How_does_MapReduce_work%3F.html">what is MapReduce or How does MapReduce work?</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">03 DEC 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121203-Problem_Querying_a_Sharded_MongoDB_Cluster_with_MongoDB_Java_Driver_2.9.*_or_2.10.*.html">Problem Querying a Sharded MongoDB Cluster with MongoDB Java Driver 2.9.* or 2.10.*</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">24 NOV 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121124-Machine_Learning_vs_Statistics.html">Machine Learning vs Statistics</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">22 NOV 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121122-Are_Data_Driven_Robots_the_Future%3F.html">Are Data Driven Robots the Future?</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">20 NOV 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121120-The_Need_For_A_More_Sophisticated_Humanoid_Robot_Foot.html">The Need For A More Sophisticated Humanoid Robot Foot</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">01 NOV 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121101-Hello_world.html">Hello world</a>
-                    </span>
-            </li>
-            
-        </ul>
+        
+            <section class="post">
+                <h1>WebGL and three.js - 3D graphics in the web browser</h1>
+<ul>
+<li>tags: #javascript #three.js #webgl #3d #browser</li>
+</ul>
+<iframe src="../demos/three.js_box.html"  width="300" height="300"
+scrolling="no" frameborder="0" style="display: block; margin-left: auto;
+margin-right: auto;"></iframe>
+
+<p>WebGL is the web version of OpenGL, it allows web browsers to display 3D
+graphics just like the one above <strong>using just javascript and html</strong>, and I have
+to say it is actually pretty impressive. This is where
+<a href="http://mrdoob.github.com/three.js/">three.js</a> comes in, it is a WebGL
+framework so instead of starting from scratch you can now achieve more with
+relatively little effort.</p>
+<p>Lets take a quick look at three.js, here we are going to <strong>draw a red 3D
+wireframe cube rotating</strong>. Just like any html document you tell the browser
+where the javascript files live with:</p>
+<pre><code>&lt;script src="/js/three.min.js"&gt;&lt;/script&gt;
+</code></pre>
+<p>then in body of the html document define the javascript with the <code>script</code> tag</p>
+<pre><code>&lt;body&gt; &lt;script&gt; . . . &lt;/script&gt; &lt;/body&gt;
+</code></pre>
+<p>now we can define the actual javascript needed to describe the 3D scene. We
+have to declare global variables</p>
+<pre><code>var camera; var scene; var renderer; var geometry; var material; var mesh;
+</code></pre>
+<p>then we can set the scene with the following, which creates a new scene,
+camera, red cube and renderer:</p>
+<pre><code>function init() {
+    camera = new THREE.PerspectiveCamera(
+            75, 
+            window.innerWidth / window.innerHeight, 
+            1, 
+            10000);
+    camera.position.z = 1000;
+
+    scene = new THREE.Scene();
+    geometry = new THREE.CubeGeometry( 200, 200, 200 );
+    material = new THREE.MeshBasicMaterial(
+            {
+                color: 0xff0000, 
+                wireframe: true 
+            });
+    mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    renderer = new THREE.CanvasRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+    document.body.appendChild( renderer.domElement );
+}
+</code></pre>
+<p>we can also animate the red cube by defining</p>
+<pre><code>function animate() {
+    requestAnimationFrame( animate );
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+    renderer.render( scene, camera );
+}
+</code></pre>
+<p>after defining the two functions we can call them by</p>
+<pre><code>init();
+animate();
+</code></pre>
+<p>which results in a rotating 3D wireframe red cube in the above.</p>
+<p>Check out a full live demo <a href="../demos/three.js_box.html">here</a></p>
+            </section><!-- end of post -->
+        
     </section><!-- end of blog -->
 
     <footer>

@@ -94,28 +94,6 @@
             margin-left: 30px;
         }
 
-        li.post_listing {
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 10px;
-        }
-
-        span.date {
-            width: 20%;
-            margin-top: 2px;
-            margin-right: 10px;
-            color: #777;
-        }
-
-        span.title {
-            width: 70%;
-        }
-
-        span.title a {
-            font-size: 13px;
-        }
-
         b.author {
             color: #C80000;
         }
@@ -190,7 +168,6 @@
         section#blog {
             clear: both;
             margin-top: 30px;
-            padding-top: 20px;
         }
 
         section.post {
@@ -209,7 +186,6 @@
         }
 
         footer {
-            clear: both;
             font-size: 10px;
             text-align: center;
             margin-top: 50px;
@@ -249,80 +225,72 @@
     <nav>
         <ul>
             <li id="logo">
-                <a href="./index.html">Chris Choi</a>
+                <a href="../index.html">Chris Choi</a>
             </li>
             <li class="link">
-                <a href="./index.html">blog</a>
+                <a href="../index.html">blog</a>
             </li>
             <li class="link">
-                <a href="./projects.html">projects</a>
+                <a href="../projects.html">projects</a>
             </li>
             <li class="link">
-                <a href="./about.html">about</a>
+                <a href="../about.html">about</a>
             </li>
         </ul>
-    </nav><!-- end of nav -->
+    </nav>
 
     <section id="blog">
-        <ul>
-            
-            <li class="post_listing">
-                    <span class="date">20 DEC 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121220-webGl_and_three.js_-_3D_Graphics_in_the_web_browser.html">webGl and three.js - 3D Graphics in the web browser</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">19 DEC 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121219-Fingers_Crossed.html">Fingers Crossed</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">05 DEC 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121205-what_is_MapReduce_or_How_does_MapReduce_work%3F.html">what is MapReduce or How does MapReduce work?</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">03 DEC 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121203-Problem_Querying_a_Sharded_MongoDB_Cluster_with_MongoDB_Java_Driver_2.9.*_or_2.10.*.html">Problem Querying a Sharded MongoDB Cluster with MongoDB Java Driver 2.9.* or 2.10.*</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">24 NOV 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121124-Machine_Learning_vs_Statistics.html">Machine Learning vs Statistics</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">22 NOV 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121122-Are_Data_Driven_Robots_the_Future%3F.html">Are Data Driven Robots the Future?</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">20 NOV 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121120-The_Need_For_A_More_Sophisticated_Humanoid_Robot_Foot.html">The Need For A More Sophisticated Humanoid Robot Foot</a>
-                    </span>
-            </li>
-            
-            <li class="post_listing">
-                    <span class="date">01 NOV 2012</span> >>
-                    <span class="title">
-                        <a href="blog_html/121101-Hello_world.html">Hello world</a>
-                    </span>
-            </li>
-            
-        </ul>
+        
+            <section class="post">
+                <h1>What is Map-Reduce or How does Map-Reduce work?</h1>
+<ul>
+<li>tags: #map-reduce #cs #theory</li>
+</ul>
+<p>Map/Reduce is a way to take a big task and divide it into smaller tasks that
+can be done in parallel. Think of a hierarchical structure, where the BIG BOSS
+performs a big task by telling his sub ordinates to do a little bit of
+different things, that is map-reduce.</p>
+<p>But what does this mean for a database? well its very simple, say you have the
+following data in the database (key-value pair):</p>
+<pre><code>Toronto, 20
+Whitby, 25
+New York, 22
+Rome, 32
+Toronto, 4
+Rome, 33
+New York, 18
+</code></pre>
+<p>Out of all the data we have collected, we want to find the maximum temperature
+for each city across all of the data files (note that each file might have the
+same city represented multiple times). Using map-reduce, we can break this down
+into five map tasks, where each mapper works on one of the five files and the
+mapper task goes through the data and returns the maximum temperature for each
+city. For example, the results produced from one mapper task for the data above
+would look like this:</p>
+<pre><code>(Toronto, 20) (Whitby, 25) (New York, 22) (Rome, 33)
+</code></pre>
+<p>Lets assume the other four mapper tasks (working on the other four files not
+shown here) produced the following intermediate results:</p>
+<pre><code>(Toronto, 18) (Whitby, 27) (New York, 32) (Rome, 37)(Toronto, 32) (Whitby, 20)
+(New York, 33) (Rome, 38)(Toronto, 22) (Whitby, 19) (New York, 20) (Rome, 31)
+(Toronto, 31) (Whitby, 22) (New York, 19) (Rome, 30)
+</code></pre>
+<p>All five of these output streams would be fed into the reduce tasks, which
+combine the input results and output a single value for each city, producing a
+final result set as follows:</p>
+<pre><code>(Toronto, 32) (Whitby, 27) (New York, 33) (Rome, 38)
+</code></pre>
+<p>As an analogy, you can think of map and reduce tasks as the way a census was
+conducted in Roman times, where the census bureau would dispatch its people to
+each city in the empire. Each census taker in each city would be tasked to
+count the number of people in that city and then return their results to the
+capital city. There, the results from each city would be reduced to a single
+count (sum of all cities) to determine the overall population of the empire.
+This mapping of people to cities, in parallel, and then combining the results
+(reducing) is much more efficient than sending a single person to count every
+person in the empire in a serial fashion.</p>
+            </section><!-- end of post -->
+        
     </section><!-- end of blog -->
 
     <footer>
