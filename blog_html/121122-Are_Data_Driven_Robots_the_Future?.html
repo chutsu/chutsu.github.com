@@ -12,7 +12,7 @@
         }
 
         body {
-            width: 500px;
+            width: 700px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 50px;
@@ -81,6 +81,7 @@
             width: 90%;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 20px;
         }
 
         ul.list {
@@ -111,7 +112,7 @@
 
         h1, h2, h3 {
             margin-top: 20px;
-            margin-bottom: 0;
+            margin-bottom: 10px;
             color: #222;
         }
 
@@ -127,9 +128,17 @@
             font-size: 16px;
         }
 
+        pre {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 10px;
+        }
+
         a:link, a:visited {
-            color: #104E8B;
-            font-size: 16px;
+            color: #0e73d6;
             font-weight: bold;
             text-decoration: none;
         }
@@ -162,12 +171,15 @@
 
         section {
             clear: both;
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
         section#blog {
             clear: both;
-            margin-top: 30px;
+            width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
         }
 
         section.post {
@@ -207,7 +219,7 @@
         type="text/javascript">
     </script>
 
-    <!-- JAVASCRIPT -->
+    <!-- JQUERY -->
     <script type="text/javascript"
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js">
     </script>
@@ -220,6 +232,11 @@
             $('section#about').hide();
         });
     </script>
+
+    <!-- HIGHLIGHT.JS -->
+    <link rel="stylesheet" href="../js/highlight.js/styles/github.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
     <nav>

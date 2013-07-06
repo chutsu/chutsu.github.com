@@ -1,4 +1,4 @@
-# WebGL and three.js - 3D graphics in the web browser
+# 3D Graphics in the Web Browser with WebGL
 - tags: #javascript #three.js #webgl #3d #browser
 
 <iframe src="../demos/three.js_box.html"  width="300" height="300"

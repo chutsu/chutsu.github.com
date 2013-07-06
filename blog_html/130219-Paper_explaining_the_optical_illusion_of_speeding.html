@@ -12,7 +12,7 @@
         }
 
         body {
-            width: 500px;
+            width: 700px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 50px;
@@ -81,6 +81,7 @@
             width: 90%;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 20px;
         }
 
         ul.list {
@@ -111,7 +112,7 @@
 
         h1, h2, h3 {
             margin-top: 20px;
-            margin-bottom: 0;
+            margin-bottom: 10px;
             color: #222;
         }
 
@@ -127,9 +128,17 @@
             font-size: 16px;
         }
 
+        pre {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 10px;
+        }
+
         a:link, a:visited {
-            color: #104E8B;
-            font-size: 16px;
+            color: #0e73d6;
             font-weight: bold;
             text-decoration: none;
         }
@@ -162,12 +171,15 @@
 
         section {
             clear: both;
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
         section#blog {
             clear: both;
-            margin-top: 30px;
+            width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
         }
 
         section.post {
@@ -207,7 +219,7 @@
         type="text/javascript">
     </script>
 
-    <!-- JAVASCRIPT -->
+    <!-- JQUERY -->
     <script type="text/javascript"
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js">
     </script>
@@ -220,6 +232,11 @@
             $('section#about').hide();
         });
     </script>
+
+    <!-- HIGHLIGHT.JS -->
+    <link rel="stylesheet" href="../js/highlight.js/styles/github.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
     <nav>
@@ -242,23 +259,16 @@
     <section id="blog">
         
             <section class="post">
-                <h1>Problem Querying a Sharded MongoDB Cluster with MongoDB Java Driver 2.9.<em> or 2.10.</em></h1>
-<p>Recently I setup a sharded MongoDB cluster, with each shard as single nodes
-rather than replica-sets (not recommeded). The problem I was having is that
-when I query the mongos instance, reusing some code I know works against a
-single node I get:</p>
-<pre><code>Exception in thread "main" com.mongodb.CommandResult$CommandFailure:
-command failed [mapreduce]: { "serverUsed" :
-"localhost/xxx.xxx.xxx.xxx:27017" , "ok" : 0.0 , "errmsg" : "unknown m/r
-field for sharding: $readPreference"}
-</code></pre>
-<p>Note: the host and IP address has been extracted out.</p>
-<p>After consulting the google group, mongodb-user. It turns out it was the
-official Java Driver that was playing up. Jeff Yemin has kindly fixed the
-problem and created a snapshot of the fix here for those who might be
-interested.</p>
-<p>You can have a look at the question I posted on mongodb-user here.</p>
-<p>Kudos to Jeff for helping in such short notice :)</p>
+                <h1>Paper explaining the optical illusion of speeding</h1>
+<ul>
+<li>tags: #physics #funny #paper #science</li>
+</ul>
+<p>Paper explaining the optical illusion of speeding</p>
+<p>if Sheldon Cooper (Big Bang Theory - TV series) could drive and was stopped by
+the police for speeding, he would write a 4 page PAPER* to explain it was all
+an optical illusion, wait it actually happened! (but with a different guy)</p>
+<p>(Dmitri Krioukov, Physicist, Writes Four Page Paper To Avoid Paying Traffic
+Ticket)[http://www.huffingtonpost.com/2012/04/16/dmitri-krioukov-physicist_n_1429545.html]</p>
             </section><!-- end of post -->
         
     </section><!-- end of blog -->

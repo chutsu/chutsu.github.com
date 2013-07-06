@@ -12,7 +12,7 @@
         }
 
         body {
-            width: 500px;
+            width: 700px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 50px;
@@ -133,7 +133,7 @@
 
         h1, h2, h3 {
             margin-top: 20px;
-            margin-bottom: 0;
+            margin-bottom: 10px;
             color: #222;
         }
 
@@ -150,8 +150,7 @@
         }
 
         a:link, a:visited {
-            color: #104E8B;
-            font-size: 16px;
+            color: #0e73d6;
             font-weight: bold;
             text-decoration: none;
         }
@@ -184,13 +183,14 @@
 
         section {
             clear: both;
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
         section#blog {
             clear: both;
-            margin-top: 30px;
-            padding-top: 20px;
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         section.post {
@@ -263,7 +263,7 @@
         </ul>
     </nav><!-- end of nav -->
 
-    <section id="blog">
+    <section id="blog_listing">
         <ul>
             {% for post in posts %}
             <li class="post_listing">

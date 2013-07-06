@@ -8,7 +8,7 @@ unknown”, they are also very similar where they both share similar
 terminologies. Tibshiriani (2009) compares both statistics and machine learning
 in an amusing way with the following table:
 
-![Machine Learning vs Statistics](ml_vs_statistics.jpg)
+![Machine Learning vs Statistics](./images/ml_vs_statistics.png)
 
 Despite similarities, statistics has become very unpopular in recent years due
 to its misuse in media. A quote sums up the perception of statistics quiet

@@ -12,7 +12,7 @@
         }
 
         body {
-            width: 500px;
+            width: 700px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 50px;
@@ -81,6 +81,7 @@
             width: 90%;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 20px;
         }
 
         ul.list {
@@ -111,7 +112,7 @@
 
         h1, h2, h3 {
             margin-top: 20px;
-            margin-bottom: 0;
+            margin-bottom: 10px;
             color: #222;
         }
 
@@ -127,9 +128,17 @@
             font-size: 16px;
         }
 
+        pre {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 10px;
+        }
+
         a:link, a:visited {
-            color: #104E8B;
-            font-size: 16px;
+            color: #0e73d6;
             font-weight: bold;
             text-decoration: none;
         }
@@ -162,12 +171,15 @@
 
         section {
             clear: both;
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
         section#blog {
             clear: both;
-            margin-top: 30px;
+            width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
         }
 
         section.post {
@@ -207,7 +219,7 @@
         type="text/javascript">
     </script>
 
-    <!-- JAVASCRIPT -->
+    <!-- JQUERY -->
     <script type="text/javascript"
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js">
     </script>
@@ -220,6 +232,11 @@
             $('section#about').hide();
         });
     </script>
+
+    <!-- HIGHLIGHT.JS -->
+    <link rel="stylesheet" href="../js/highlight.js/styles/github.css">
+    <script type="text/javascript" src="../js/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
     <nav>
@@ -242,72 +259,24 @@
     <section id="blog">
         
             <section class="post">
-                <h1>WebGL and three.js - 3D graphics in the web browser</h1>
-<ul>
-<li>tags: #javascript #three.js #webgl #3d #browser</li>
-</ul>
-<iframe src="../demos/three.js_box.html"  width="300" height="300"
-scrolling="no" frameborder="0" style="display: block; margin-left: auto;
-margin-right: auto;"></iframe>
-
-<p>WebGL is the web version of OpenGL, it allows web browsers to display 3D
-graphics just like the one above <strong>using just javascript and html</strong>, and I have
-to say it is actually pretty impressive. This is where
-<a href="http://mrdoob.github.com/three.js/">three.js</a> comes in, it is a WebGL
-framework so instead of starting from scratch you can now achieve more with
-relatively little effort.</p>
-<p>Lets take a quick look at three.js, here we are going to <strong>draw a red 3D
-wireframe cube rotating</strong>. Just like any html document you tell the browser
-where the javascript files live with:</p>
-<pre><code>&lt;script src="/js/three.min.js"&gt;&lt;/script&gt;
+                <h1>Problem Querying a Sharded MongoDB Cluster with MongoDB Java Driver</h1>
+<p><strong>Note</strong>: The following note concerns Java MongoDB Driver 2.9.<em> or 2.10.</em></p>
+<p>Recently I setup a sharded MongoDB cluster, with each shard as single nodes
+rather than replica-sets (not recommeded). The problem I was having is that
+when I query the mongos instance, reusing some code I know works against a
+single node I get:</p>
+<pre><code>Exception in thread "main" com.mongodb.CommandResult$CommandFailure:
+command failed [mapreduce]: { "serverUsed" :
+"localhost/xxx.xxx.xxx.xxx:27017" , "ok" : 0.0 , "errmsg" : "unknown m/r
+field for sharding: $readPreference"}
 </code></pre>
-<p>then in body of the html document define the javascript with the <code>script</code> tag</p>
-<pre><code>&lt;body&gt; &lt;script&gt; . . . &lt;/script&gt; &lt;/body&gt;
-</code></pre>
-<p>now we can define the actual javascript needed to describe the 3D scene. We
-have to declare global variables</p>
-<pre><code>var camera; var scene; var renderer; var geometry; var material; var mesh;
-</code></pre>
-<p>then we can set the scene with the following, which creates a new scene,
-camera, red cube and renderer:</p>
-<pre><code>function init() {
-    camera = new THREE.PerspectiveCamera(
-            75, 
-            window.innerWidth / window.innerHeight, 
-            1, 
-            10000);
-    camera.position.z = 1000;
-
-    scene = new THREE.Scene();
-    geometry = new THREE.CubeGeometry( 200, 200, 200 );
-    material = new THREE.MeshBasicMaterial(
-            {
-                color: 0xff0000, 
-                wireframe: true 
-            });
-    mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
-
-    renderer = new THREE.CanvasRenderer();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-
-    document.body.appendChild( renderer.domElement );
-}
-</code></pre>
-<p>we can also animate the red cube by defining</p>
-<pre><code>function animate() {
-    requestAnimationFrame( animate );
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
-    renderer.render( scene, camera );
-}
-</code></pre>
-<p>after defining the two functions we can call them by</p>
-<pre><code>init();
-animate();
-</code></pre>
-<p>which results in a rotating 3D wireframe red cube in the above.</p>
-<p>Check out a full live demo <a href="../demos/three.js_box.html">here</a></p>
+<p>Note: the host and IP address has been extracted out.</p>
+<p>After consulting the google group, mongodb-user. It turns out it was the
+official Java Driver that was playing up. Jeff Yemin has kindly fixed the
+problem and created a snapshot of the fix here for those who might be
+interested.</p>
+<p>You can have a look at the question I posted on mongodb-user here.</p>
+<p>Kudos to Jeff for helping in such short notice :)</p>
             </section><!-- end of post -->
         
     </section><!-- end of blog -->

@@ -259,18 +259,72 @@
     <section id="blog">
         
             <section class="post">
-                <h1>Fingers Crossed . . .</h1>
+                <h1>3D Graphics in the Web Browser with WebGL</h1>
 <ul>
-<li>tags: #memeories #personal #photo #mit</li>
+<li>tags: #javascript #three.js #webgl #3d #browser</li>
 </ul>
-<p>A few days ago I just put my application through to MIT, needless to say it is
-a very long shot, but you never know . . .</p>
-<p><img alt="MIT Front" src="./images/mit_front.jpg" /></p>
-<p>(Uncle Eric and Mom)</p>
-<p><img alt="MIT Me and Uncle Eric" src="./images/mit_me_eric.jpg" /></p>
-<p>(Me and Uncle Eric)</p>
-<p>And this is me when I was visiting Boston this past september. I should have
-walked in to the labs and talked to people  :/ . . .</p>
+<iframe src="../demos/three.js_box.html"  width="300" height="300"
+scrolling="no" frameborder="0" style="display: block; margin-left: auto;
+margin-right: auto;"></iframe>
+
+<p>WebGL is the web version of OpenGL, it allows web browsers to display 3D
+graphics just like the one above <strong>using just javascript and html</strong>, and I have
+to say it is actually pretty impressive. This is where
+<a href="http://mrdoob.github.com/three.js/">three.js</a> comes in, it is a WebGL
+framework so instead of starting from scratch you can now achieve more with
+relatively little effort.</p>
+<p>Lets take a quick look at three.js, here we are going to <strong>draw a red 3D
+wireframe cube rotating</strong>. Just like any html document you tell the browser
+where the javascript files live with:</p>
+<pre><code>&lt;script src="/js/three.min.js"&gt;&lt;/script&gt;
+</code></pre>
+<p>then in body of the html document define the javascript with the <code>script</code> tag</p>
+<pre><code>&lt;body&gt; &lt;script&gt; . . . &lt;/script&gt; &lt;/body&gt;
+</code></pre>
+<p>now we can define the actual javascript needed to describe the 3D scene. We
+have to declare global variables</p>
+<pre><code>var camera; var scene; var renderer; var geometry; var material; var mesh;
+</code></pre>
+<p>then we can set the scene with the following, which creates a new scene,
+camera, red cube and renderer:</p>
+<pre><code>function init() {
+    camera = new THREE.PerspectiveCamera(
+            75, 
+            window.innerWidth / window.innerHeight, 
+            1, 
+            10000);
+    camera.position.z = 1000;
+
+    scene = new THREE.Scene();
+    geometry = new THREE.CubeGeometry( 200, 200, 200 );
+    material = new THREE.MeshBasicMaterial(
+            {
+                color: 0xff0000, 
+                wireframe: true 
+            });
+    mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    renderer = new THREE.CanvasRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+    document.body.appendChild( renderer.domElement );
+}
+</code></pre>
+<p>we can also animate the red cube by defining</p>
+<pre><code>function animate() {
+    requestAnimationFrame( animate );
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+    renderer.render( scene, camera );
+}
+</code></pre>
+<p>after defining the two functions we can call them by</p>
+<pre><code>init();
+animate();
+</code></pre>
+<p>which results in a rotating 3D wireframe red cube in the above.</p>
+<p>Check out a full live demo <a href="../demos/three.js_box.html">here</a></p>
             </section><!-- end of post -->
         
     </section><!-- end of blog -->

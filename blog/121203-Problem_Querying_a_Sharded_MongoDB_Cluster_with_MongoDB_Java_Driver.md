@@ -1,4 +1,6 @@
-# Problem Querying a Sharded MongoDB Cluster with MongoDB Java Driver 2.9.* or 2.10.*
+# Problem Querying a Sharded MongoDB Cluster with MongoDB Java Driver
+
+**Note**: The following note concerns Java MongoDB Driver 2.9.* or 2.10.*
 
 Recently I setup a sharded MongoDB cluster, with each shard as single nodes
 rather than replica-sets (not recommeded). The problem I was having is that
