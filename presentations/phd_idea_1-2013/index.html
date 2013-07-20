@@ -78,12 +78,25 @@
             margin-left: 5%;
         }
 
+        ul.ref {
+            list-style-image: none;
+            /* position: absolute; */
+            width: 60%;
+            /* bottom: 20%; */
+            color: #666;
+            font-size: 0.5em;
+        }
+
+        ul.ref>li:before {
+            content: none;
+        }
+
         p.ref {
             position: absolute;
             width: 80%;
             bottom: 20%;
             color: #666;
-            font-size: 16px;
+            font-size: 0.6em;
         }
 
         p.authors {
@@ -114,6 +127,12 @@
             margin-left: auto;
             margin-right: auto;
             margin-top: 20%;
+        }
+
+        div.center_everything ul {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .slide img {
@@ -258,7 +277,7 @@
     <section class="slide">
         <div>
             <h2>Why?</h2>
-            <p class="list_header">Because:</p>
+            <h3>Because:</h3>
             <ul>
                 <li>
                     most configurations are
@@ -294,25 +313,106 @@
 
     <section class="slide">
         <div>
-            <h2>GA Configurable Attributes</h2>
-            <h3>Methods</h3>
+            <h2>Using Interestingness Measures to Guide a GA Process</h2>
+            <img src="imgs/im-ga.png">
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Pros</h2>
+            <h3>
+                In addition to advantages mentioned before, we believe this
+                approach:
+            </h3>
             <ul>
-                <li>Selection Method</li>
-                <li>Crossover Method</li>
-                <li>Mutation Method</li>
+                <li>
+                    <span class="red">Adds more dimensions</span> to the
+                    <span class="red">cost function</span>
+                </li>
+
+                <li>
+                    <span class="red">Can use to build a Machine Learning
+                    Configurator</span>, by allowing <span class="bigger">
+                    subjective</span> interesting-ness measures the
+                    <span class="bigger">ability to change</span>
+                </li>
             </ul>
-            <h3>Probabilities</h3>
+
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Cons:</h2>
+            <h3>But there are also potential disadvantages:</h3>
             <ul>
-                <li>Crossover Probability</li>
-                <li>Mutation Probability</li>
+                <li>
+                    It <span class="red">could be more trouble that its worth
+                    </span> from a performance and development stand point
+                </li>
+                <li>
+                    <span class="red">Cannot guarantee optimal results</span>,
+                </li>
+                <li>
+                    Maybe <span class="red">more geared towards online systems
+                    </span>, or systems with real time constraints
+                <li>
+                    More importantly, we <span class="red">don't know if it
+                    would work</span>
+                </li>
+
             </ul>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Thank you!</h2>
+            <h3>References:</h3>
+            <ul class="ref">
+                <li>
+                    [1] Geng, Liqiang, and Howard J. Hamilton.
+                    <i>
+                        "Interestingness measures for data mining: A survey."
+                    </i>
+                    ACM Computing Surveys (CSUR) 38.3 (2006): 9.
+                </li>
+
+                <li>
+                    [2] McGarry, Ken.
+                    <i>
+                        "A survey of interestingness measures for knowledge
+                        discovery."
+                    </i>
+                    The knowledge engineering review 20.01 (2005): 39-61.
+                </li>
+                <li>
+                    [3] Bharadwaj, Kamal K., and Basheer M. Al-Maqaleh.
+                    <i>
+                        "Evolutionary approach for automated discovery of
+                        censored production rules."
+                    </i>
+                    Trans Eng Comput Technol 10 (2005): 147-152.
+                </li>
+                <li>
+                    [4] Vashishtha, Jyoti, Dharminder Kumar, and Saroj Ratnoo.
+                    <i>
+                        "Revisiting Interestingness Measures for Knowledge 
+                        Discovery in Databases."
+                    </i>
+                    Advanced Computing & Communication Technologies (ACCT),
+                    2012 Second International Conference on. IEEE, 2012.
+                </li>
+            </ul>
+
         </div>
     </section><!-- end of slide -->
 
 	<!--
 		To hide progress bar from entire presentation
 		just remove “progress” element.
-		-->
+    -->
     <div class="progress"><div></div></div>
 	<script src="shower/shower.min.js"></script>
 	<!-- Copyright © 2010–2013 Vadim Makeev — pepelsbey.net -->
