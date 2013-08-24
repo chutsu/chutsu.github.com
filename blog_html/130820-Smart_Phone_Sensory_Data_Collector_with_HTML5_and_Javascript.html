@@ -259,53 +259,35 @@
     <section id="blog">
         
             <section class="post">
-                <h1>What is Map-Reduce or How does Map-Reduce work?</h1>
-<ul>
-<li>tags: #map-reduce #cs #theory</li>
-</ul>
-<p>Map/Reduce is a way to take a big task and divide it into smaller tasks that
-can be done in parallel. Think of a hierarchical structure, where the BIG BOSS
-performs a big task by telling his sub ordinates to do a little bit of
-different things, that is map-reduce.</p>
-<p>But what does this mean for a database? well its very simple, say you have the
-following data in the database (key-value pair):</p>
-<pre><code>Toronto, 20
-Whitby, 25
-New York, 22
-Rome, 32
-Toronto, 4
-Rome, 33
-New York, 18
-</code></pre>
-<p>Out of all the data we have collected, we want to find the maximum temperature
-for each city across all of the data files (note that each file might have the
-same city represented multiple times). Using map-reduce, we can break this down
-into five map tasks, where each mapper works on one of the five files and the
-mapper task goes through the data and returns the maximum temperature for each
-city. For example, the results produced from one mapper task for the data above
-would look like this:</p>
-<pre><code>(Toronto, 20) (Whitby, 25) (New York, 22) (Rome, 33)
-</code></pre>
-<p>Lets assume the other four mapper tasks (working on the other four files not
-shown here) produced the following intermediate results:</p>
-<pre><code>(Toronto, 18) (Whitby, 27) (New York, 32) (Rome, 37)(Toronto, 32) (Whitby, 20)
-(New York, 33) (Rome, 38)(Toronto, 22) (Whitby, 19) (New York, 20) (Rome, 31)
-(Toronto, 31) (Whitby, 22) (New York, 19) (Rome, 30)
-</code></pre>
-<p>All five of these output streams would be fed into the reduce tasks, which
-combine the input results and output a single value for each city, producing a
-final result set as follows:</p>
-<pre><code>(Toronto, 32) (Whitby, 27) (New York, 33) (Rome, 38)
-</code></pre>
-<p>As an analogy, you can think of map and reduce tasks as the way a census was
-conducted in Roman times, where the census bureau would dispatch its people to
-each city in the empire. Each census taker in each city would be tasked to
-count the number of people in that city and then return their results to the
-capital city. There, the results from each city would be reduced to a single
-count (sum of all cities) to determine the overall population of the empire.
-This mapping of people to cities, in parallel, and then combining the results
-(reducing) is much more efficient than sending a single person to count every
-person in the empire in a serial fashion.</p>
+                <h1>Smart Phone Sensory Data Collector with HTML5 and Javascript</h1>
+<p>Recently, well kind of (in May)... Me and my friend Alex Waller were in the
+Student Union at St. Andrews Unviersity. Where we met up to try and see if
+anyone was interested in starting a new Hack Space within St. Andrews, but no
+one turned up.</p>
+<p>Despite the dissappointing turn out, we found we both have a common interest,
+robotics. It wasn't long before Alex came up with the idea of using a smart
+phone as a sensory device for a robot, seeing that it has a gyroscope,
+accelerometer, GPS, video, and audio recording capabilities. Building dedicated
+sensory with the same capability is both hard and time consuming, that is what
+is so great about this idea.</p>
+<p>The additional layer of cool-ness is that I came across the new HTML5 spec, and
+saw it was very achievable to obtain all that data without asking the user to
+install any software on the smart phone, all the user had to do was visit a web
+page, which can in turn obtain the data through HTML5 and Javascript and
+transmit the data to a server.</p>
+<p>Over the summer holiday, with the effort of Alex, Alexy and me we
+have created <a href="http://www.github.com/bowtie">Bowtie</a>, a smart phone data
+collector written in Go-lang. While I don't really like Go, the technology used
+isn't important here*, what is interesting is how this new smart phone data
+collector concept can be used beyond the scope of robotics. What I envision is
+this technology can potentially be of vital use in emergency situations, where
+information and data is what helps keep people alive. It can be used as a
+CrowdSourcing technology to help analyze situations in double time, and all
+they have to do is visit web page. Or many other situations where phones can
+be used to collect all kinds and types of data to analyze a particular
+situation.</p>
+<p>Check out our cool project <a href="http://www.bowtie.mobi">Bowtie</a>! :)</p>
+<p>*Alex, I know . . . its cool and awesome in many ways :P</p>
             </section><!-- end of post -->
         
     </section><!-- end of blog -->
