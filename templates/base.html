@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>chris choi | home </title>
+    <title>chris choi | {{ title }}</title>
 
     <!-- CSS -->
     <style>
@@ -12,7 +12,7 @@
         }
 
         body {
-            width: 500px;
+            width: 700px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 50px;
@@ -22,12 +22,13 @@
 
         nav ul {
             display: block;
-            height: 10px;
+            padding-bottom: 30px;
+            border-bottom: 1px dotted #555;
         }
 
         nav li {
             float: left;
-            margin-right: 20px;
+            margin-right: 65px;
             font-size: 14px;
             font-weight: bold;
         }
@@ -64,23 +65,26 @@
             font-weight: normal;
         }
 
-        ul#presentations {
+        ul#listings {
             text-align: left;
             font-size: 12px;
+            margin-bottom: 40px;
         }
 
-        ul#presentations a {
+        ul#listings a {
             font-size: 12px;
         }
 
-        ul#presentations li.year {
+        ul#listings li.year {
             font-weight: bold;
         }
 
-        ul#presentations li.listing {
+        ul#listings li.listing {
             width: 90%;
             margin-left: auto;
             margin-right: auto;
+            margin-top: 10px;
+            margin-bottom: 20px;
         }
 
         ul.list {
@@ -94,13 +98,36 @@
             margin-left: 30px;
         }
 
+        li.page {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        span.date {
+            display: inline-block;
+            width: 80px;
+            margin-top: 2px;
+            margin-right: 10px;
+            font-family: Verdana, Monospace;
+            color: #777;
+        }
+
+        span.title {
+            width: 70%;
+        }
+
+        span.title a {
+            font-size: 13px;
+        }
+
         b.author {
             color: #C80000;
         }
 
         p {
-            margin-top: 5px;
-            margin-bottom: 15px;
+            margin-top: 25px;
+            margin-bottom: 25px;
             font-size: 12px;
             color: #222;
         }
@@ -111,7 +138,7 @@
 
         h1, h2, h3 {
             margin-top: 20px;
-            margin-bottom: 0;
+            margin-bottom: 10px;
             color: #222;
         }
 
@@ -127,9 +154,16 @@
             font-size: 16px;
         }
 
+        pre {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
         a:link, a:visited {
-            color: #104E8B;
-            font-size: 16px;
+            color: #0e73d6;
             font-weight: bold;
             text-decoration: none;
         }
@@ -144,35 +178,30 @@
             margin-right: auto;
             margin-top: 30px;
             margin-bottom: 30px;
-            font-size: 13px;
-        }
-
-        header {
-            float: left;
-            margin-right: 10%;
-            margin-bottom: 20px;
-            font-size: 1.3em;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        header a {
-            text-decoration: none;
+            font-size: 12px;
+            font-style: italic;
         }
 
         section {
             clear: both;
+            margin-top: 50px;
+            margin-left: 15px;
             margin-top: 30px;
         }
 
-        section#blog {
-            clear: both;
-            margin-top: 30px;
-        }
-
-        section.post {
+        section.page {
             font-size: 1em;
+            width: 570px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+        }
 
+        section#about {
+            width: 570px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
         }
 
         img {
@@ -186,6 +215,7 @@
         }
 
         footer {
+            clear: both;
             font-size: 10px;
             text-align: center;
             margin-top: 50px;
@@ -197,11 +227,11 @@
 
     <!-- MATHJAX -->
     <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-                TeX: { equationNumbers: { autoNumber: "AMS" }}
-            });
-        </script>
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: { equationNumbers: { autoNumber: "AMS" }}
+        });
+    </script>
     <script
         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
         type="text/javascript">
@@ -225,27 +255,21 @@
     <nav>
         <ul>
             <li id="logo">
-                <a href="./index.html">chris choi</a>
+                <a href="http://chutsu.github.io//index.html">chris choi</a>
             </li>
             <li class="link">
-                <a href="./index.html">blog</a>
+                <a href="http://chutsu.github.io/index.html">blog</a>
             </li>
             <li class="link">
-                <a href="./projects.html">projects</a>
+                <a href="http://chutsu.github.io/projects.html">projects</a>
             </li>
             <li class="link">
-                <a href="./about.html">about</a>
+                <a href="http://chutsu.github.io//about.html">about</a>
             </li>
         </ul>
     </nav>
 
-    <section id="blog">
-        {% for post in posts %}
-            <section class="post">
-                {{ post }}
-            </section><!-- end of post -->
-        {% endfor %}
-    </section><!-- end of blog -->
+    {% block body %}{% endblock %}
 
     <footer>
         Designed By Chris Choi

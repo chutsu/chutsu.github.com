@@ -22,12 +22,13 @@
 
         nav ul {
             display: block;
-            height: 10px;
+            padding-bottom: 30px;
+            border-bottom: 1px dotted #555;
         }
 
         nav li {
             float: left;
-            margin-right: 20px;
+            margin-right: 65px;
             font-size: 14px;
             font-weight: bold;
         }
@@ -54,6 +55,7 @@
 
         ul#projects {
             text-align: left;
+            margin-top: 20px;
         }
 
         ul#projects li {
@@ -63,31 +65,32 @@
             font-weight: normal;
         }
 
-        ul#presentations {
+        ul#listings {
             text-align: left;
             font-size: 12px;
+            margin-bottom: 40px;
         }
 
-        ul#presentations a {
+        ul#listings a {
             font-size: 12px;
         }
 
-        ul#presentations li.year {
+        ul#listings li.year {
             font-weight: bold;
-            margin-bottom: 10px;
         }
 
-        ul#presentations li.listing {
+        ul#listings li.listing {
             width: 90%;
             margin-left: auto;
             margin-right: auto;
+            margin-top: 10px;
             margin-bottom: 20px;
         }
 
         ul.list {
             list-style-type: disc;
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 0;
             font-weight: normal;
         }
 
@@ -95,25 +98,27 @@
             margin-left: 30px;
         }
 
-        ul#lab_demonstration {
-            text-align: left;
-            font-size: 12px;
-        }
-
-        ul#lab_demonstration a {
-            font-size: 12px;
-        }
-
-        ul#lab_demonstration li.year {
-            font-weight: bold;
+        li.page {
+            display: block;
+            width: 100%;
             margin-bottom: 10px;
         }
 
-        ul#lab_demonstration li.listing {
-            width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 10px;
+        span.date {
+            display: inline-block;
+            width: 80px;
+            margin-top: 2px;
+            margin-right: 10px;
+            font-family: Verdana, Monospace;
+            color: #777;
+        }
+
+        span.title {
+            width: 70%;
+        }
+
+        span.title a {
+            font-size: 13px;
         }
 
         b.author {
@@ -121,15 +126,14 @@
         }
 
         p {
-            margin-top: 5px;
-            margin-bottom: 15px;
+            margin-top: 25px;
+            margin-bottom: 25px;
             font-size: 12px;
             color: #222;
         }
 
         p.center_contact {
             text-align: center;
-            font-weight: bold;
         }
 
         h1, h2, h3 {
@@ -150,6 +154,14 @@
             font-size: 16px;
         }
 
+        pre {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
         a:link, a:visited {
             color: #0e73d6;
             font-weight: bold;
@@ -166,39 +178,30 @@
             margin-right: auto;
             margin-top: 30px;
             margin-bottom: 30px;
-            font-size: 13px;
-        }
-
-        header {
-            float: left;
-            margin-right: 10%;
-            margin-bottom: 20px;
-            font-size: 1.3em;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        header a {
-            text-decoration: none;
+            font-size: 12px;
+            font-style: italic;
         }
 
         section {
             clear: both;
             margin-top: 50px;
+            margin-left: 15px;
+            margin-top: 30px;
         }
 
-        section#blog {
+        section.page {
+            font-size: 1em;
+            width: 570px;
+            margin-left: auto;
+            margin-right: auto;
             margin-top: 30px;
         }
 
         section#about {
-            width: 450px;
+            width: 570px;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        section.post {
-            font-size: 1em;
+            margin-top: 30px;
         }
 
         img {
@@ -212,6 +215,7 @@
         }
 
         footer {
+            clear: both;
             font-size: 10px;
             text-align: center;
             margin-top: 50px;
@@ -307,7 +311,7 @@
 
 
     <h3>Presentations</h3>
-    <ul id="presentations">
+    <ul id="listings">
         <li class="year">2013</li>
         <li class="listing">
             <b class="author">Choi, C</b>. (2013, March).
@@ -340,7 +344,7 @@
     </ul>
 
     <h3>Lab Demonstration</h3>
-    <ul id="lab_demonstration">
+    <ul id="listings">
         <li class="year">2013</li> 
         <li class="listing">
            CS1002 - Objecet Oriented Programming

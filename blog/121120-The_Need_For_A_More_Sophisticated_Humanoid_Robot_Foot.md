@@ -68,4 +68,3 @@ In the future, I hope to prove the above with some experimental models that
 prove the points above, through **Genetic/Evolutionary algorithms** and a **3D
 simulation**. Further more, I hope to one day produce a real humanoid robot
 that can actually **run**! :)
-

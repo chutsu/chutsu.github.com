@@ -1,0 +1,7 @@
+{
+    "input_dir": "blog",
+    "output_dir": "blog_html",
+    "templates": "templates",
+    "index_template": "templates/index.html",
+    "single_template": "templates/single.html"
+}

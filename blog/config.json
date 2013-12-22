@@ -1,9 +1,0 @@
-{
-    "blog" : {
-        "input dir" : ".",
-        "output dir": "../blog_html",
-        "template": "../templates/blog.html",
-        "listing template": "../templates/blog_listing.html",
-        "posts per page": 5
-    }
-}
