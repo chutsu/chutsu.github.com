@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
-<title>chris choi | Why are we still using CPUs instead of GPUs?</title>
+<title>chris choi | Premature optmization is evil!</title>
 <!-- CSS -->
 <style>
         * {
@@ -294,74 +294,84 @@
 </ul>
 </nav>
 <section class="page">
-<h1>Why are we still using CPUs instead of GPUs?</h1>
-<ul>
-<li>tags: #computer-science #theory #cpu #gpu #performance</li>
-</ul>
-<p><strong>Source</strong>:
-<a href="http://superuser.com/questions/308771/why-are-we-still-using-cpus-instead-of-gpus">Superuser.com</a></p>
-<p><strong>TL;DR</strong> answer: GPUs have far more processor cores than CPUs, but because
-each GPU core runs significantly slower than a CPU core and do not have the
-features needed for modern operating systems, they are not appropriate for
-performing most of the processing in everyday computing. They are most suited
-to compute-intensive operations such as video processing and physics
-simulations.</p>
-<p>GPGPU is still a relatively new concept. GPUs were initially used for rendering
-graphics only; as technology advanced, the large number of cores in GPUs
-relative to CPUs was exploited by developing computational capabilities for
-GPUs so that they can process many parallel streams of data simultaneously, no
-matter what that data may be. While GPUs can have hundreds or even thousands of
-stream processors, they each run slower than a CPU core and have fewer features
-(even if they are Turing complete and can be programmed to run any program a
-CPU can run). Features missing from GPUs include interrupts and virtual memory,
-which are required to implement a modern operating system.</p>
-<p>In other words, CPUs and GPUs have significantly different architectures that
-make them better suited to different tasks. A GPU can handle large amounts of
-data in many streams, performing relatively simple operations on them, but is
-ill-suited to heavy or complex processing on a single or few streams of data. A
-CPU is much faster on a per-core basis (in terms of instructions per second)
-and can perform complex operations on a single or few streams of data more
-easily, but cannot efficiently handle many streams simultaneously.</p>
-<p>As a result, GPUs are not suited to handle tasks that do not significantly
-benefit from or cannot be parallelized, including many common consumer
-applications such as word processors. Furthermore, GPUs use a fundamentally
-different architecture; one would have to program an application specifically
-for a GPU for it to work, and significantly different techniques are required
-to program GPUs. These different techniques include new programming languages,
-modifications to existing languages, and new programming paradigms that are
-better suited to expressing a computation as a parallel operation to be
-performed by many stream processors. For more information on the techniques
-needed to program GPUs, see the Wikipedia articles on stream processing and
-parallel computing.</p>
-<p>Modern GPUs are capable of performing vector operations and floating-point
-arithmetic, with the latest cards capable of manipulating double-precision
-floating-point numbers. Frameworks such as CUDA and OpenCL enable programs to
-be written for GPUs, and the nature of GPUs make them most suited to highly
-parallelizable operations, such as in scientific computing, where a series of
-specialized GPU compute cards can be a viable replacement for a small compute
-cluster as in NVIDIA Tesla Personal Supercomputers. Consumers with modern GPUs
-who are experienced with Folding@home can use them to contribute with GPU
-clients, which can perform protein folding simulations at very high speeds and
-contribute more work to the project (be sure to read the FAQs first, especially
-those related to GPUs). GPUs can also enable better physics simulation in video
-games using PhysX, accelerate video encoding and decoding, and perform other
-compute-intensive tasks. It is these types of tasks that GPUs are most suited
-to performing.</p>
-<p>AMD is pioneering a processor design called the Accelerated Processing Unit
-(APU) which combines conventional x86 CPU cores with GPUs. This approach
-enables graphical performance vastly superior to motherboard-integrated
-graphics solutions (though no match for more expensive discrete GPUs), and
-allows for a compact, low-cost system with good multimedia performance without
-the need for a separate GPU. Intel's latest processors also offer onboard
-graphics, but while they may have superior compute performance, their onboard
-graphics cannot compete with AMD APUs. As technology continues to advance, we
-will see an increasing degree of convergence of these once-separate parts.</p>
-<p>Nonetheless, many tasks performed by PC operating systems and applications are
-still better suited to CPUs, and much work is needed to accelerate a program
-using a GPU. Since so much existing software use the x86 architecture, and
-because GPUs require different programming techniques and are missing several
-important features needed for operating systems, a general transition from CPU
-to GPU for everyday computing is extremely difficult.</p>
+<h1>Premature Optimization is EVIL!</h1>
+<p><img alt="Premature Optimization" src="images/premature_optimization.png"/></p>
+<p>The famous saying, a golden rule of programming is that premature optimization
+is evil! And I had to learn it the hard way, I was attempting to develop a
+genetic programming framework in C because C is a <em>FAST</em> language (see
+<a href="http://github.com/chutsu/evolve">evolve</a>), and the development time took
+horrendously long time because I had to deal with, well, pointers. It wasn't
+until 2 months into implementing that I had enough, and converted everything to
+Python. I literally only took 5 days to rewrite everything I had from C to
+Python (see <a href="http://github.com/chutsu/playground">playground</a>).</p>
+<p>On the other hand one cannot ignore the possibility of improving, as Donald
+Knuth said:</p>
+<blockquote>
+<p>We should forget about small efficiencies, say about 97% of the time:
+premature optimization is the root of all evil. Yet we should not pass up our
+opportunities in that critical 3%.</p>
+</blockquote>
+<h2>Example:</h2>
+<p>Lets consider a programming puzzle I came across lately:</p>
+<pre><code>Sum all numbers within the range i = 1 ...  1000 inclusive. If that number
+is a multiple of 3 or 5, double it and add it to the sum.
+</code></pre>
+<p>Naturally one would write something similar to the following:</p>
+<pre><code>def straight_forward_method(max):
+    sum = 0
+    for i in xrange(1, max + 1):
+        if (i % 3) == 0:
+            sum += i * 2
+        elif (i % 5) == 0:
+            sum += i * 2
+        else:
+            sum += i
+    return sum
+</code></pre>
+<p>Which is fine if <code>max</code> is small. However if <code>max</code> becomes bigger it can become
+a problem in systems that depend on this function. A cleverer function would be
+the following.</p>
+<pre><code>def clever_method(max):
+    # get mutliples of 3 and 5
+    multiples_3 = range(3, max + 1, 3)
+    multiples_5 = range(5, max + 1, 5)
+
+    # remove overlaps (e.g, 15, 30, 35)
+    multiples = [multiples_3, multiples_5]
+    multiples = set().union(*multiples)
+
+    # sum the multiples of 3 and 5
+    multiples_sum = sum(multiples)
+
+    # sum of series from 1 to max
+    series_sum = ((max * (max + 1)) / 2)
+
+    # total is sum of series plus sum of multiples
+    return series_sum + multiples_sum
+</code></pre>
+<p>The difference between the two are quite massive, running the following
+benchmark:</p>
+<pre><code>i = 100000000
+
+# benchmark - straight forward method
+start_time = time.time()
+straight_forward_method(i)
+end_time = time.time()
+exe_time = end_time - start_time
+print "Straight forward method took: {0} secs".format(round(exe_time, 2))
+
+# benchmark - clever method
+start_time = time.time()
+clever_method(i)
+end_time = time.time()
+exe_time = end_time - start_time
+print "Clever method took: {0} secs".format(round(exe_time, 2))
+</code></pre>
+<p>Yields output on a Macbook Pro:</p>
+<pre><code>Straight forward method took: 15.24 secs
+Clever method took: 6.26 secs
+</code></pre>
+<p>But then again <code>max</code> in this case does have to be really really large.</p>
 </section>
 <section class="comments">
 <div id="disqus_thread"></div>
