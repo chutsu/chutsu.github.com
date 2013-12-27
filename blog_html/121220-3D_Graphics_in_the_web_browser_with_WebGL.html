@@ -155,11 +155,35 @@
         }
 
         pre {
-            width: 80%;
+            display: block;
+            width: 90%;
+
             margin-left: auto;
             margin-right: auto;
             margin-top: 20px;
             margin-bottom: 20px;
+
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            color: white;
+            border-radius: 5px;
+            background-color: #444;
+        }
+
+        code {
+            display: inline-block;
+
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 1px;
+            padding-bottom: 1px;
+
+            color: white;
+            border-radius: 5px;
+            background-color: #444;
         }
 
         a:link, a:visited {
@@ -285,15 +309,20 @@ where the javascript files live with:</p>
 </code></pre>
 <p>now we can define the actual javascript needed to describe the 3D scene. We
 have to declare global variables</p>
-<pre><code>var camera; var scene; var renderer; var geometry; var material; var mesh;
+<pre><code>var camera;
+var scene;
+var renderer;
+var geometry;
+var material;
+var mesh;
 </code></pre>
 <p>then we can set the scene with the following, which creates a new scene,
 camera, red cube and renderer:</p>
 <pre><code>function init() {
     camera = new THREE.PerspectiveCamera(
-            75, 
-            window.innerWidth / window.innerHeight, 
-            1, 
+            75,
+            window.innerWidth / window.innerHeight,
+            1,
             10000);
     camera.position.z = 1000;
 
@@ -301,8 +330,8 @@ camera, red cube and renderer:</p>
     geometry = new THREE.CubeGeometry( 200, 200, 200 );
     material = new THREE.MeshBasicMaterial(
             {
-                color: 0xff0000, 
-                wireframe: true 
+                color: 0xff0000,
+                wireframe: true
             });
     mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);

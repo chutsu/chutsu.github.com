@@ -16,7 +16,7 @@ Lets take a quick look at three.js, here we are going to **draw a red 3D
 wireframe cube rotating**. Just like any html document you tell the browser
 where the javascript files live with:
 
-    <script src="/js/three.min.js"></script> 
+    <script src="/js/three.min.js"></script>
 
 then in body of the html document define the javascript with the `script` tag
 
@@ -25,16 +25,21 @@ then in body of the html document define the javascript with the `script` tag
 now we can define the actual javascript needed to describe the 3D scene. We
 have to declare global variables
 
-    var camera; var scene; var renderer; var geometry; var material; var mesh;
+    var camera;
+    var scene;
+    var renderer;
+    var geometry;
+    var material;
+    var mesh;
 
 then we can set the scene with the following, which creates a new scene,
 camera, red cube and renderer:
 
     function init() {
         camera = new THREE.PerspectiveCamera(
-                75, 
-                window.innerWidth / window.innerHeight, 
-                1, 
+                75,
+                window.innerWidth / window.innerHeight,
+                1,
                 10000);
         camera.position.z = 1000;
 
@@ -42,8 +47,8 @@ camera, red cube and renderer:
         geometry = new THREE.CubeGeometry( 200, 200, 200 );
         material = new THREE.MeshBasicMaterial(
                 {
-                    color: 0xff0000, 
-                    wireframe: true 
+                    color: 0xff0000,
+                    wireframe: true
                 });
         mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
