@@ -1,4 +1,4 @@
-# Streaming live video from web browser to remove server
+# Streaming live video from web browser to remote server
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/Yie05ZkwVxQ"
 frameborder="0" allowfullscreen>
