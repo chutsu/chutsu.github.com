@@ -26,7 +26,6 @@ Lets consider a programming puzzle I came across lately:
     Sum all numbers within the range i = 1 ...  1000 inclusive. If that number
     is a multiple of 3 or 5, double it and add it to the sum.
 
-
 Naturally one would write something similar to the following:
 
     def straight_forward_method(max):
