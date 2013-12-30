@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
-<title>chris choi | Are Data Driven Robots the Future?</title>
+<title>chris choi | Streamming live video from web browser to remote server</title>
 <!-- CSS -->
 <style>
         * {
@@ -305,33 +305,152 @@
 </ul>
 </nav>
 <section class="page">
-<h1>Are Data Driven Robots the future?</h1>
+<h1>Streaming live video from web browser to remove server</h1>
+<iframe allowfullscreen="" frameborder="0" height="315" src="http://www.youtube.com/embed/Yie05ZkwVxQ" width="560">
+</iframe>
+<p>Playing a video in a web browser is relatively easy, sites like Youtube, Vimeo
+do that really well already. However performing the reverse is a slightly
+different story, current methods use Flash to create a video stream and
+transmit that data to a remote server, however in my latest project
+<a href="https://github.com/wallarelvo/Bowtie">Bowtie</a> I attempted to use only HTML5
+and Javascript to stream the data to a server, here's how I did it:</p>
 <ul>
-<li>tags: #robotics #ideas</li>
+<li>In the webpage you're serving from create a <code>video</code> and <code>convas</code> html tag.</li>
+<li>Open webcam video stream on the <code>video</code> tag</li>
+<li>Draw the video into the <code>canvas</code> tag using JavaScript</li>
+<li>Convert video into image slices by using DataURI</li>
+<li>Open web socket to remote server</li>
+<li>Transmit the Base64 encoded string</li>
+<li>Decode the Base64 encoded data back to its intended form (i.e. jpeg)</li>
 </ul>
-<p><strong>Disclaimer</strong>: I am not an expert robotics engineer, the following are purely
-my naive personal views.</p>
-<p>The common theme in robotics is to come up with algorithms to solve specific
-problems, such as motion planning. The problem is most of the time these
-algorithms assume specific conditions which may or may not apply to the
-scenario in mind, worst if you have many different algorithms which one is
-best? what is best? These are questions not limited to just robotics, it is
-also relevant to the field of data mining, knowledge discovery and just about
-anything to do with analysing data.</p>
-<p><img alt="machine brain" src="images/machine_brain.jpg"/></p>
-<p>But if you think about it, that is exactly what your brain does! Depending on
-the scenario, you choose using a specific method, be it google, ebay,
-amazonetc, define what is the best and some times you make compromises. Like
-buying a new laptop for example. The obvious choice is a mac (duh!), but what
-if you dont have the money?</p>
-<p>The catch is, if one were to build such a system that emulates the behaviour of
-the brain, taking different algorithms to solve a specific problem, the time
-taken to decide which algorithm to use can take ...  well ... forever, or what
-computer scientists call <strong>incomplete</strong>, it is also <strong>unpredictable</strong>, which is
-perhaps why robotics engineers are hesitant in developing the aforementioned
-systems, either way I still there are ways round these problems, and maybe just
-maybe this data driven robot would be able to do the things we can, but better.
-The application is limitless, but its just an idea I have, haha</p>
+<p>Example code:</p>
+<pre><code>&lt;video id="live_stream" controls&gt;&lt;/video&gt;
+&lt;canvas id="vid_img" width="320" height="240" style="display: none;"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+    window.URL = window.URL || window.webkitURL;
+    navigator.getUserMedia = navigator.getUserMedia
+        || navigator.webkitGetUserMedia
+        || navigator.mozGetUserMedia
+        || navigator.msGetUserMedia;
+
+    // CONSTANTS
+    var CONNECTED_WS = "CONNECTED WS";
+    var DISCONNECTED_WS = "DISCONNECTED WS";
+    var RETRY_WS = "RETRY WS";
+    var DISCONNECT_WS = "DISCONNECT WS";
+
+    // Checks to see if browser supports getUserMedia()
+    function hasGetUserMedia() {
+        // Note: Opera is unprefixed.
+        return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia || navigator.msGetUserMedia);
+    }
+
+    function streamVideo(stream) {
+        window.stream = stream;
+
+        if (window.URL) {
+            video.src = window.URL.createObjectURL(stream);
+        } else {
+            video.src = stream;
+        }
+
+        video.play();
+    }
+
+    function initVideoStream() {
+        navigator.getUserMedia(
+            media_settings,
+            streamVideo,
+            function(e) {console.log('Error! Starting video stream:', e)}
+        );
+    }
+
+    function openWebSocket(url) {
+        var ws = null;
+
+        try {
+            ws = new WebSocket(url);
+
+            ws.onopen = function () {
+                console.log("Opening websocket connection");
+            };
+
+            ws.onmessage = function(message) {
+                console.log("Recieved msg from websocket: [", message.data, "]");
+                if (message.data === DISCONNECT_WS ) {
+                    ws.close();
+                }
+            }
+
+            ws.onerror = function(error) {
+                if (error.reason != undefined) {
+                    console.log("Websocket Error!: " + error.reason);
+                } else {
+                    console.log("Websocket Error Detected!");
+                }
+
+                ws.close();
+                ws = null;
+            };
+
+            ws.onclose = function() {
+                ws.close();
+                ws = null;
+            }
+
+        } catch (error) {
+            console.log("WebScoket Error!: " + error);
+        }
+
+        return ws;
+    }
+
+    function transmitVideoStreamToURL(url, time_interval) {
+        var ws = openWebSocket(url);
+        var timer = setInterval(
+            function () {
+                // condition that stops transmitting video stream to server
+                if (ws.readyState == 3) { // 3 - websocket is closed
+                    console.log("Stop video stream transmission!");
+                    clearInterval(timer);
+                } else {
+                    // draw video stream to canvas, obtain canvas data as jpg
+                    // then transmit to server
+                    canvas_context.drawImage(video, 0, 0, 320, 240);
+                    var data = canvas.toDataURL('image/jpeg', 1.0);
+                    console.log("Transmitting: [" + data + "]");
+                    ws.send(data);
+                }
+            },
+            250
+        );
+
+    }
+
+    // variables
+    var video = document.getElementById('live_stream');
+    var canvas = document.getElementById('vid_img');
+    var canvas_context = canvas.getContext('2d');
+    var media_settings = {video: true, audio: true};
+    var ws_url = "ws://127.0.0.1:8080/websocket/";
+    var time_interval = 250;
+
+    // execution pre-checks
+    if (hasGetUserMedia()) {
+        initVideoStream();
+        transmitVideoStreamToURL(ws_url, time_interval);
+    } else {
+        alert('Error! getUserMedia() is not supported in your browser!');
+    }
+
+&lt;/script&gt;
+</code></pre>
+<p>The above is a snippet of how <a href="https://github.com/wallarelvo/Bowtie">Bowtie</a>
+obtains the video stream and transmit it to a remote server. I didn't show you
+the server side code, but it should be quite easy to convert the data that is
+encoded in Base64 back to its original type (i.e. jpeg).</p>
 </section>
 <section class="comments">
 <div id="disqus_thread"></div>
