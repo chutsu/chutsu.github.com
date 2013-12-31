@@ -23,8 +23,8 @@ opportunities in that critical 3%.
 ## Example:
 Lets consider a programming puzzle I came across lately:
 
-    Sum all numbers within the range i = 1 ...  1000 inclusive. If that number
-    is a multiple of 3 or 5, double it and add it to the sum.
+> Sum all numbers within the range i = 1 ...  1000 inclusive. If that number
+> is a multiple of 3 or 5, double it and add it to the sum.
 
 Naturally one would write something similar to the following:
 
@@ -80,9 +80,8 @@ benchmark:
     exe_time = end_time - start_time
     print "Clever method took: {0} secs".format(round(exe_time, 2))
 
-Yields output on a Macbook Pro:
-
-    Straight forward method took: 15.24 secs
-    Clever method took: 6.26 secs
+    # output on a macbook pro gives:
+    # Straight forward method took: 15.24 secs
+    # Clever method took: 6.26 secs
 
 But then again `max` in this case does have to be really really large.

@@ -317,9 +317,10 @@ opportunities in that critical 3%.</p>
 </blockquote>
 <h2>Example:</h2>
 <p>Lets consider a programming puzzle I came across lately:</p>
-<pre><code>Sum all numbers within the range i = 1 ...  1000 inclusive. If that number
-is a multiple of 3 or 5, double it and add it to the sum.
-</code></pre>
+<blockquote>
+<p>Sum all numbers within the range i = 1 ...  1000 inclusive. If that number
+is a multiple of 3 or 5, double it and add it to the sum.</p>
+</blockquote>
 <p>Naturally one would write something similar to the following:</p>
 <pre><code>def straight_forward_method(max):
     sum = 0
@@ -370,10 +371,10 @@ clever_method(i)
 end_time = time.time()
 exe_time = end_time - start_time
 print "Clever method took: {0} secs".format(round(exe_time, 2))
-</code></pre>
-<p>Yields output on a Macbook Pro:</p>
-<pre><code>Straight forward method took: 15.24 secs
-Clever method took: 6.26 secs
+
+# output on a macbook pro gives:
+# Straight forward method took: 15.24 secs
+# Clever method took: 6.26 secs
 </code></pre>
 <p>But then again <code>max</code> in this case does have to be really really large.</p>
 </section>
