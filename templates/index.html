@@ -1,15 +1,168 @@
 {% extends "base.html" %}
 {% block body %}
-<section id="page_listing">
+<section id="home" class="container">
     <ul>
         {% for html_file in html_files %}
             <li class="page">
-                    <span class="date">{{ html_file.date }}</span>
-                    <span class="title">
-                        <a href="{{ html_file.href }}">{{ html_file.title }}</a>
-                    </span>
+                <span class="date">{{ html_file.date }}</span>
+                <span class="title">
+                    <a href="{{ html_file.href }}">{{ html_file.title }}</a>
+                </span>
             </li>
         {% endfor %}
     </ul>
-</section><!-- end of blog -->
+</section>
+
+
+<section id="projects" class="container">
+    <h3>Current Projects:</h3>
+    <ul id="projects">
+        <li>
+            <a href="https://github.com/chutsu/playground">playground</a>:
+            genetic programming framework in Python.
+        </li>
+        <li>
+            <a href="https://github.com/wallarelvo/Bowtie">bowtie</a>:
+            mobile phone sensory data collector in Go/JavaScript/HTML5.
+        </li>
+    </ul>
+
+    <h3>Other Side Projects:</h3>
+    <ul id="projects">
+        <li>
+            <a href="https://github.com/chutsu/evolve">evolve</a>: Genetic
+            Algorithm in C.
+        </li>
+        <li>
+            <a href="https://github.com/chutsu/dstruct">dstruct</a>: useful
+            common data structures in C.
+        </li>
+        <li>
+            <a href="https://github.com/chutsu/al">al</a>: generic algorithms
+            such as sort and search implemented in C.
+        </li>
+        <li>
+            <a href="https://github.com/chutsu/munit">munit</a>: useful minimal
+            unit testing in C.
+        </li>
+        <li>
+            <a href="https://github.com/chutsu/dbg">dbg</a>: debug macros in C.
+        </li>
+    </ul>
+
+    <h3>Past Projects:</h3>
+    <ul id="projects">
+        <li>
+            <a href="https://github.com/chutsu/mineframe">Mineframe</a>:
+            is a data mining framework written in Python and uses R to perform
+            most of the statistical and machine learning operations, with the
+            aim to automate most of the data mining processes.
+        </li>
+        <li>
+            <a href="https://github.com/chutsu/mineframe">Mineview</a>:
+            is a web-based interface meant to be used on top of
+            mineframe.
+        </li>
+    </ul>
+</section> <!-- end of projects -->
+
+
+<section id="about" class="container">
+    <h3>About me?</h3>
+    <p>I am a Phd student at
+    <a href="http://www.st-andrews.ac.uk">University of St. Andrews</a>
+    (Scotland), interested in:
+    </p>
+
+    <ul class="list">
+        <li>Evolutionary Algorithms: Genetic Algorithms/ Programming</li>
+        <li>Evolutionary Robotics</li>
+        <li>Knowledge Discovery/ Data Mining</li>
+    </ul>
+
+    <p>If you have an internship opportunity or wish to contact me, you can
+    reach me at:</p>
+
+    <p class="center_contact">chutsu (at) gmail.com</p>
+
+
+    <h3>Education</h3>
+    <ul class="list">
+        <li>MSc Computer Science - University of St. Andrews</li>
+        <li>BSc Computational Physics - Heriot Watt University</li>
+    </ul>
+
+
+    <h3>Why Evolutionary Algorithms?</h3>
+    <p>A wise man once said:</p>
+    <div class="quote">
+        "We are all prodigious Olympians in perceptual and
+        motor areas, so good that we make the difficult look easy.
+        Abstract thought, though, is a new trick, perhaps less than 100
+        thousand years old. We have not yet mastered it. It is not all
+        that intrinsically difficult; it just seems so when we do it."
+        - Moravec
+    </div>
+
+    <p>Current traditional methods in developing robots involve manual
+    specific design and formulation of equations, it can be both time
+    consuming and expensive.</p>
+
+    <p>An alternative to the traditional manual method is a relatively new
+    field called <b>Evolutionary Robotics</b>. The field borrows ideas and
+    lessons learnt from the evolutionary process, and mimick the way nature
+    "evolves" a design or controller with Genetic Algorithms and Genetic
+    Programming. This facinating field of research can potentially levage
+    the power of nature to solve complex systems, and I wish to be part of
+    the research effort in discovering what nature has to offer.</p>
+
+
+    <h3>Presentations</h3>
+    <ul id="listings">
+        <li class="year">2013</li>
+        <li class="listing">
+            <b class="author">Choi, C</b>. (2013, March).
+            What am I doing? Presented at
+            <a href="http://home.btconnect.com/theburn/">
+                The Burn 
+            </a>. As part of the PhD program at the School of Computer Science.
+        </li>
+        <li class="listing">
+            <b class="author">Choi, C</b>. & Voss, A. (2013, March).
+            <a href="http://chutsu.github.com/presentations/isgc-2013">
+                Twirp: a Twitter Mining Workbench, and experiences with NoSQL databases
+            </a>.
+            Presented at the
+            <a href="http://event.twgrid.org/isgc2013/">
+                International Symposium on Grids and Clouds (ISGC), Taipei,
+                Taiwan
+            </a>.
+        </li>
+        <li class="listing">
+            Voss, A. & <b class="author">Choi, C</b>. (2013, Janurary).
+            <a href="http://chutsu.github.com/presentations/nosql_db-2013/nosql_db.pdf">
+                Benchmarking MongoDB and Couchbase No-SQL Databases
+            </a>.
+            Presented in <a href="http://www.jisc.ac.uk">JISC</a> (London),
+            an internal face to face meeting with the 
+            <a href="http://www.analyzingsocialmedia.org"> 
+                Analysing Social Media Collaboration
+            </a>.
+        </li>
+    </ul>
+
+    <h3>Lab Demonstration</h3>
+    <ul id="listings">
+        <li class="year">2013</li> 
+        <li class="listing">
+        CS1002 - Objecet Oriented Programming
+        </li>
+        <li class="listing">
+        CS1005 - Computer Science in Everyday Life
+        </li>
+        <li class="listing">
+        CS2001 - Foundations of computation, the theory parts
+        </li>
+    </ul>
+</section> <!-- end of about -->
 {% endblock body %}

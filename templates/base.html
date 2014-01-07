@@ -210,7 +210,12 @@
             margin-top: 30px;
         }
 
-        section#page_listing {
+        section.container {
+            display: block;
+            min-height: 500px;
+        }
+
+        section#home {
             width: 100%;
             margin-left: 0;
             padding-left: 10px;
@@ -234,6 +239,20 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        section#about {
+            width: 570px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+        }
+
+        section#projects{
+            width: 570px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
         }
 
         img {
@@ -270,13 +289,71 @@
     </script>
 
     <!-- JQUERY -->
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" charset="utf-8">
-        $(document).ready(function() {
+        function goToTop() {
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1);
+        }
+
+        function hash_changed() {
+            $(location.hash).trigger("click");
+        }
+
+        function show_section(sections, show_section) {
             $('body').hide().fadeIn();
 
+            for (var i = 0; i < sections.length; i++) {
+                section = sections[i];
+
+                if (section === show_section) {
+                    $(section).fadeIn();
+                } else {
+                    $(section).hide();
+                }
+            }
+        }
+
+        function bind_sections(buttons, sections) {
+            for (var i = 0; i < sections.length; i++) {
+                button = buttons[i];
+                section = sections[i];
+
+                $(button).click(function(evnt) {
+                    hash = evnt.target.id;
+                    target = evnt.target.id;
+                    target = "section#" + target.replace("_button", "");
+
+                    goToTop();
+                    show_section(sections, target);
+
+                    window.location.hash = hash;
+                    return false;
+                });
+            }
+        }
+
+
+        $(document).ready(function() {
+            // initial page
+            $('body').hide().fadeIn();
             $('section#projects').hide();
             $('section#about').hide();
+
+            window.onhashchange = hash_changed;
+
+            sections = new Array();
+            sections[0] = "section#home";
+            sections[1] = "section#projects";
+            sections[2] = "section#about";
+
+            buttons = new Array();
+            buttons[0] = "#home_button";
+            buttons[1] = "#projects_button";
+            buttons[2] = "#about_button";
+
+            bind_sections(buttons, sections);
         });
     </script>
 
@@ -289,16 +366,16 @@
     <nav>
         <ul>
             <li id="logo">
-                <a href="http://chutsu.github.io/index.html">chris choi</a>
+                <a href="index.html">chris choi</a>
             </li>
             <li class="link">
-                <a href="http://chutsu.github.io//about.html">about</a>
+                <a id="about_button" href="#">about</a>
             </li>
             <li class="link">
-                <a href="http://chutsu.github.io/projects.html">projects</a>
+                <a id="projects_button" href="#">projects</a>
             </li>
             <li class="link">
-                <a href="http://chutsu.github.io/index.html">blog</a>
+                <a id="home_button" href="#">blog</a>
             </li>
         </ul>
     </nav>

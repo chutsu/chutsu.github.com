@@ -210,7 +210,12 @@
             margin-top: 30px;
         }
 
-        section#page_listing {
+        section.container {
+            display: block;
+            min-height: 500px;
+        }
+
+        section#home {
             width: 100%;
             margin-left: 0;
             padding-left: 10px;
@@ -234,6 +239,20 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        section#about {
+            width: 570px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+        }
+
+        section#projects{
+            width: 570px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
         }
 
         img {
@@ -270,13 +289,72 @@
     </script>
 
     <!-- JQUERY -->
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" charset="utf-8">
-        $(document).ready(function() {
+        function goToTop() {
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1);
+        }
+
+        function hash_changed() {
+            $(location.hash).trigger("click");
+        }
+
+        function show_section(sections, show_section) {
             $('body').hide().fadeIn();
 
+            for (var i = 0; i < sections.length; i++) {
+                section = sections[i];
+
+                if (section === show_section) {
+                    $(section).fadeIn();
+                } else {
+                    $(section).hide();
+                }
+            }
+        }
+
+        function bind_sections(buttons, sections) {
+            for (var i = 0; i < sections.length; i++) {
+                button = buttons[i];
+                section = sections[i];
+
+                console.log("register button: " + button);
+                $(button).click(function(evnt) {
+                    hash = evnt.target.id;
+                    target = evnt.target.id;
+                    target = "section#" + target.replace("_button", "");
+
+                    goToTop();
+                    show_section(sections, target);
+
+                    window.location.hash = hash;
+                    return false;
+                });
+            }
+        }
+
+
+        $(document).ready(function() {
+            // initial page
+            $('body').hide().fadeIn();
             $('section#projects').hide();
             $('section#about').hide();
+
+            window.onhashchange = hash_changed;
+
+            sections = new Array();
+            sections[0] = "section#home";
+            sections[1] = "section#projects";
+            sections[2] = "section#about";
+
+            buttons = new Array();
+            buttons[0] = "#home_button";
+            buttons[1] = "#projects_button";
+            buttons[2] = "#about_button";
+
+            bind_sections(buttons, sections);
         });
     </script>
 
@@ -289,131 +367,284 @@
     <nav>
         <ul>
             <li id="logo">
-                <a href="http://chutsu.github.io/index.html">chris choi</a>
+                <a href="index.html">chris choi</a>
             </li>
             <li class="link">
-                <a href="http://chutsu.github.io//about.html">about</a>
+                <a id="about_button" href="#">about</a>
             </li>
             <li class="link">
-                <a href="http://chutsu.github.io/projects.html">projects</a>
+                <a id="projects_button" href="#">projects</a>
             </li>
             <li class="link">
-                <a href="http://chutsu.github.io/index.html">blog</a>
+                <a id="home_button" href="#">blog</a>
             </li>
         </ul>
     </nav>
 
     
-<section id="page_listing">
+<section id="home" class="container">
     <ul>
         
             <li class="page">
-                    <span class="date">27 DEC 2013</span>
-                    <span class="title">
-                        <a href="blog_html/131227-Premature_optmization_is_evil%21.html">Premature optmization is evil!</a>
-                    </span>
+                <span class="date">27 DEC 2013</span>
+                <span class="title">
+                    <a href="blog_html/131227-Premature_optmization_is_evil%21.html">Premature optmization is evil!</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">02 OCT 2013</span>
-                    <span class="title">
-                        <a href="blog_html/131002-Machine_Learning_with_Association_Rule_Learning.html">Machine Learning with Association Rule Learning</a>
-                    </span>
+                <span class="date">02 OCT 2013</span>
+                <span class="title">
+                    <a href="blog_html/131002-Machine_Learning_with_Association_Rule_Learning.html">Machine Learning with Association Rule Learning</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">21 AUG 2013</span>
-                    <span class="title">
-                        <a href="blog_html/130821-Streamming_live_video_from_web_browser_to_remote_server.html">Streamming live video from web browser to remote server</a>
-                    </span>
+                <span class="date">21 AUG 2013</span>
+                <span class="title">
+                    <a href="blog_html/130821-Streamming_live_video_from_web_browser_to_remote_server.html">Streamming live video from web browser to remote server</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">20 AUG 2013</span>
-                    <span class="title">
-                        <a href="blog_html/130820-Smart_Phone_Sensory_Data_Collector_with_HTML5_and_Javascript.html">Smart Phone Sensory Data Collector with HTML5 and Javascript</a>
-                    </span>
+                <span class="date">20 AUG 2013</span>
+                <span class="title">
+                    <a href="blog_html/130820-Smart_Phone_Sensory_Data_Collector_with_HTML5_and_Javascript.html">Smart Phone Sensory Data Collector with HTML5 and Javascript</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">20 FEB 2013</span>
-                    <span class="title">
-                        <a href="blog_html/130220-Why_are_we_still_using_CPUs_instead_of_GPUs%3F.html">Why are we still using CPUs instead of GPUs?</a>
-                    </span>
+                <span class="date">20 FEB 2013</span>
+                <span class="title">
+                    <a href="blog_html/130220-Why_are_we_still_using_CPUs_instead_of_GPUs%3F.html">Why are we still using CPUs instead of GPUs?</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">19 FEB 2013</span>
-                    <span class="title">
-                        <a href="blog_html/130219-Paper_explaining_the_optical_illusion_of_speeding.html">Paper explaining the optical illusion of speeding</a>
-                    </span>
+                <span class="date">19 FEB 2013</span>
+                <span class="title">
+                    <a href="blog_html/130219-Paper_explaining_the_optical_illusion_of_speeding.html">Paper explaining the optical illusion of speeding</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">16 FEB 2013</span>
-                    <span class="title">
-                        <a href="blog_html/130216-My_First_Conference_in_1_months_time_-_ISGC_in_Taipei%21.html">My First Conference in 1 months time - ISGC in Taipei!</a>
-                    </span>
+                <span class="date">16 FEB 2013</span>
+                <span class="title">
+                    <a href="blog_html/130216-My_First_Conference_in_1_months_time_-_ISGC_in_Taipei%21.html">My First Conference in 1 months time - ISGC in Taipei!</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">20 DEC 2012</span>
-                    <span class="title">
-                        <a href="blog_html/121220-3D_Graphics_in_the_web_browser_with_WebGL.html">3D Graphics in the web browser with WebGL</a>
-                    </span>
+                <span class="date">20 DEC 2012</span>
+                <span class="title">
+                    <a href="blog_html/121220-3D_Graphics_in_the_web_browser_with_WebGL.html">3D Graphics in the web browser with WebGL</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">19 DEC 2012</span>
-                    <span class="title">
-                        <a href="blog_html/121219-Fingers_Crossed.html">Fingers Crossed</a>
-                    </span>
+                <span class="date">19 DEC 2012</span>
+                <span class="title">
+                    <a href="blog_html/121219-Fingers_Crossed.html">Fingers Crossed</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">05 DEC 2012</span>
-                    <span class="title">
-                        <a href="blog_html/121205-what_is_MapReduce_or_How_does_MapReduce_work%3F.html">what is MapReduce or How does MapReduce work?</a>
-                    </span>
+                <span class="date">05 DEC 2012</span>
+                <span class="title">
+                    <a href="blog_html/121205-what_is_MapReduce_or_How_does_MapReduce_work%3F.html">what is MapReduce or How does MapReduce work?</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">03 DEC 2012</span>
-                    <span class="title">
-                        <a href="blog_html/121203-Problem_Querying_a_Sharded_MongoDB_Cluster_with_MongoDB_Java_Driver.html">Problem Querying a Sharded MongoDB Cluster with MongoDB Java Driver</a>
-                    </span>
+                <span class="date">03 DEC 2012</span>
+                <span class="title">
+                    <a href="blog_html/121203-Problem_Querying_a_Sharded_MongoDB_Cluster_with_MongoDB_Java_Driver.html">Problem Querying a Sharded MongoDB Cluster with MongoDB Java Driver</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">24 NOV 2012</span>
-                    <span class="title">
-                        <a href="blog_html/121124-Machine_Learning_vs_Statistics.html">Machine Learning vs Statistics</a>
-                    </span>
+                <span class="date">24 NOV 2012</span>
+                <span class="title">
+                    <a href="blog_html/121124-Machine_Learning_vs_Statistics.html">Machine Learning vs Statistics</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">22 NOV 2012</span>
-                    <span class="title">
-                        <a href="blog_html/121122-Are_Data_Driven_Robots_the_Future%3F.html">Are Data Driven Robots the Future?</a>
-                    </span>
+                <span class="date">22 NOV 2012</span>
+                <span class="title">
+                    <a href="blog_html/121122-Are_Data_Driven_Robots_the_Future%3F.html">Are Data Driven Robots the Future?</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">20 NOV 2012</span>
-                    <span class="title">
-                        <a href="blog_html/121120-The_Need_For_A_More_Sophisticated_Humanoid_Robot_Foot.html">The Need For A More Sophisticated Humanoid Robot Foot</a>
-                    </span>
+                <span class="date">20 NOV 2012</span>
+                <span class="title">
+                    <a href="blog_html/121120-The_Need_For_A_More_Sophisticated_Humanoid_Robot_Foot.html">The Need For A More Sophisticated Humanoid Robot Foot</a>
+                </span>
             </li>
         
             <li class="page">
-                    <span class="date">01 NOV 2012</span>
-                    <span class="title">
-                        <a href="blog_html/121101-Hello_world.html">Hello world</a>
-                    </span>
+                <span class="date">01 NOV 2012</span>
+                <span class="title">
+                    <a href="blog_html/121101-Hello_world.html">Hello world</a>
+                </span>
             </li>
         
     </ul>
-</section><!-- end of blog -->
+</section>
+
+
+<section id="projects" class="container">
+    <h3>Current Projects:</h3>
+    <ul id="projects">
+        <li>
+            <a href="https://github.com/chutsu/playground">playground</a>:
+            genetic programming framework in Python.
+        </li>
+        <li>
+            <a href="https://github.com/wallarelvo/Bowtie">bowtie</a>:
+            mobile phone sensory data collector in Go/JavaScript/HTML5.
+        </li>
+    </ul>
+
+    <h3>Other Side Projects:</h3>
+    <ul id="projects">
+        <li>
+            <a href="https://github.com/chutsu/evolve">evolve</a>: Genetic
+            Algorithm in C.
+        </li>
+        <li>
+            <a href="https://github.com/chutsu/dstruct">dstruct</a>: useful
+            common data structures in C.
+        </li>
+        <li>
+            <a href="https://github.com/chutsu/al">al</a>: generic algorithms
+            such as sort and search implemented in C.
+        </li>
+        <li>
+            <a href="https://github.com/chutsu/munit">munit</a>: useful minimal
+            unit testing in C.
+        </li>
+        <li>
+            <a href="https://github.com/chutsu/dbg">dbg</a>: debug macros in C.
+        </li>
+    </ul>
+
+    <h3>Past Projects:</h3>
+    <ul id="projects">
+        <li>
+            <a href="https://github.com/chutsu/mineframe">Mineframe</a>:
+            is a data mining framework written in Python and uses R to perform
+            most of the statistical and machine learning operations, with the
+            aim to automate most of the data mining processes.
+        </li>
+        <li>
+            <a href="https://github.com/chutsu/mineframe">Mineview</a>:
+            is a web-based interface meant to be used on top of
+            mineframe.
+        </li>
+    </ul>
+</section> <!-- end of projects -->
+
+
+<section id="about" class="container">
+    <h3>About me?</h3>
+    <p>I am a Phd student at
+    <a href="http://www.st-andrews.ac.uk">University of St. Andrews</a>
+    (Scotland), interested in:
+    </p>
+
+    <ul class="list">
+        <li>Evolutionary Algorithms: Genetic Algorithms/ Programming</li>
+        <li>Evolutionary Robotics</li>
+        <li>Knowledge Discovery/ Data Mining</li>
+    </ul>
+
+    <p>If you have an internship opportunity or wish to contact me, you can
+    reach me at:</p>
+
+    <p class="center_contact">chutsu (at) gmail.com</p>
+
+
+    <h3>Education</h3>
+    <ul class="list">
+        <li>MSc Computer Science - University of St. Andrews</li>
+        <li>BSc Computational Physics - Heriot Watt University</li>
+    </ul>
+
+
+    <h3>Why Evolutionary Algorithms?</h3>
+    <p>A wise man once said:</p>
+    <div class="quote">
+        "We are all prodigious Olympians in perceptual and
+        motor areas, so good that we make the difficult look easy.
+        Abstract thought, though, is a new trick, perhaps less than 100
+        thousand years old. We have not yet mastered it. It is not all
+        that intrinsically difficult; it just seems so when we do it."
+        - Moravec
+    </div>
+
+    <p>Current traditional methods in developing robots involve manual
+    specific design and formulation of equations, it can be both time
+    consuming and expensive.</p>
+
+    <p>An alternative to the traditional manual method is a relatively new
+    field called <b>Evolutionary Robotics</b>. The field borrows ideas and
+    lessons learnt from the evolutionary process, and mimick the way nature
+    "evolves" a design or controller with Genetic Algorithms and Genetic
+    Programming. This facinating field of research can potentially levage
+    the power of nature to solve complex systems, and I wish to be part of
+    the research effort in discovering what nature has to offer.</p>
+
+
+    <h3>Presentations</h3>
+    <ul id="listings">
+        <li class="year">2013</li>
+        <li class="listing">
+            <b class="author">Choi, C</b>. (2013, March).
+            What am I doing? Presented at
+            <a href="http://home.btconnect.com/theburn/">
+                The Burn 
+            </a>. As part of the PhD program at the School of Computer Science.
+        </li>
+        <li class="listing">
+            <b class="author">Choi, C</b>. & Voss, A. (2013, March).
+            <a href="http://chutsu.github.com/presentations/isgc-2013">
+                Twirp: a Twitter Mining Workbench, and experiences with NoSQL databases
+            </a>.
+            Presented at the
+            <a href="http://event.twgrid.org/isgc2013/">
+                International Symposium on Grids and Clouds (ISGC), Taipei,
+                Taiwan
+            </a>.
+        </li>
+        <li class="listing">
+            Voss, A. & <b class="author">Choi, C</b>. (2013, Janurary).
+            <a href="http://chutsu.github.com/presentations/nosql_db-2013/nosql_db.pdf">
+                Benchmarking MongoDB and Couchbase No-SQL Databases
+            </a>.
+            Presented in <a href="http://www.jisc.ac.uk">JISC</a> (London),
+            an internal face to face meeting with the 
+            <a href="http://www.analyzingsocialmedia.org"> 
+                Analysing Social Media Collaboration
+            </a>.
+        </li>
+    </ul>
+
+    <h3>Lab Demonstration</h3>
+    <ul id="listings">
+        <li class="year">2013</li> 
+        <li class="listing">
+        CS1002 - Objecet Oriented Programming
+        </li>
+        <li class="listing">
+        CS1005 - Computer Science in Everyday Life
+        </li>
+        <li class="listing">
+        CS2001 - Foundations of computation, the theory parts
+        </li>
+    </ul>
+</section> <!-- end of about -->
 
 
     <footer>
