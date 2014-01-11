@@ -30,7 +30,7 @@ The Arduino Bootloader is a small bit of code that allows you to transfer your
 Arduino Sketches (your chip program) into the Arduino without using an external
 programmer. This added convenience means you sacrifice ~2KB of space.
 
-## How do I write the Arduino Bootloader to the Arduino Nano?
+## How do I burn the Arduino Bootloader to the Arduino Nano?
 Assuming you have downloaded and installed Arduino IDE and the FTDI chip driver
 on your computer:
 
@@ -80,7 +80,7 @@ U):
         delay(1000);
     }
 
-**Note**: Before up upload the code remember to set the serial port in `Tools >
+**Note**: Before you upload the code remember to set the serial port in `Tools >
 Serial Port` to `/dev/tty.usbserial-XXXXXX` (or similar). This tells
 `Arduino.app` to output through from the USB port. After the sketch has been
 successfully loaded, the LED should blink as you programmed it.
