@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
-<title>chris choi | Why are we still using CPUs instead of GPUs?</title>
+<title>chris choi | Hello World with Arduino Nano and MacOSX</title>
 <!-- CSS -->
 <style>
         * {
@@ -375,74 +375,102 @@
 </ul>
 </nav>
 <section class="page">
-<h1>Why are we still using CPUs instead of GPUs?</h1>
+<h1>Hello World with Arduino Nano and MacOSX</h1>
+<p>Here I'm not going to talk about what Arduino are, I assume you know that
+already, what I am going to do is show you how to do make an LED blink using
+the Arduino Nano and MacOSX.</p>
+<p>Things you will need hardware wise:</p>
 <ul>
-<li>tags: #computer-science #theory #cpu #gpu #performance</li>
+<li>USBTinyISP</li>
+<li>Arduino Nano (v3.0)</li>
+<li>1 kOhm resistor</li>
+<li>1 LED (5mm)</li>
+<li>Male-Male jumper wire</li>
+<li>Breadboard (any size)</li>
 </ul>
-<p><strong>Source</strong>:
-<a href="http://superuser.com/questions/308771/why-are-we-still-using-cpus-instead-of-gpus">Superuser.com</a></p>
-<p><strong>TL;DR</strong> answer: GPUs have far more processor cores than CPUs, but because
-each GPU core runs significantly slower than a CPU core and do not have the
-features needed for modern operating systems, they are not appropriate for
-performing most of the processing in everyday computing. They are most suited
-to compute-intensive operations such as video processing and physics
-simulations.</p>
-<p>GPGPU is still a relatively new concept. GPUs were initially used for rendering
-graphics only; as technology advanced, the large number of cores in GPUs
-relative to CPUs was exploited by developing computational capabilities for
-GPUs so that they can process many parallel streams of data simultaneously, no
-matter what that data may be. While GPUs can have hundreds or even thousands of
-stream processors, they each run slower than a CPU core and have fewer features
-(even if they are Turing complete and can be programmed to run any program a
-CPU can run). Features missing from GPUs include interrupts and virtual memory,
-which are required to implement a modern operating system.</p>
-<p>In other words, CPUs and GPUs have significantly different architectures that
-make them better suited to different tasks. A GPU can handle large amounts of
-data in many streams, performing relatively simple operations on them, but is
-ill-suited to heavy or complex processing on a single or few streams of data. A
-CPU is much faster on a per-core basis (in terms of instructions per second)
-and can perform complex operations on a single or few streams of data more
-easily, but cannot efficiently handle many streams simultaneously.</p>
-<p>As a result, GPUs are not suited to handle tasks that do not significantly
-benefit from or cannot be parallelized, including many common consumer
-applications such as word processors. Furthermore, GPUs use a fundamentally
-different architecture; one would have to program an application specifically
-for a GPU for it to work, and significantly different techniques are required
-to program GPUs. These different techniques include new programming languages,
-modifications to existing languages, and new programming paradigms that are
-better suited to expressing a computation as a parallel operation to be
-performed by many stream processors. For more information on the techniques
-needed to program GPUs, see the Wikipedia articles on stream processing and
-parallel computing.</p>
-<p>Modern GPUs are capable of performing vector operations and floating-point
-arithmetic, with the latest cards capable of manipulating double-precision
-floating-point numbers. Frameworks such as CUDA and OpenCL enable programs to
-be written for GPUs, and the nature of GPUs make them most suited to highly
-parallelizable operations, such as in scientific computing, where a series of
-specialized GPU compute cards can be a viable replacement for a small compute
-cluster as in NVIDIA Tesla Personal Supercomputers. Consumers with modern GPUs
-who are experienced with Folding@home can use them to contribute with GPU
-clients, which can perform protein folding simulations at very high speeds and
-contribute more work to the project (be sure to read the FAQs first, especially
-those related to GPUs). GPUs can also enable better physics simulation in video
-games using PhysX, accelerate video encoding and decoding, and perform other
-compute-intensive tasks. It is these types of tasks that GPUs are most suited
-to performing.</p>
-<p>AMD is pioneering a processor design called the Accelerated Processing Unit
-(APU) which combines conventional x86 CPU cores with GPUs. This approach
-enables graphical performance vastly superior to motherboard-integrated
-graphics solutions (though no match for more expensive discrete GPUs), and
-allows for a compact, low-cost system with good multimedia performance without
-the need for a separate GPU. Intel's latest processors also offer onboard
-graphics, but while they may have superior compute performance, their onboard
-graphics cannot compete with AMD APUs. As technology continues to advance, we
-will see an increasing degree of convergence of these once-separate parts.</p>
-<p>Nonetheless, many tasks performed by PC operating systems and applications are
-still better suited to CPUs, and much work is needed to accelerate a program
-using a GPU. Since so much existing software use the x86 architecture, and
-because GPUs require different programming techniques and are missing several
-important features needed for operating systems, a general transition from CPU
-to GPU for everyday computing is extremely difficult.</p>
+<p><strong>Note</strong>: The USBTinyISP is very important, depending on where you buy your
+Arduino Nano, it may or may not have the Arduino Bootloader already burned into
+the Arduino Nano.</p>
+<p>Software wise you have to download and install:</p>
+<ul>
+<li><a href="http://arduino.cc/en/Main/Software">Arduino IDE</a> (version 1.0.5 or later)</li>
+<li><a href="http://www.ftdichip.com/Drivers/VCP.htm">FTDI Chip Driver</a> (version 2.2.18
+  or later)</li>
+</ul>
+<p><strong>Note</strong>: The FTDI Chip driver is very important, without it you won't be able
+to communicate with the Arduino Nano.</p>
+<h2>What is the Arduino Bootloader?</h2>
+<p>The Arduino Bootloader is a small bit of code that allows you to transfer your
+Arduino Sketches (your chip program) into the Arduino without using an external
+programmer. This added convenience means you sacrifice ~2KB of space.</p>
+<h2>How do I write the Arduino Bootloader to the Arduino Nano?</h2>
+<p>Assuming you have downloaded and installed Arduino IDE and the FTDI chip driver
+on your computer:</p>
+<ul>
+<li>Place the Arduino Nano into the breadboard</li>
+<li>Connect the USBTinyISP to both the computer and the Arduino Nano as pictured.</li>
+</ul>
+<p><strong>Note</strong>: You must not connect the Arduino Nano to the computer directly, the
+Nano can get its power from the USBTinyISP.</p>
+<p><img alt="Bootloader Circuit Image" src="images/bootloader_circuit.jpg"/></p>
+<p>If you have connected everything correctly launch <code>Arduino.app</code>. In a new blank
+sketch:</p>
+<ul>
+<li>In <code>Tools &gt; Board</code> set board to be burned, in this case its the Arduino Nano</li>
+<li>In <code>Tools &gt; Programmer</code> set programmer to USBTinyISP</li>
+<li>Finally in <code>Tools &gt; Burn Bootloader</code> burn the bootloader (This will take some
+  time)</li>
+</ul>
+<p><img alt="Set target board screenshot" src="images/burn_bootloader-set_board.png"/>
+<img alt="Set programmer screenshot" src="images/burn_bootloader-set_programmer.png"/>
+<img alt="Burn bootloader screenshot" src="images/burn_bootloader-burn.png"/></p>
+<h2>Hello World with LEDs</h2>
+<p>The ability to blink LEDs is really really simple, simply connect the circuit
+as follows:</p>
+<p><img alt="Hello World Schematic" src="images/arduino_hello_world_schematic.png"/>
+<img alt="Hello World Image" src="images/arduino_hello_world_image.jpg"/></p>
+<p>Once you connected the circuit as pictured above, load the following code into
+<code>Arduino.app</code> and press the "upload" button (or keyboard shortcut: Command +
+U):</p>
+<pre><code>int led_pin = 10;  # Digital Pin #10 is were the LED is connected to
+
+void setup() {
+    pinMode(led_pin, OUTPUT);
+}
+
+void loop() {
+    digitalWrite(led_pin, HIGH);
+    delay(1000);
+    digitalWrite(led_pin, LOW);
+    delay(1000);
+}
+</code></pre>
+<p><strong>Note</strong>: Before up upload the code remember to set the serial port in <code>Tools &gt;
+Serial Port</code> to <code>/dev/tty.usbserial-XXXXXX</code> (or similar). This tells
+<code>Arduino.app</code> to output through from the USB port. After the sketch has been
+successfully loaded, the LED should blink as you programmed it.</p>
+<h2>Why the 1kOhm Resistor?</h2>
+<p>What most Arduino Hello World tutorials don't tell you is why you require that
+1kOhm resistor, the reason is to stabilise the LED and avoid too much current
+being drawn from Arduino Nano. The digital I/O on the Arduino Nano outputs 5V,
+and typically a LED forward voltage (voltage drop across the LED) is about 1.8
+to 3.3V depending on the colour.  And so the equation for the correct
+resistance is:</p>
+<p>\begin{equation}
+    R = \frac{
+        V_{\text{Power Supply}} - V_{\text{LED voltage drop}}
+    }
+    {
+        I_{\text{LED current}}
+    }
+\end{equation}</p>
+<p>\begin{equation}
+    R = \frac{5 - 1.8}{3 \times 10^{-3}}
+\end{equation}</p>
+<p>\begin{equation}
+    R = 1066.6 \text{Ohms}
+\end{equation}</p>
+<p>The answer is a 1066.6Ohm or 1kOhm resistor is needed. :)</p>
 </section>
 <section class="comments">
 <div id="disqus_thread"></div>
