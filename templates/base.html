@@ -290,6 +290,7 @@
     <!-- JQUERY -->
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" charset="utf-8">
+
         function goToTop() {
             $("html, body").animate({
                 scrollTop: 0
@@ -297,10 +298,11 @@
         }
 
         function hash_changed() {
-            $(location.hash).trigger("click");
+            show_section(window.location.hash);
         }
 
-        function show_section(sections, show_section) {
+        function show_section(show_section) {
+            found_section = false;
             $('body').hide().fadeIn();
 
             for (var i = 0; i < sections.length; i++) {
@@ -308,88 +310,38 @@
 
                 if (section === show_section) {
                     $(section).fadeIn();
+                    found_section = true;
                 } else {
                     $(section).hide();
                 }
             }
-        }
 
-        function bind_sections(buttons, sections) {
-            for (var i = 0; i < sections.length; i++) {
-                button = buttons[i];
-                section = sections[i];
-
-                $(button).click(function(evnt) {
-                    hash = evnt.target.id;
-                    target = evnt.target.id;
-                    target = "section#" + target.replace("_button", "");
-
-                    goToTop();
-                    show_section(sections, target);
-
-                    window.location.hash = hash;
-                    return false;
-                });
+            // default to #home
+            if (found_section === false) {
+                $("section#home").fadeIn();
             }
-        }
-
-        function bind_pages(pages) {
-            // for (var i = 0; i < pages.length; i++) {
-
-            //     $(pages[i]).click(function(ent) {
-            //         console.log("EVENT:" + evnt);
-
-            //     });
-            // }
         }
 
         $(document).ready(function() {
             window.onhashchange = hash_changed;
+
             sections = new Array();
-            buttons = new Array();
-            pages = new Array();
+            sections[0] = "#home";
+            sections[1] = "#projects";
+            sections[2] = "#about";
 
-            sections[0] = "section#home";
-            sections[1] = "section#projects";
-            sections[2] = "section#about";
+            show_section(window.location.hash);
 
-            buttons[0] = "#home_button";
-            buttons[1] = "#projects_button";
-            buttons[2] = "#about_button";
+            // register nav links
+            $(".nav_link").click(function(evnt) {
+                console.log(evnt);
+                pathname = evnt.target.pathname;
+                href = evnt.target.href.replace(pathname, "/");
+                console.log(href);
 
-            // initialize sections
-            $('body').hide().fadeIn();
-            $('section#projects').hide();
-            $('section#about').hide();
-            $('section#page').hide();
+                goToTop();
 
-            // obtain all page hrefs
-            $('a#page').each(function(){
-                base_uri = $(this)[0].baseURI.replace("index.html", "");
-                page_href = $(this)[0].href.replace(base_uri, "");
-                pages.push(page_href);
-            })
-
-            // register section buttons
-            bind_sections(buttons, sections);
-
-            // register page buttons
-            $('a#page').click(function(evnt) {
-                base_uri = evnt.target.baseURI.replace("index.html", "");
-                href = evnt.target.href.replace(base_uri, "");
-
-                $("section#page").empty().load(href).fadeIn();
-
-                // $("section#page").empty().load(href, function() {
-                //     for (var i = 0; i < sections.length; i++) {
-                //         $(sections[i]).hide();
-                //     }
-
-                //     url = window.location.replace(window.location.pathname, "");
-                //     /* window.location = url + "/#" + href */
-                //     console.log(url);
-                // });
-
+                window.location = href;
                 return false;
             });
         });
@@ -404,16 +356,16 @@
     <nav>
         <ul>
             <li id="logo">
-                <a href="index.html">chris choi</a>
+                <a class="nav_link" href="#home">chris choi</a>
             </li>
             <li class="link">
-                <a id="about_button" href="#">about</a>
+                <a class="nav_link" href="#about">about</a>
             </li>
             <li class="link">
-                <a id="projects_button" href="#">projects</a>
+                <a class="nav_link" href="#projects">projects</a>
             </li>
             <li class="link">
-                <a id="home_button" href="#">blog</a>
+                <a class="nav_link" href="#home">blog</a>
             </li>
         </ul>
     </nav>
