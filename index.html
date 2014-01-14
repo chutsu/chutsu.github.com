@@ -334,13 +334,13 @@
         }
 
         function bind_pages(pages) {
-            for (var i = 0; i < pages.length; i++) {
+            // for (var i = 0; i < pages.length; i++) {
 
-                $(pages[i]).click(function(ent) {
-                    console.log("EVENT:" + evnt);
+            //     $(pages[i]).click(function(ent) {
+            //         console.log("EVENT:" + evnt);
 
-                });
-            }
+            //     });
+            // }
         }
 
         $(document).ready(function() {
@@ -378,14 +378,17 @@
                 base_uri = evnt.target.baseURI.replace("index.html", "");
                 href = evnt.target.href.replace(base_uri, "");
 
-                $("section#page").empty().load(href, function() {
-                    for (var i = 0; i < sections.length; i++) {
-                        $(sections[i]).hide();
-                    }
+                $("section#page").empty().load(href).fadeIn();
 
-                    window.location.hash = "#" + href
-                });
+                // $("section#page").empty().load(href, function() {
+                //     for (var i = 0; i < sections.length; i++) {
+                //         $(sections[i]).hide();
+                //     }
 
+                //     url = window.location.replace(window.location.pathname, "");
+                //     /* window.location = url + "/#" + href */
+                //     console.log(url);
+                // });
 
                 return false;
             });
