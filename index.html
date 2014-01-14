@@ -212,7 +212,6 @@
 
         section.container {
             display: block;
-            min-height: 500px;
         }
 
         section#home {
@@ -334,26 +333,62 @@
             }
         }
 
+        function bind_pages(pages) {
+            for (var i = 0; i < pages.length; i++) {
+
+                $(pages[i]).click(function(ent) {
+                    console.log("EVENT:" + evnt);
+
+                });
+            }
+        }
 
         $(document).ready(function() {
-            // initial page
-            $('body').hide().fadeIn();
-            $('section#projects').hide();
-            $('section#about').hide();
-
             window.onhashchange = hash_changed;
-
             sections = new Array();
+            buttons = new Array();
+            pages = new Array();
+
             sections[0] = "section#home";
             sections[1] = "section#projects";
             sections[2] = "section#about";
 
-            buttons = new Array();
             buttons[0] = "#home_button";
             buttons[1] = "#projects_button";
             buttons[2] = "#about_button";
 
+            // initialize sections
+            $('body').hide().fadeIn();
+            $('section#projects').hide();
+            $('section#about').hide();
+            $('section#page').hide();
+
+            // obtain all page hrefs
+            $('a#page').each(function(){
+                base_uri = $(this)[0].baseURI.replace("index.html", "");
+                page_href = $(this)[0].href.replace(base_uri, "");
+                pages.push(page_href);
+            })
+
+            // register section buttons
             bind_sections(buttons, sections);
+
+            // register page buttons
+            $('a#page').click(function(evnt) {
+                base_uri = evnt.target.baseURI.replace("index.html", "");
+                href = evnt.target.href.replace(base_uri, "");
+
+                $("section#page").empty().load(href, function() {
+                    for (var i = 0; i < sections.length; i++) {
+                        $(sections[i]).hide();
+                    }
+
+                    window.location.hash = "#" + href
+                });
+
+
+                return false;
+            });
         });
     </script>
 
@@ -387,112 +422,112 @@
             <li class="page">
                 <span class="date">11 JAN 2014</span>
                 <span class="title">
-                    <a href="blog_html/140111-Hello_World_with_Arduino_Nano_and_MacOSX.html">Hello World with Arduino Nano and MacOSX</a>
+                    <a id="page" href="blog_html/140111-Hello_World_with_Arduino_Nano_and_MacOSX.html">Hello World with Arduino Nano and MacOSX</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">27 DEC 2013</span>
                 <span class="title">
-                    <a href="blog_html/131227-Premature_optmization_is_evil%21.html">Premature optmization is evil!</a>
+                    <a id="page" href="blog_html/131227-Premature_optmization_is_evil%21.html">Premature optmization is evil!</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">02 OCT 2013</span>
                 <span class="title">
-                    <a href="blog_html/131002-Machine_Learning_with_Association_Rule_Learning.html">Machine Learning with Association Rule Learning</a>
+                    <a id="page" href="blog_html/131002-Machine_Learning_with_Association_Rule_Learning.html">Machine Learning with Association Rule Learning</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">21 AUG 2013</span>
                 <span class="title">
-                    <a href="blog_html/130821-Streamming_live_video_from_web_browser_to_remote_server.html">Streamming live video from web browser to remote server</a>
+                    <a id="page" href="blog_html/130821-Streamming_live_video_from_web_browser_to_remote_server.html">Streamming live video from web browser to remote server</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">20 AUG 2013</span>
                 <span class="title">
-                    <a href="blog_html/130820-Smart_Phone_Sensory_Data_Collector_with_HTML5_and_Javascript.html">Smart Phone Sensory Data Collector with HTML5 and Javascript</a>
+                    <a id="page" href="blog_html/130820-Smart_Phone_Sensory_Data_Collector_with_HTML5_and_Javascript.html">Smart Phone Sensory Data Collector with HTML5 and Javascript</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">20 FEB 2013</span>
                 <span class="title">
-                    <a href="blog_html/130220-Why_are_we_still_using_CPUs_instead_of_GPUs%3F.html">Why are we still using CPUs instead of GPUs?</a>
+                    <a id="page" href="blog_html/130220-Why_are_we_still_using_CPUs_instead_of_GPUs%3F.html">Why are we still using CPUs instead of GPUs?</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">19 FEB 2013</span>
                 <span class="title">
-                    <a href="blog_html/130219-Paper_explaining_the_optical_illusion_of_speeding.html">Paper explaining the optical illusion of speeding</a>
+                    <a id="page" href="blog_html/130219-Paper_explaining_the_optical_illusion_of_speeding.html">Paper explaining the optical illusion of speeding</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">16 FEB 2013</span>
                 <span class="title">
-                    <a href="blog_html/130216-My_First_Conference_in_1_months_time_-_ISGC_in_Taipei%21.html">My First Conference in 1 months time - ISGC in Taipei!</a>
+                    <a id="page" href="blog_html/130216-My_First_Conference_in_1_months_time_-_ISGC_in_Taipei%21.html">My First Conference in 1 months time - ISGC in Taipei!</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">20 DEC 2012</span>
                 <span class="title">
-                    <a href="blog_html/121220-3D_Graphics_in_the_web_browser_with_WebGL.html">3D Graphics in the web browser with WebGL</a>
+                    <a id="page" href="blog_html/121220-3D_Graphics_in_the_web_browser_with_WebGL.html">3D Graphics in the web browser with WebGL</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">19 DEC 2012</span>
                 <span class="title">
-                    <a href="blog_html/121219-Fingers_Crossed.html">Fingers Crossed</a>
+                    <a id="page" href="blog_html/121219-Fingers_Crossed.html">Fingers Crossed</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">05 DEC 2012</span>
                 <span class="title">
-                    <a href="blog_html/121205-what_is_MapReduce_or_How_does_MapReduce_work%3F.html">what is MapReduce or How does MapReduce work?</a>
+                    <a id="page" href="blog_html/121205-what_is_MapReduce_or_How_does_MapReduce_work%3F.html">what is MapReduce or How does MapReduce work?</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">03 DEC 2012</span>
                 <span class="title">
-                    <a href="blog_html/121203-Problem_Querying_a_Sharded_MongoDB_Cluster_with_MongoDB_Java_Driver.html">Problem Querying a Sharded MongoDB Cluster with MongoDB Java Driver</a>
+                    <a id="page" href="blog_html/121203-Problem_Querying_a_Sharded_MongoDB_Cluster_with_MongoDB_Java_Driver.html">Problem Querying a Sharded MongoDB Cluster with MongoDB Java Driver</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">24 NOV 2012</span>
                 <span class="title">
-                    <a href="blog_html/121124-Machine_Learning_vs_Statistics.html">Machine Learning vs Statistics</a>
+                    <a id="page" href="blog_html/121124-Machine_Learning_vs_Statistics.html">Machine Learning vs Statistics</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">22 NOV 2012</span>
                 <span class="title">
-                    <a href="blog_html/121122-Are_Data_Driven_Robots_the_Future%3F.html">Are Data Driven Robots the Future?</a>
+                    <a id="page" href="blog_html/121122-Are_Data_Driven_Robots_the_Future%3F.html">Are Data Driven Robots the Future?</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">20 NOV 2012</span>
                 <span class="title">
-                    <a href="blog_html/121120-The_Need_For_A_More_Sophisticated_Humanoid_Robot_Foot.html">The Need For A More Sophisticated Humanoid Robot Foot</a>
+                    <a id="page" href="blog_html/121120-The_Need_For_A_More_Sophisticated_Humanoid_Robot_Foot.html">The Need For A More Sophisticated Humanoid Robot Foot</a>
                 </span>
             </li>
         
             <li class="page">
                 <span class="date">01 NOV 2012</span>
                 <span class="title">
-                    <a href="blog_html/121101-Hello_world.html">Hello world</a>
+                    <a id="page" href="blog_html/121101-Hello_world.html">Hello world</a>
                 </span>
             </li>
         
@@ -651,6 +686,11 @@
         </li>
     </ul>
 </section> <!-- end of about -->
+
+<section id="page">
+
+</section>
+
 
 
     <footer>

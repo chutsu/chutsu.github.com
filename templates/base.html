@@ -212,7 +212,6 @@
 
         section.container {
             display: block;
-            min-height: 500px;
         }
 
         section#home {
@@ -334,26 +333,62 @@
             }
         }
 
+        function bind_pages(pages) {
+            for (var i = 0; i < pages.length; i++) {
+
+                $(pages[i]).click(function(ent) {
+                    console.log("EVENT:" + evnt);
+
+                });
+            }
+        }
 
         $(document).ready(function() {
-            // initial page
-            $('body').hide().fadeIn();
-            $('section#projects').hide();
-            $('section#about').hide();
-
             window.onhashchange = hash_changed;
-
             sections = new Array();
+            buttons = new Array();
+            pages = new Array();
+
             sections[0] = "section#home";
             sections[1] = "section#projects";
             sections[2] = "section#about";
 
-            buttons = new Array();
             buttons[0] = "#home_button";
             buttons[1] = "#projects_button";
             buttons[2] = "#about_button";
 
+            // initialize sections
+            $('body').hide().fadeIn();
+            $('section#projects').hide();
+            $('section#about').hide();
+            $('section#page').hide();
+
+            // obtain all page hrefs
+            $('a#page').each(function(){
+                base_uri = $(this)[0].baseURI.replace("index.html", "");
+                page_href = $(this)[0].href.replace(base_uri, "");
+                pages.push(page_href);
+            })
+
+            // register section buttons
             bind_sections(buttons, sections);
+
+            // register page buttons
+            $('a#page').click(function(evnt) {
+                base_uri = evnt.target.baseURI.replace("index.html", "");
+                href = evnt.target.href.replace(base_uri, "");
+
+                $("section#page").empty().load(href, function() {
+                    for (var i = 0; i < sections.length; i++) {
+                        $(sections[i]).hide();
+                    }
+
+                    window.location.hash = "#" + href
+                });
+
+
+                return false;
+            });
         });
     </script>
 

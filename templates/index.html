@@ -6,7 +6,7 @@
             <li class="page">
                 <span class="date">{{ html_file.date }}</span>
                 <span class="title">
-                    <a href="{{ html_file.href }}">{{ html_file.title }}</a>
+                    <a id="page" href="{{ html_file.href }}">{{ html_file.title }}</a>
                 </span>
             </li>
         {% endfor %}
@@ -165,4 +165,9 @@
         </li>
     </ul>
 </section> <!-- end of about -->
+
+<section id="page">
+
+</section>
+
 {% endblock body %}
