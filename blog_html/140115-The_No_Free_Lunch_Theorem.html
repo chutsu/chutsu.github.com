@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>chris choi | The No Free Lunch Theorem</title>
+<!-- CSS -->
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            text-align: justify;
+            font-family: Verdana, Arial;
+        }
+
+        nav ul {
+            display: block;
+            padding-bottom: 30px;
+            border-bottom: 1px dotted #555;
+        }
+
+        nav li {
+            float: left;
+            margin-right: 65px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        nav li#logo {
+            float: left;
+            margin-right: 60px;
+        }
+
+        nav li.link {
+            display: block;
+            float: right;
+
+            margin-left: 35px;
+            margin-right: 0;
+            margin-top: 2px;
+
+            font-size: 14px;
+        }
+
+        nav li#logo a:link, nav li#logo a:visited {
+            color: #333;
+            text-decoration: none;
+        }
+
+        nav li#logo a:hover {
+            color: #777;
+        }
+
+        ul {
+            list-style-type: none;
+            font-size: 12px;
+        }
+
+        ul#projects {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        ul#projects li {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        ul#listings {
+            text-align: left;
+            font-size: 12px;
+            margin-bottom: 40px;
+        }
+
+        ul#listings a {
+            font-size: 12px;
+        }
+
+        ul#listings li.year {
+            font-weight: bold;
+        }
+
+        ul#listings li.listing {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        ul.list {
+            list-style-type: disc;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        ul.list li {
+            margin-left: 30px;
+        }
+
+        li.page {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        span.date {
+            display: inline-block;
+            width: 100px;
+            margin-top: 2px;
+            margin-right: 10px;
+            font-family: Verdana, Monospace;
+            color: #777;
+        }
+
+        span.title {
+            width: 70%;
+        }
+
+        span.title a {
+            font-size: 13px;
+        }
+
+        b.author {
+            color: #C80000;
+        }
+
+        p {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            font-size: 12px;
+            color: #222;
+        }
+
+        p.center_contact {
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        pre {
+            width: 95%;
+
+            margin-left: auto;
+            margin-right: auto;
+
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            font-size: 10px;
+        }
+
+        blockquote {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            font-style: italic;
+        }
+
+        a:link, a:visited {
+            color: #0e73d6;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .small {
+            font-size: 10px;
+        }
+
+        .quote {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        section {
+            clear: both;
+            margin-top: 50px;
+            margin-left: 15px;
+            margin-top: 30px;
+        }
+
+        section.container {
+            display: block;
+        }
+
+        section#home {
+            width: 100%;
+            margin-left: 0;
+            padding-left: 10px;
+        }
+
+        section.page {
+            font-size: 1em;
+            width: 570px;
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+        }
+
+        section.page ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        section.page iframe {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section#about {
+            width: 570px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+        }
+
+        section#projects{
+            width: 570px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+        }
+
+        img {
+            display: block;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 2px;
+        }
+
+        footer {
+            clear: both;
+            font-size: 10px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding-top: 10px;
+            border-top: 1px dotted #555;
+        }
+    </style>
+<!-- MATHJAX -->
+<script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: { equationNumbers: { autoNumber: "AMS" }}
+        });
+    </script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<!-- JQUERY -->
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script charset="utf-8" type="text/javascript">
+
+        function goToTop() {
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1);
+        }
+
+        function hash_changed() {
+            show_section(window.location.hash);
+        }
+
+        function show_section(show_section) {
+            found_section = false;
+            $('body').hide().fadeIn();
+
+            for (var i = 0; i < sections.length; i++) {
+                section = sections[i];
+
+                if (section === show_section) {
+                    $(section).fadeIn();
+                    found_section = true;
+                } else {
+                    $(section).hide();
+                }
+            }
+
+            // default to #home
+            if (found_section === false) {
+                $("section#home").fadeIn();
+            }
+        }
+
+        $(document).ready(function() {
+            window.onhashchange = hash_changed;
+
+            sections = new Array();
+            sections[0] = "#home";
+            sections[1] = "#projects";
+            sections[2] = "#about";
+
+            show_section(window.location.hash);
+
+            // register nav links
+            $(".nav_link").click(function(evnt) {
+                console.log(evnt);
+                pathname = evnt.target.pathname;
+                href = evnt.target.href.replace(pathname, "/");
+                console.log(href);
+
+                goToTop();
+
+                window.location = href;
+                return false;
+            });
+        });
+    </script>
+<!-- HIGHLIGHT JS -->
+<link href="http://jmblog.github.com/color-themes-for-highlightjs/css/themes/tomorrow.css" rel="stylesheet">
+<script src="http://yandex.st/highlightjs/7.5/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</link></head>
+<body>
+<nav>
+<ul>
+<li id="logo">
+<a class="nav_link" href="#home">chris choi</a>
+</li>
+<li class="link">
+<a class="nav_link" href="#about">about</a>
+</li>
+<li class="link">
+<a class="nav_link" href="#projects">projects</a>
+</li>
+<li class="link">
+<a class="nav_link" href="#home">blog</a>
+</li>
+</ul>
+</nav>
+<section class="page">
+<h1>The No Free Lunch Theorem</h1>
+<p>I came across a stack overflow question on <a href="http://stackoverflow.com/questions/1075628/how-to-find-the-best-parameters-for-a-genetic-algorithm/21119469#21119469">finding the best parameters for
+solving a problem with Genetic Algorithms</a>, there were a few answers however
+most of them were wrong. One of the answers argues that the No Free Lunch
+theorem states it is pointless. In the following I will  attempt to briefly
+explain what that theorem is, and what it means for Evolutionary Algorithms
+(EAs), in particular Genetic Algorithms (GA) and Genetic Programming (GP).</p>
+<p>The No Free Lunch Theorem (NFLT) was first introduced by Wolpert and Macready
+(1997), informally it states if prior assumptions about the optimisation
+problem cannot be made and incorporated into the optimisation algorithm, it
+cannot be expected to perform better than other algorithms
+. Or in other words in black box scenarios if algorithm $x$ performs better
+than algorithm $y$ in certain types of problem, it is <strong>equally likely</strong> the
+reverse is true for both deterministic and stochastic algorithms such as EAs
+[<a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=585893&amp;tag=1">7</a>].</p>
+<h2>Scenarios where No Free Lunch Theorem does not hold</h2>
+<p>In [<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.13.892">2</a>, <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.5850">3</a>, <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.71.8446">4</a>, <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.68.8247">5</a>, <a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1545946">6</a>] they show in practice NFLT is only
+true approximately, because in reality optimization algorithms may have defined
+restrictions on the complexity of the considered functions. The most adequate
+example is perhaps a paper by Woodward (2003), he reasoned in some cases that
+NFLT does not apply at all.</p>
+<p>Woodward (2003) reasoned <strong>the question is not whether the black box in
+question is using either GA or GP</strong> to solve optimization problems, <strong>but
+rather how the candidate solutions are represented and interpreted</strong>, because
+they will both ultimately be represented as a bit string stored in the computer
+memory, despite their distinct difference in how each of them represent their
+solutions. The key point established was <strong>NFTL assumes a direct one to one
+mapping between the space of the search space and "cost" space</strong>, which applies
+to GAs most of the time.</p>
+<p><img alt="" src="images/ga_one_to_one.jpg"/>
+<img alt="" src="images/gp_many_to_one.jpg"/></p>
+<p>GPs on the other hand while it has a one to one direct mapping between the
+space of functions and space of "error" scores, the search space between
+trees to the functions they represent is many to one (e.g. $a + b$ is the same
+as $b + a$ both represent the same function), it is this many to one
+representation of trees to functions that invalidates NFLT.</p>
+<p>Suppose we have GP algorithm $P$ and $Q$, let $T_p$ and $T_q$ be time-ordered
+sets of trees visted by algorithm $P$ and $Q$:</p>
+<p>\begin{equation}
+    T_p = \{ +ba, a, b, +aa, +bb, +ab \}
+\end{equation}</p>
+<p>\begin{equation}
+    T_q = \{ +ab, +ba, a, b, +aa, +bb \}
+\end{equation}</p>
+<p>If $+ab$ is the function we need to solve the problem, then $P$ and $Q$ will
+find the solution at their first visit. However for any other function, $P$
+will always outperform $Q$ thereby invalidating NFLT.</p>
+<p>It is worth reiterating that while in general GA representation and
+interpretation is one to one, it can also be made to have a many to many
+representation just like GPs and vice versa.</p>
+<h2>Conclusion</h2>
+<p>The introduction of NFLT should not be seen as a limiting factor, on the
+contrary it should drive us to define the classes of problems being solved and
+algorithms being developed or used more carefully. [<a href="http://link.springer.com/chapter/10.1007%2F978-3-642-21434-9_1">8</a>] argues it is only
+then can meaningful discussion on blackbox algorithms begin.</p>
+<section class="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'chutsu'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+</section>
+<footer>
+        Designed By Chris Choi
+    </footer>
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(100689323); }catch(e){}</script>
+<noscript><p><img alt="Clicky" height="1" src="//in.getclicky.com/100689323ns.gif" width="1"/></p></noscript>
+</body>
+</html>
