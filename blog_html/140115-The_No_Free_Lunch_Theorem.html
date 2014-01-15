@@ -373,13 +373,22 @@ theorem states it is pointless. In the following I will  attempt to briefly
 explain what that theorem is, and what it means for Evolutionary Algorithms
 (EAs), in particular Genetic Algorithms (GA) and Genetic Programming (GP).</p>
 <p>The No Free Lunch Theorem (NFLT) was first introduced by Wolpert and Macready
-(1997), informally it states if prior assumptions about the optimisation
+(1997), informally it states:</p>
+<ul>
+<li>
+<p>if prior assumptions about the optimisation
 problem cannot be made and incorporated into the optimisation algorithm, it
-cannot be expected to perform better than other algorithms
-. Or in other words in black box scenarios if algorithm $x$ performs better
+cannot be expected to perform better than other algorithms</p>
+</li>
+<li>
+<p>Or in black box scenarios if algorithm $x$ performs better
 than algorithm $y$ in certain types of problem, it is <strong>equally likely</strong> the
 reverse is true for both deterministic and stochastic algorithms such as EAs
 [<a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=585893&amp;tag=1">7</a>].</p>
+</li>
+</ul>
+<p>Ultimately it advocates <strong>"You cannot have a Universal Algorithm that can
+outperform any other algorithm"</strong>.</p>
 <h2>Scenarios where No Free Lunch Theorem does not hold</h2>
 <p>In [<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.13.892">2</a>, <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.5850">3</a>, <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.71.8446">4</a>, <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.68.8247">5</a>, <a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1545946">6</a>] they show in practice NFLT is only
 true approximately, because in reality optimization algorithms may have defined
