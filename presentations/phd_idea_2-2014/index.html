@@ -86,6 +86,19 @@
             margin-right: auto;
         }
 
+        .slide iframe.fit {
+            -moz-transform: scale(0.70, 0.70);
+            -webkit-transform: scale(0.70, 0.70);
+            -o-transform: scale(0.70, 0.70);
+            -ms-transform: scale(0.70, 0.70);
+            transform: scale(0.70, 0.70);
+            -moz-transform-origin: top left;
+            -webkit-transform-origin: top left;
+            -o-transform-origin: top left;
+            -ms-transform-origin: top left;
+            transform-origin: top left;
+        }
+
         ul.ref {
             list-style-image: none;
             /* position: absolute; */
@@ -220,13 +233,6 @@
 
     <section class="slide">
         <div>
-            <h2>Playground</h2>
-            <iframe src="http://github.com/chutsu/playground"></iframe>
-        </div>
-    </section><!-- end of slide -->
-
-    <section class="slide">
-        <div>
             <h2>Types of Parameter Setting</h2>
             <img src="imgs/param_setting_taxonomy.png">
         </div>
@@ -239,6 +245,7 @@
             <ul>
                 <li>Perform empirical tests (Parameter Tuning and Control)</li>
                 <li>Apply GP to real world problems</li>
+                <li>Use <a href="https://github.com/chutsu/playground">Playground</a> for tests</li>
             </ul>
         </div>
     </section><!-- end of slide -->
