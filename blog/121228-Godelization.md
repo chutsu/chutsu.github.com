@@ -14,7 +14,7 @@ the crazy thing is that it is **possible** to convert the above into a single
 natural number.
 
 **Godelization** is a method for mapping many natural numbers into a single
-natural number, devised by Kurt Gödel. We will skip how the mapping is
+natural number, devised by Kurt Godel. We will skip how the mapping is
 performed because it is not within our scope, but what is interesting is the
 fact _it can be done_ is extremely important. While we can use a one to one
 mapping to distinguish two separate events, a more interesting question is:
@@ -31,9 +31,9 @@ $$
     p_{1}^{x_1} p_{2}^{x_2} p_{3}^{x_3} \dots p_{n}^{x_n}
 $$
 
-Granted the number will tend to be huge in size but who cares? Given a Gödel
+Granted the number will tend to be huge in size but who cares? Given a Godel
 number, we can reconstruct the original string by taking the prime
-factorization of the Gödel number. It is also worthy to mention Gödelization
+factorization of the Godel number. It is also worthy to mention Godelization
 adds another simplification to studying the nature of computation. Instead of
 worrying about programs with multliple input and output sequences we can now
 ignore most of the details and just concentrate on the functions that take a
