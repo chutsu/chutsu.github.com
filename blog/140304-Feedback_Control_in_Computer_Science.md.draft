@@ -1,0 +1,38 @@
+# Feedback Control in Computer Science
+People who know what Control Theory is and what it does often associate it with
+either robotics, or a theory only relevant to mechanical engineering. Recently
+however in the following I am going to show you why it can also be relevant in
+computer science.
+
+## Cache
+
+    import sys
+    import math
+
+    r = 0.6                  # reference value or "setpoint"
+    k = float( sys.argv[1] ) # gain factor: 50..175
+    print "r=%f\tk=%f\n" % ( r, k ); t=0
+    print r, 0, 0, 0, 0
+
+    def cache( size ):
+        if size < 0:
+            hitrate = 0
+        elif size > 100:
+            hitrate = 1
+        else:
+            hitrate = size/100.0
+        return hitrate
+
+
+    y, c = 0, 0
+    for _ in range( 200 ):
+        e = r - y
+        c += e
+        u = k*c
+        y = cache(u)
+
+        # tracking error
+        # cumulative error
+        # control action: cache size
+        # process output: hitrate
+        print r, e, c, u, y

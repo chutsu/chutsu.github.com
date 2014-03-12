@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
-<title>chris choi | Are Data Driven Robots the Future?</title>
+<title>chris choi | How to Remove Plot Lines in Matplotlib</title>
 <!-- CSS -->
 <style>
         * {
@@ -374,33 +374,41 @@
 </ul>
 </nav>
 <section class="page">
-<h1>Are Data Driven Robots the future?</h1>
-<ul>
-<li>tags: #robotics #ideas</li>
-</ul>
-<p><strong>Disclaimer</strong>: I am not an expert robotics engineer, the following are purely
-my naive personal views.</p>
-<p>The common theme in robotics is to come up with algorithms to solve specific
-problems, such as motion planning. The problem is most of the time these
-algorithms assume specific conditions which may or may not apply to the
-scenario in mind, worst if you have many different algorithms which one is
-best? what is best? These are questions not limited to just robotics, it is
-also relevant to the field of data mining, knowledge discovery and just about
-anything to do with analysing data.</p>
-<p><img alt="machine brain" src="images/machine_brain.jpg"/></p>
-<p>But if you think about it, that is exactly what your brain does! Depending on
-the scenario, you choose using a specific method, be it google, ebay,
-amazonetc, define what is the best and some times you make compromises. Like
-buying a new laptop for example. The obvious choice is a mac (duh!), but what
-if you dont have the money?</p>
-<p>The catch is, if one were to build such a system that emulates the behaviour of
-the brain, taking different algorithms to solve a specific problem, the time
-taken to decide which algorithm to use can take ...  well ... forever, or what
-computer scientists call <strong>incomplete</strong>, it is also <strong>unpredictable</strong>, which is
-perhaps why robotics engineers are hesitant in developing the aforementioned
-systems, either way I still there are ways round these problems, and maybe just
-maybe this data driven robot would be able to do the things we can, but better.
-The application is limitless, but its just an idea I have, haha</p>
+<h1>How to Remove Plot Lines in Matplotlib</h1>
+<p>In <code>playground</code> I wanted to plot a graph live, but instead of plotting multiple
+lines, I wanted to remove the last line I plotted. Here's how you do it:</p>
+<pre><code>#!/usr/bin/env python
+from time import sleep
+
+import numpy as np
+from matplotlib import pyplot as plt
+
+
+if __name__ == "__main__":
+    # create figure and its subplot
+    fig = plt.figure(1)
+    ax = fig.add_subplot(1, 1, 1)
+
+    # add lines to plot
+    ax.plot(np.arange(10) / 4, np.arange(10))
+    ax.plot(np.arange(10) / 2, np.arange(10))
+
+    # show plot for 2 seconds
+    plt.show(block=False)
+    sleep(2)
+
+    # pop the last line
+    ax.lines.pop()
+
+    # refresh the plot for 2 seconds and exit
+    plt.draw()
+    plt.show(block=False)
+    sleep(2)
+</code></pre>
+<p>What you get is this for 2 seconds:</p>
+<p><img alt="" src="images/remove_line-1.png"/></p>
+<p>And then this for another 2 seconds:</p>
+<p><img alt="" src="images/remove_line-2.png"/></p>
 <section class="comments">
 <div id="disqus_thread"></div>
 <script type="text/javascript">
