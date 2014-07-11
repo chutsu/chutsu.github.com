@@ -41,12 +41,10 @@ nature has to offer.
 - 2013
     - **Choi, C.** (2013, March). What am I doing? Presented at The Burn . As
       part of the PhD program at the School of Computer Science.
-
     - **Choi, C.** & Voss, A. (2013, March). [Twirp: a Twitter Mining
       Workbench, and experiences with NoSQL databases][twirp]. Presented at the
       [International Symposium on Grids and Clouds (ISGC)][ISGC], Taipei,
       Taiwan .
-
     - Voss, A. & **Choi, C.** (2013, Janurary). [Benchmarking MongoDB and
       Couchbase No-SQL Databases][dbench]. Presented at [JISC][JISC]
       (London), an internal face to face meeting with the [Analysing Social
