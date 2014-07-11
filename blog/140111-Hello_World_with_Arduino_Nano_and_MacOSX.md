@@ -66,7 +66,6 @@ Once you connected the circuit as pictured above, load the following code into
 `Arduino.app` and press the "upload" button (or keyboard shortcut: Command +
 U):
 
-
     int led_pin = 10;  # Digital Pin #10 is were the LED is connected to
 
     void setup() {
@@ -91,24 +90,25 @@ What most Arduino Hello World tutorials don't tell you is why you require that
 1kOhm resistor, the reason is to stabilise the LED and avoid too much current
 being drawn from Arduino Nano. The digital I/O on the Arduino Nano outputs 5V,
 and typically a LED forward voltage (voltage drop across the LED) is about 1.8
-to 3.3V depending on the colour.  And so the equation for the correct
-resistance is:
+to 3.3V depending on the colour.  Lets calculate the correct resistance, from 
+basic physics we know $V = IR$, where $V$ is the voltage, $R$ is the resistance
+and $I$ is the current. We rearracge the equation like so:
 
 \begin{equation}
-    R = \frac{
-        V_{\text{Power Supply}} - V_{\text{LED voltage drop}}
-    }
-    {
-        I_{\text{LED current}}
-    }
+R = V / I
 \end{equation}
+
+And for this scenario the voltage is the difference between the voltage
+supplied (i.e. 5V) and the voltage needed by the LED (i.e. 1.8V), we also
+happen to know the current needed for this particular LED (i.e. 3mA) which
+results in:
 
 \begin{equation}
     R = \frac{5 - 1.8}{3 \times 10^{-3}}
 \end{equation}
 
 \begin{equation}
-    R = 1066.6 \text{Ohms}
+    R = 1066.6 \Omega
 \end{equation}
 
 The answer is a 1066.6Ohm or 1kOhm resistor is needed. :)
