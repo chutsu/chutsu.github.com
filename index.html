@@ -19,33 +19,122 @@
 
     <!-- CUSTOM -->
     <script src="js/marked.js"></script>
-    <script src="js/chutsu.js"></script>
-    <script>
-        chutsu.run();
-    </script>
+    <!-- <script src="js/chutsu.js"></script> -->
+    <!-- <script> -->
+    <!--     chutsu.run(); -->
+    <!-- </script> -->
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/chutsu.css" />
 
 </head>
 <body>
-    <nav></nav>
+    <nav>
+        <h1><a href="#home">chutsu</a></h1>
+        <ul>
+            <li>
+                <a href="#blog">blog</a>
+            </li>
+        </ul>
+    </nav>
 
-    <section id="content"></section>
+    <section id="home">
+        <section id="intro">
+            <p>I am a <span class="red"><b>Phd student</b></span>, <b>Machine
+            Learner</b>, <b>Avid user of Vim and Linux</b> and <b>Robotics
+            Hobbyist</b>.</p>
 
-    <!-- HIGHLIGHT JS -->
-    <link href="http://jmblog.github.com/color-themes-for-highlightjs/css/themes/tomorrow.css" rel="stylesheet">
-    <script src="http://yandex.st/highlightjs/7.5/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+            <p>I specialize in Evolutionary Algorithms, specifically Genetic Programming
+            and Genetic Algorithms. I am currently using them to solve a wide range of
+            problems from Symbolic Regression (Curve fitting but more powerful) to
+            classification problems.</p>
 
-    <!-- MATHJAX -->
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-            TeX: { equationNumbers: { autoNumber: "AMS" }}
-        });
-    </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"> </script>
+            <h1>What is Symbolic Regression?</h1>
+            <p>Symbolic Regression (SR) is a type of automatic regression
+            analysis that finds the best model given a dataset, both in terms
+            of accuracy and simplicity.</p>
+
+            <p>The difference between SR and conventional regression
+            you may of heard before, is that SR does not assume anything of the
+            data, where as conventional regression seeks to optimize parameters
+            for a pre-specified model, usually defined by a statistian.</p>
+
+        </section>
+
+
+        <ul id="showreel">
+            <li class="section">
+                Current Projects:
+            </li>
+
+            <ul id="showreel_element">
+                <li class="description">
+                    <pre><code>evolve</code></pre> is an Evolutionary
+                    algorithms library written in C.  The algorithm goal is to
+                    provide researchers or developers with a platform for
+                    research or develop evolutionary algorithms.
+                </li>
+            </ul>
+            <ul id="showreel_element">
+                <li class="description">
+                    <pre><code>playground</code></pre> similar to
+                    <pre><code>evolve</code></pre> is an Evolutionary
+                    algorithms library but written in Python. This project
+                    started when I was doing my PhD up to the point where
+                    performance was an issue.
+                </li>
+            </ul>
+
+            <li class="section">
+                Other side projects:
+            </li>
+
+            <ul id="showreel_element">
+                <li class="description">
+                    <pre><code>ditto</code></pre> is a documentation system
+                    that allows developers to write their documentation in
+                    markdown plain text file. The System does not require a
+                    build process, it mainly consists only of HTML5, Javascript
+                    and CSS.
+                </li>
+            </ul>
+            <ul id="showreel_element">
+                <li class="description">
+                    <pre><code>munit</code></pre> is a minimalistic unit
+                    testing framework for C, less than 100 lines. The work is
+                    heavily based on John Brewer's minunit. The only real
+                    difference is that munit does not block if a tests fails,
+                    but John Brewer's minunit does.
+                </li>
+            </ul>
+            <ul id="showreel_element">
+                <li class="description">
+                    <pre><code>dstruct</code></pre> is a data structure
+                    suite implemented in C. It is heavily based on the code Zed
+                    Shaw produced in Learn C the Hard Way.
+                </li>
+            </ul>
+        </ul>
+    </section>
+
+    <section id="content">
+
+
+    </section>
+
+    <!-- <!&#45;&#45; HIGHLIGHT JS &#45;&#45;> -->
+    <!-- <link href="http://jmblog.github.com/color&#45;themes&#45;for&#45;highlightjs/css/themes/tomorrow.css" rel="stylesheet"> -->
+    <!-- <script src="http://yandex.st/highlightjs/7.5/highlight.min.js"></script> -->
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+    <!-- <!&#45;&#45; MATHJAX &#45;&#45;> -->
+    <!-- <script type="text/x&#45;mathjax&#45;config"> -->
+    <!--     MathJax.Hub.Config({ -->
+    <!--         tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, -->
+    <!--         TeX: { equationNumbers: { autoNumber: "AMS" }} -->
+    <!--     }); -->
+    <!-- </script> -->
+    <!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX&#45;AMS&#45;MML_HTMLorMML" type="text/javascript"> </script> -->
 
     <footer>
         Designed By Chris Choi

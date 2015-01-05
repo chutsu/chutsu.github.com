@@ -2,8 +2,7 @@ var chutsu = {
     content: "#content",
 
     nav: "nav.md",
-    projects: "projects.md",
-    about: "about.md",
+    home: "home.md",
 
     blog_path: "blog",
     blog_listing: "blog.md",
@@ -190,20 +189,23 @@ function page_getter(cb) {
     });
 }
 
-function router() {
-    var hash = window.location.hash;
-    $('body').hide().fadeIn();
-
-    // hide all content
-    $("section #content").html("");
-
-    if (hash.replace("#", "") == chutsu.blog_path || hash == "") {
-        show_blog_posts(chutsu.blog_listing);
-    } else {
-        page_getter(load_content);
-    }
-}
-
+// function router() {
+//     var hash = window.location.hash;
+//     $('body').hide().fadeIn();
+//
+//     // hide all content
+//     $("section #content").html("");
+//
+//     if (hash.replace("#", "") == chutsu.home|| hash == "") {
+//         $.get(chutsu.home, function(data) {
+//             data = marked(chutsu.home);
+//             $("#content").html(data);
+//         });
+//     } else {
+//         page_getter(load_content);
+//     }
+// }
+//
 function nav_init() {
     $.get(chutsu.nav, function(data) {
         data = marked(data);
@@ -216,6 +218,6 @@ function nav_init() {
 function initialize() {
     nav_init();
 
-    router();
-    $(window).on("hashchange", router);
+    // router();
+    // $(window).on("hashchange", router);
 }

@@ -1,4 +1,2 @@
-# [chutsu](#blog)
-- [about](#about)
-- [projects](#projects)
+# [chutsu](#home)
 - [blog](#blog)

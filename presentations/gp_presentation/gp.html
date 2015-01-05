@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to Genetic Programming</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+          font-family: 'Droid Serif';
+      }
+
+      h1, h2, h3 {
+          font-family: 'Yanone Kaffeesatz';
+          font-weight: 400;
+          margin-bottom: 0;
+      }
+
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+          position: absolute;
+          bottom: 3em;
+      }
+
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+
+      a, a > code {
+          color: rgb(249, 38, 114);
+          text-decoration: none;
+      }
+
+      code {
+          -moz-border-radius: 5px;
+          -web-border-radius: 5px;
+          background: #e7e8e2;
+          border-radius: 5px;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 70%;
+        margin-top: 5%;
+      }
+
+      iframe {
+        margin-top: 7%;
+      }
+
+      .footnote {
+
+      }
+
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted { background-color: #373832; }
+
+      .pull-left {
+          float: left;
+          width: 47%;
+      }
+
+      .pull-right {
+          float: right;
+          width: 47%;
+      }
+
+      .pull-right ~ p {
+          clear: both;
+      }
+
+      .middle-custom {
+        width: 80%;
+        padding-top: 10%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #slideshow .slide .content code {
+          font-size: 0.8em;
+      }
+
+      #slideshow .slide .content pre code {
+          font-size: 0.9em;
+          padding: 15px;
+      }
+
+      .inverse {
+          background: #272822;
+          color: #777872;
+          text-shadow: 0 0 20px #333;
+      }
+
+      .inverse h1, .inverse h2 {
+          color: #f3f3f3;
+          line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+          bottom: 12px;
+          left: 20px;
+      }
+
+      #slide-how .slides {
+          font-size: 0.9em;
+          position: absolute;
+          top: 151px;
+          right: 140px;
+      }
+
+      #slide-how .slides h3 {
+          margin-top: 0.2em;
+      }
+
+      #slide-how .slides .first, #slide-how .slides .second {
+          padding: 1px 20px;
+          height: 90px;
+          width: 120px;
+          -moz-box-shadow: 0 0 10px #777;
+          -webkit-box-shadow: 0 0 10px #777;
+          box-shadow: 0 0 10px #777;
+      }
+
+      #slide-how .slides .first {
+          background: #fff;
+          position: absolute;
+          top: 20%;
+          left: 20%;
+          z-index: 1;
+      }
+
+      #slide-how .slides .second {
+          position: relative;
+          background: #fff;
+          z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+          color: #777;
+          width: 30%;
+          height: 92%;
+          float: left;
+      }
+
+      .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+      }
+
+      .left-column h3 {
+          margin-top: 0.5em;
+      }
+
+      .right-column {
+          width: 60%;
+          float: right;
+          padding-top: 1em;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Introduction to Genetic Programming
+[chris choi]
+
+---
+
+layout: false
+
+# Search Methods
+There are many types of search, Genetic Programming (GP) falls into the category of:
+- **Guided Random Search**.
+- as a class of **Evolutionary Algorithms** (EA).
+
+.center[
+    ![search methods classification](./images/search_methods_classification.jpg)
+]
+
+---
+
+# Evolutionary Algorithms
+
+- Uses mechanisms inspired by _Biological Evolution_, such as:
+    - Natural Selection (Survival of the Fittest)
+    - Chromosomal Crossover
+    - Genetic Mutation
+
+- EAs are also classed as **Meta-Heuristic Algorithms**, where it is generally applied to
+  **"I know it when I see it problems"**
+
+- Uses a population of candidate solutions to sample the search space
+
+---
+
+# Evolutionary Algorithm - General Idea
+
+.center[
+    ![evolutionary algorithm form](./images/evolutionary_algorithm.png)
+]
+
+---
+
+name: how
+
+.left-column[
+## Evolutionary Algorithm Requirements
+### - Input Data
+]
+
+.right-column[
+## Input Data
+Depending on the problem, input training data maybe required
+as a stimuli to encourage the algorithm to explore the search space.
+
+For example:
+- Symbolic Regression
+- Classification
+- Robotic Control
+
+For problems that are self-play such as *GO* or *Chess*, input data is **not
+needed**.
+]
+
+---
+
+.left-column[
+## Evolutionary Algorithm Requirements
+### - Input Data
+### - Problem Encoding
+]
+
+.right-column[
+## Problem Encoding
+Encode the "chromosome" to represent a potential solution on the problem at
+hand.
+
+For example, in curve fitting the chromosome is the mathematical equation,
+represented in a Tree data structure.
+
+.center[
+![Tree](./images/gp_tree.png)
+]
+]
+
+---
+
+.left-column[
+## Evolutionary Algorithm Requirements
+### - Input Data
+### - Problem Encoding
+### - Fitness Function
+]
+
+.right-column[
+## Fitness Function
+A function that is capable of comparing individuals.
+
+For example in the `MaxOne` problem the goal is to obtain a bit-string of all
+1s. The fitness function will favour a solution that has more 1s over those
+that has fewer.
+
+
+```remark
+    Solution 1: 110100
+    Solution 2: 110101
+
+    The MaxOne fitness function should prefer
+    solution 2, because it has more 1s.
+```
+]
+
+---
+
+.left-column[
+## Evolutionary Algorithm Requirements
+### - Input Data
+### - Problem Encoding
+### - Fitness Function
+### - Genetic Operators
+]
+
+.right-column[
+## Genetic Operators
+These operators are responsible for modifying the candidate solution (hopefully
+for the better).
+
+For example:
+
+- Selection
+- Crossover
+- Mutation
+
+Operators.
+]
+
+
+---
+
+# Genetic Algorithms (GA)
+
+- Invented by _John Holland_ 1970s
+- Encodes the problem as a _Fixed-Length Vector of Boolean Bit-String_
+
+
+### Pseudocode
+```remark
+    P = InitializePopulation()
+
+    while (Termination(P) is not True):
+        Evaluate(P)
+
+        Parents = Select(P)
+
+        NextGen = []
+        for i in Parents:
+            Children = Crossover(Parents[i])
+            NextGen.append(Mutate(Children[0]))
+            NextGen.append(Mutate(Children[1]))
+
+        P = NextGen
+```
+
+---
+
+# Evolutionary Strategy (ES)
+
+- Invented by _Ingo Rechenberg_ in 1970s around, same time as GAs
+- Encodes the problems as a _Fixed-Length Vector of Floating-Points_
+
+
+### Pseudocode
+```remark
+    P = InitializePopulation()
+
+    while (Termination(P) is not True):
+        Evaluate(P)
+        Parent = Best(P)
+
+        NextGen = [Parent]
+        for i in range(Lamda):
+            Child = Mutate(Copy(Parent))
+            NextGen.append(child)
+
+        P = NextGen
+```
+
+---
+
+# Difference between ES and GA
+
+Although first on first glance both ES and GA look very similar to each other,
+but on closer inspection they have subtle differences, namely:
+
+- **GA** uses an **integer coding scheme**, whereas **ES** uses a __real valued__
+  coding scheme
+
+- **ES** generally does not use a Selection Operator, it selects only the best
+
+- **ES** generally does not use a Crossover Operator
+
+- In practice both **ES** and **GA** are both very similar to each other
+
+---
+
+# Genetic Programming (GP)
+
+- Invented by _Nichael Cramer_ in 1985.
+
+- Traditionally Uses a **Tree**, but can also use **Linear** or **Graph** as a data structure
+
+- Uses both **ES** or **GA** style loops
+
+- Uses similar genetic operators to **ES** and **GA**
+
+- The difference is GP outputs a ___program___ that performs a user-defined task
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+## But what can GP do?
+
+---
+
+layout: false
+
+.left-column[
+## Example Applications of GP
+### - Symbolic Regression
+]
+
+.right-column[
+### Symbolic Regression
+Similar to Curve Fitting, the goal is to find the best model that fits the data
+
+.center[
+    ![symbolic regression](./images/symbolic_regression.png)
+]
+]
+
+---
+
+.left-column[
+## Example Applications of GP
+### - Symbolic Regression
+]
+
+.right-column[
+### Symbolic Regression
+To perform Symbolic Regression, GP represents the candidate solutions (i.e. an
+equation) in the form of a Tree Data Structure.
+
+.center[
+    ![gp tree](./images/gp_tree.png)
+]
+]
+
+---
+
+.left-column[
+## Example Applications of GP
+### - Symbolic Regression
+]
+
+.right-column[
+### Symbolic Regression
+Demo of [playground](http://github.com/chutsu/playground) solving toy problems
+
+.center[
+<iframe
+    width="500"
+    height="300"
+    src="//www.youtube.com/embed/dPjBrLjSBl4"
+    frameborder="0"
+    allowfullscreen
+>
+</iframe>
+]
+]
+
+---
+
+.left-column[
+## Example Applications of GP
+### - Symbolic Regression
+### - Classification
+]
+
+.right-column[
+### Classification
+Using a Tree data structure again, GP can evolve a decision tree to solve
+classification problems.
+
+![gp classification](./images/make_circles.png)
+]
+
+---
+
+.center[
+    ![gp classification](./images/make_circles.png)
+]
+
+---
+
+.center[
+    ![gp classification](./images/make_circles_roc.png)
+]
+
+---
+
+.left-column[
+## Example Applications of GP
+### - Symbolic Regression
+### - Classification
+### - Robotic Control
+]
+
+.right-column[
+### Robotic Control
+Resarchers at [Cornell's Creative Machines Lab](http://creativemachines.cornell.edu/evolved-quadruped-gaits)
+has used Evolutionary Algorithms to evolve gaits for physical robots.
+
+<iframe
+    width="500
+    " height="300"
+    src="//www.youtube.com/embed/N-2XVjwbTPY"
+    frameborder="0"
+    allowfullscreen
+>
+</iframe>
+]
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+## Pros and Cons of GP
+
+---
+
+layout: false
+
+.left-column[
+## GP Advantages
+### - No Prior Assumtions Required
+]
+
+.right-column[
+### No Prior Assumtions Required
+GP makes no assumptions about the search space so that it can in a non-biased
+way attempt to find the global optimal solution.
+]
+
+---
+
+.left-column[
+## GP Advantages
+### - No Prior Assumtions Required
+### - Good for not well known problems
+]
+
+.right-column[
+### Good for not well known problems
+GP can be applied to problems where heuristic solutions are not available or
+generally lead to unsatisfactory results.
+
+As long as you can define what a good* solution looks like (i.e. able to define
+a fitness function), GP is a good candidate for a search algorithm.
+]
+
+---
+
+.left-column[
+## GP Advantages
+### - No Prior Assumtions Required
+### - Good for not well known problems
+### - Inherently Parallel
+]
+
+.right-column[
+### Inherently Parallel
+The evaluation of individuals within a population can be conducted simultaneously,
+just like in nature.
+]
+
+---
+
+.left-column[
+## GP Advantages
+### - No Prior Assumtions Required
+### - Good for not well known problems
+### - Inherently Parallel
+### - Domain Independent
+]
+
+.right-column[
+### Domain Independent
+GP can be applied to a wide range of problems, as long as one can encode the
+problem, one can use GP as the search algorithm.
+]
+
+
+---
+
+.left-column[
+## GP Disadvantages
+### - Takes a lot of compute resources
+]
+
+.right-column[
+### Takes a lot of compute resources
+Due to the stochastic nature of the algorithm, much time is spent exploring the
+global search space of the problem.
+
+This makes GP or Evolutionary Algorithms not an ideal algorithm for problems
+that can be solved with known heuristics.
+]
+
+---
+
+.left-column[
+## GP Disadvantages
+### - Takes a lot of compute resources
+### - Have to define a good fitness function
+]
+
+.right-column[
+### Have to define a good fitness function
+A good fitness function is vital to the success and failure of the convergence to
+a sound solution. Without a good fitness function it will also take longer to
+converge.
+]
+
+---
+
+.left-column[
+## GP Disadvantages
+### - Takes a lot of compute resources
+### - Have to define a good fitness function
+### - Difficult to configure parameters
+]
+
+.right-column[
+### Difficult to configure parameters
+There are currently no agreed method in configuring the paramters of a GP or
+any EA for that matter. Many uses of GP or EA involve manually tuning the
+parameters on a case by case basis. However that in itself is also a very big
+problem, consider:
+
+```remark
+Let Pc and Pm be the crossover and mutation
+probability, if we want to test the range of
+
+    [0.1, 0.2 ... 1.0]
+
+that would be 10 * 10 combinations for just
+Pc and Pm. What if we have different crossover
+and mutation methods? Such as single point,
+double point crossover, and various other
+mutation methods?
+```
+]
+
+
+---
+
+.left-column[
+## GP Disadvantages
+### - Takes a lot of compute resources
+### - Have to define a good fitness function
+### - Difficult to configure parameters
+### - Not suitable if Evaluation takes a long time
+]
+
+.right-column[
+### Not suitable if Evaluation takes a long time
+If the Evaluation time for a single candidate solution takes a long time,
+natually GP or EAs will not be able to find a solution in a reasonable amount
+of time, it is therefore vital the evaluation time is as small as possible.
+
+]
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+## No Free Lunch Theorem (NFLT)
+
+---
+
+layout: false
+
+# No Free Lunch Theorem (NFLT)
+The No Free Lunch Theorem (NFLT) developed by Wolpert and Macready (1997)
+informally states:
+
+```remark
+If prior assumptions about the optimazation problem cannot be made and
+incorporated into the optimization algorithm, it cannot be expected to perform
+better than other algorithms.
+```
+
+Or
+
+```remark
+In black box scenearios if algorithm x performs betterhn than algorithm y in
+certain types of problem, it is likely that the reverse is true for other cases.
+```
+
+---
+
+# Free Lunches
+
+.middle-custom[
+Woodward (2003) however has reasoned that Free Lunches do exists, but the
+question is no longer whether the black box in question is using either GA or
+GP to solve optimization problems, but rahter how the candidate solutions are
+represented and interpreted.
+]
+
+---
+
+# GA - One to One Mapping
+_Generally_ .red[*] GA problems have a __one-to-one__ mapping between genotype
+and phenotype.  i.e. Problem encoding to the cost function.
+
+.center[
+    ![GA One to One Mapping](./images/ga_one_to_one.jpg)
+]
+
+.footnote[.red[*] Not always the case as GAs can also have a Many-to-One mapping]
+---
+
+# GP - Many to One Mapping
+GP problems on the other hand, the problem encoding usually have a
+**many-to-one** mapping between problem encoding and functions.
+
+.center[
+![GP Many to One Mapping](./images/gp_many_to_one.jpg)
+]
+
+**NOTE**: This is not to say that GA can't exhibit the same mapping, but the
+general case is this. GA can also have problem encoding that exhibit many-to-one
+mappings.
+
+---
+
+# Free Lunch Example
+
+Woodward (2003) has shown that if we have GP algorithm $P$ and $Q$, let $T_p$
+and $T_q$ be time-ordered sets of trees visted by algorithm $P$ and $Q$:
+
+\begin{equation}
+    T_p = \\{ +ba, a, b, +aa, +bb, +ab \\}
+\end{equation}
+
+\begin{equation}
+    T_q = \\{ +ab, +ba, a, b, +aa, +bb \\}
+\end{equation}
+
+If $+ab$ is the function we need to solve the problem, then $P$ and $Q$ will
+find the solution at their first visit. However for any other function, $P$
+will always outperform $Q$ thereby invalidating NFLT.
+
+---
+
+# Why does NFLT matter?
+
+.middle-custom[
+It matters because with NFLT we can begin to talk theoretically whether there
+are __Free Lunches__.
+
+It is not meant to be seen as a limiting factor, on the contrary it should
+drive us to define classes of problems being solved and algorithms being
+developed or used more carefully.
+]
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+## The Parameter Setting Problem in Evolutionary Algorithms
+### [Or, difficulties in using EAs]
+
+
+---
+
+layout: false
+
+# Parameter Setting Problem
+
+.middle-custom[
+As mentioned earlier, there are alot of parameters to configure in an
+Evolutioanry Algorithm, such as:
+
+- Selection
+- Crossover
+- Mutation
+
+method and its parameters
+]
+
+
+---
+
+# Parameter Setting Types
+
+There are two general types of Parameter setting, they are:
+
+- **Parameter Tuning** (PT)
+- **Parameter Control** (PC)
+
+Parameter Setting Taxonomy:
+.center[
+![Parameter Setting Types](./images/param_setting_taxonomy.png)
+]
+
+---
+
+# Scenarios Where EAs Are Used
+
+.middle-custom[
+There are generally two types of problem scenarios where EAs are used:
+
+- **One-off problems**: where the problem is solved only once, Where empahsis
+  is on the quality of the solution, over computational time.
+
+- **Repetitive problems**: are scenarios where many different instances of
+  the same problem are solved multiple times.
+]
+
+---
+
+# Parameter Tuning
+
+- **Simple Parameter Sweep**: attepts all possible parameters the EA can run
+with. However it also provides opportunities for combinatorial explosions of
+parameter value combinations, making this approach impractical.
+
+- **Nested EA**: where the problem sovling EA is paired with another meta-EA
+that evolves the parameters.
+
+- **Racing scheme**: Maron et al (1997) used racing algorithm to perform basic
+ranking and selection to select parameters.
+
+- **Racing and Meta-EAs**: Yuan and Gallagher (2007) combined both racing and
+Meta-EAs to reduce number of parameter vectors and number of tests per parameter
+vector needed to find the optimal parameter.
+
+---
+
+# Parameter Control
+
+- **Adaptive Population Size**: is a technique first introduced by Arabas et al
+(1994), it minimizes the algorithmic component that requires the most compute
+resource, which is the evaluation of the population.
+
+- **Adaptive Probabilities**: another area worth optimizing are the crossover
+and mutation probabilities $p_c$ and $p_m$. Introduced by Srinivas and Patnaik
+(1994).
+
+
+---
+
+# Parameter Setting Conclusion
+
+- Eiben et al (1999) has shown that static parameters seems to be
+  inappropriate, as any run of an EA is an intrinsically dynamic, adaptive
+  process.
+
+- It is currently unclear just "how much parameter control" might be useful. Is
+  it feasible to consider the whole search space of evolutionary algorithms and
+  allow the algorithm to select (and change) the representation of individuals
+  together with operators?
+
+- At the same time should the algorithm control probabilities of the operators
+  used together with population size and selection method?
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+## Wrapping Up!
+
+---
+
+layout: false
+
+# Summary to the Introduction to GP
+
+- **Genetic Programming** is awesome, you can apply it to a wide range of
+  problems with little knowledge of the problem.
+
+- But it also has its drawbacks, namely it requires a lot of **compute resources**
+
+- **No Free Lunch Theorem (NFLT)** is a framework used to encourage us to talk
+  about which class of problems do certain optimization algorithms do best in.
+  Woodward (2003) argues depending on the problem, there could be free lunches.
+
+- Using EAs can be problematic because of the **Parameter Setting Problem**, it
+  is unclear whether **Parameter Control** is worth doing and how much "control"
+  is adequate.
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+## Thank you!
+
+---
+
+## References
+
+---
+
+layout: false
+
+### References
+
+- Arabas, Z. Michalewicz, and J. Mulawka. Gavaps-a genetic algorithm
+with varying population size. In Evolutionary Computation, 1994. IEEE
+World Congress on Computational Intelligence., Proceedings of the First
+IEEE Conference on, pages 73–78 vol.1, 1994.
+
+- Jeff Clune, Sheni Goings, Bill Punch, and Eric Goodman. Investigations in
+meta-gas: Panaceas or pipe dreams? In Proceedings of the 2005 Workshops
+on Genetic and Evolutionary Computation, GECCO ’05, pages 235–241,
+New York, NY, USA, 2005. ACM.
+
+- Kenneth De Jong. Parameter setting in eas: a 30 year perspective. In
+FernandoG. Lobo, ClÃąudioF. Lima, and Zbigniew Michalewicz, editors,
+Parameter Setting in Evolutionary Algorithms, volume 54 of Studies in
+Computational Intelligence, pages 1–18. Springer Berlin Heidelberg, 2007.
+
+- Stefan Droste, Thomas Jansen, and Ingo Wegener. Optimization with ran-
+domized search heuristics – the (a)nfl theorem, realistic scenarios, and dif-
+ficult functions. THEORETICAL COMPUTER SCIENCE, 287:113–114,
+2002.
+
+---
+
+- A.E. Eiben, R. Hinterding, and Z. Michalewicz. Parameter control in evo-
+lutionary algorithms. Evolutionary Computation, IEEE Transactions on,
+3(2):124–141, 1999.
+
+- A.E. Eiben and S.K. Smit. Evolutionary algorithm parameters and methods
+to tune them. In Youssef Hamadi, Eric Monfroy, and FrÃľdÃľric Saubion,
+editors, Autonomous Search, pages 15–36. Springer Berlin Heidelberg, 2012.
+
+- David E. Goldberg. Genetic Algorithms in Search, Optimization and Ma-
+chine Learning. Addison-Wesley Longman Publishing Co., Inc., Boston,
+MA, USA, 1st edition, 1989.
+
+- Youssef Hamadi, Eric Monfroy, and FrÃľdÃľric Saubion. An introduction
+to autonomous search. In Youssef Hamadi, Eric Monfroy, and FrÃľdÃľric
+Saubion, editors, Autonomous Search, pages 1–11. Springer Berlin Heidel-
+berg, 2012.
+
+- Y.-C. Ho and D.L. Pepyne. Simple explanation of the no free lunch theorem
+14of optimization. In Decision and Control, 2001. Proceedings of the 40th
+IEEE Conference on, volume 5, pages 4409–4414 vol.5, 2001.
+
+---
+
+- J. H. Holland. Adaptation in Natural and Artificial Systems. The University
+of Michigan Press, 1975.
+
+- Christian Igel and Marc Toussaint. A no-free-lunch theorem for non-
+uniform distributions of target functions. Journal of Mathematical Mod-
+elling and Algorithms, 3(4):313–322, 2005.
+
+- John R Koza. Genetic Programming: vol. 1, On the programming of com-
+puters by means of natural selection, volume 1. MIT press, 1992.
+
+- Oded Maron and Andrew W. Moore. The racing algorithm: Model selection
+for lazy learners. Artificial Intelligence Review, 11:193–225, 1997.
+
+- Riccardo Poli, W William B Langdon, Nicholas F McPhee, and John R
+Koza. A field guide to genetic programming. Lulu. com, 2008.
+
+---
+
+- I. Rechenberg. Evolutionsstrategie 94, volume 1 of Werkstatt Bionik und
+Evolutionstechnik. Frommann-Holzboog, Stuttgart, 1994.
+
+- C. Schumacher, M. D. Vose, and L. D. Whitley. The no free lunch and
+problem description length. In Proceedings of the Genetic and Evolution-
+ary Computation Conference (GECCO-2001, pages 565–570. Morgan Kauf-
+mann, 2001.
+
+- M. Srinivas and L.M. Patnaik. Adaptive probabilities of crossover and mu-
+tation in genetic algorithms. Systems, Man and Cybernetics, IEEE Trans-
+actions on, 24(4):656–667, 1994.
+
+- MatthewJ. Streeter. Two broad classes of functions for which a no free lunch
+result does not hold. In Erick CantÃž-Paz, JamesA. Foster, Kalyanmoy
+Deb, LawrenceDavid Davis, Rajkumar Roy, Una-May OâĂŹReilly, Hans-
+Georg Beyer, Russell Standish, Graham Kendall, Stewart Wilson, Mark
+Harman, Joachim Wegener, Dipankar Dasgupta, MitchA. Potter, AlanC.
+Schultz, KathrynA. Dowsland, Natasha Jonoska, and Julian Miller, editors,
+Genetic and Evolutionary Computation âĂŤ GECCO 2003, volume 2724
+of Lecture Notes in Computer Science, pages 1418–1430. Springer Berlin
+Heidelberg, 2003.
+
+---
+
+- D.H. Wolpert and W.G. Macready. No free lunch theorems for optimization.
+Evolutionary Computation, IEEE Transactions on, 1(1):67–82, 1997.
+
+- D.H. Wolpert and W.G. Macready. Coevolutionary free lunches. Evolutionary
+Computation, IEEE Transactions on, 9(6):721–735, 2005.
+
+- J.R. Woodward. Ga or gp? that is not the question. In Evolutionary
+Computation, 2003. CEC ’03. The 2003 Congress on, volume 2, pages
+1056–1063 Vol.2, 2003.
+
+- B. Yuan and M. Gallagher. Combining Meta-EAs and Racing for Difficult
+EA Parameter Tuning Tasks. In F.G. Lobo, C.F. Lima, and Z. Michalewicz,
+editors, Parameter Setting in Evolutionary Algorithms, pages 121–142.
+Springer, 2007.
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+
+     <!-- MATHJAX -->
+     <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: { equationNumbers: { autoNumber: "AMS" }}
+        });
+     </script>
+     <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"> </script>
+  </body>
+</html>
