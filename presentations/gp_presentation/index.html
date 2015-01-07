@@ -75,7 +75,7 @@
 
       .middle-custom {
         width: 80%;
-        padding-top: 10%;
+        padding-top: 5%;
         margin-left: auto;
         margin-right: auto;
       }
@@ -519,144 +519,71 @@ class: center, middle, inverse
 
 layout: false
 
-.left-column[
-## GP Advantages
-### - No Prior Assumtions Required
-]
-
-.right-column[
-### No Prior Assumtions Required
-GP makes no assumptions about the search space so that it can in a non-biased
-way attempt to find the global optimal solution.
-]
-
----
-
-.left-column[
-## GP Advantages
-### - No Prior Assumtions Required
-### - Good for not well known problems
-]
-
-.right-column[
-### Good for not well known problems
-GP can be applied to problems where heuristic solutions are not available or
-generally lead to unsatisfactory results.
-
-As long as you can define what a good* solution looks like (i.e. able to define
-a fitness function), GP is a good candidate for a search algorithm.
-]
-
----
-
-.left-column[
-## GP Advantages
-### - No Prior Assumtions Required
-### - Good for not well known problems
-### - Inherently Parallel
-]
-
-.right-column[
-### Inherently Parallel
-The evaluation of individuals within a population can be conducted simultaneously,
-just like in nature.
-]
-
----
-
-.left-column[
-## GP Advantages
-### - No Prior Assumtions Required
-### - Good for not well known problems
-### - Inherently Parallel
-### - Domain Independent
-]
-
-.right-column[
-### Domain Independent
-GP can be applied to a wide range of problems, as long as one can encode the
-problem, one can use GP as the search algorithm.
+# GP Advantages
+.middle-custom[
+## - No Prior Assumtions Required
 ]
 
 
 ---
 
-.left-column[
-## GP Disadvantages
-### - Takes a lot of compute resources
-]
-
-.right-column[
-### Takes a lot of compute resources
-Due to the stochastic nature of the algorithm, much time is spent exploring the
-global search space of the problem.
-
-This makes GP or Evolutionary Algorithms not an ideal algorithm for problems
-that can be solved with known heuristics.
+# GP Advantages
+.middle-custom[
+## - No Prior Assumtions Required
+## - Good for not well known problems
 ]
 
 ---
 
-.left-column[
-## GP Disadvantages
-### - Takes a lot of compute resources
-### - Have to define a good fitness function
-]
-
-.right-column[
-### Have to define a good fitness function
-A good fitness function is vital to the success and failure of the convergence to
-a sound solution. Without a good fitness function it will also take longer to
-converge.
+# GP Advantages
+.middle-custom[
+## - No Prior Assumtions Required
+## - Good for not well known problems
+## - Inherently Parallel
 ]
 
 ---
 
-.left-column[
-## GP Disadvantages
-### - Takes a lot of compute resources
-### - Have to define a good fitness function
-### - Difficult to configure parameters
+# GP Advantages
+.middle-custom[
+## - No Prior Assumtions Required
+## - Good for not well known problems
+## - Inherently Parallel
+## - Domain Independent
 ]
-
-.right-column[
-### Difficult to configure parameters
-There are currently no agreed method in configuring the paramters of a GP or
-any EA for that matter. Many uses of GP or EA involve manually tuning the
-parameters on a case by case basis. However that in itself is also a very big
-problem, consider:
-
-```remark
-Let Pc and Pm be the crossover and mutation
-probability, if we want to test the range of
-
-    [0.1, 0.2 ... 1.0]
-
-that would be 10 * 10 combinations for just
-Pc and Pm. What if we have different crossover
-and mutation methods? Such as single point,
-double point crossover, and various other
-mutation methods?
-```
-]
-
 
 ---
 
-.left-column[
-## GP Disadvantages
-### - Takes a lot of compute resources
-### - Have to define a good fitness function
-### - Difficult to configure parameters
-### - Not suitable if Evaluation takes a long time
+# GP Disadvantages
+.middle-custom[
+## - Takes a lot of compute resources
 ]
 
-.right-column[
-### Not suitable if Evaluation takes a long time
-If the Evaluation time for a single candidate solution takes a long time,
-natually GP or EAs will not be able to find a solution in a reasonable amount
-of time, it is therefore vital the evaluation time is as small as possible.
+---
 
+# GP Disadvantages
+.middle-custom[
+## - Takes a lot of compute resources
+## - Have to define a good fitness function
+]
+
+---
+
+# GP Disadvantages
+.middle-custom[
+## - Takes a lot of compute resources
+## - Have to define a good fitness function
+## - Difficult to configure parameters
+]
+
+---
+
+# GP Disadvantages
+.middle-custom[
+## - Takes a lot of compute resources
+## - Have to define a good fitness function
+## - Difficult to configure parameters
+## - Bloat
 ]
 
 ---
@@ -934,6 +861,8 @@ ficult functions. THEORETICAL COMPUTER SCIENCE, 287:113–114,
 
 ---
 
+### References - 2
+
 - A.E. Eiben, R. Hinterding, and Z. Michalewicz. Parameter control in evo-
 lutionary algorithms. Evolutionary Computation, IEEE Transactions on,
 3(2):124–141, 1999.
@@ -957,6 +886,8 @@ IEEE Conference on, volume 5, pages 4409–4414 vol.5, 2001.
 
 ---
 
+### References - 3
+
 - J. H. Holland. Adaptation in Natural and Artificial Systems. The University
 of Michigan Press, 1975.
 
@@ -975,6 +906,8 @@ Koza. A field guide to genetic programming. Lulu. com, 2008.
 
 ---
 
+### References - 4
+
 - I. Rechenberg. Evolutionsstrategie 94, volume 1 of Werkstatt Bionik und
 Evolutionstechnik. Frommann-Holzboog, Stuttgart, 1994.
 
@@ -987,17 +920,19 @@ mann, 2001.
 tation in genetic algorithms. Systems, Man and Cybernetics, IEEE Trans-
 actions on, 24(4):656–667, 1994.
 
-- MatthewJ. Streeter. Two broad classes of functions for which a no free lunch
-result does not hold. In Erick CantÃž-Paz, JamesA. Foster, Kalyanmoy
-Deb, LawrenceDavid Davis, Rajkumar Roy, Una-May OâĂŹReilly, Hans-
+- Matthew J. Streeter. Two broad classes of functions for which a no free lunch
+result does not hold. In Erick Cant-Paz, JamesA. Foster, Kalyanmoy
+Deb, LawrenceDavid Davis, Rajkumar Roy, Una-May O'Reilly, Hans-
 Georg Beyer, Russell Standish, Graham Kendall, Stewart Wilson, Mark
 Harman, Joachim Wegener, Dipankar Dasgupta, MitchA. Potter, AlanC.
 Schultz, KathrynA. Dowsland, Natasha Jonoska, and Julian Miller, editors,
-Genetic and Evolutionary Computation âĂŤ GECCO 2003, volume 2724
+Genetic and Evolutionary Computation GECCO 2003, volume 2724
 of Lecture Notes in Computer Science, pages 1418–1430. Springer Berlin
 Heidelberg, 2003.
 
 ---
+
+### References - 5
 
 - D.H. Wolpert and W.G. Macready. No free lunch theorems for optimization.
 Evolutionary Computation, IEEE Transactions on, 1(1):67–82, 1997.
