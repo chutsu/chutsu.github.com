@@ -25,7 +25,268 @@
     <!-- </script> -->
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/chutsu.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            text-align: justify;
+            font-family: Verdana, Arial;
+        }
+
+        nav {
+            display: block;
+            overflow: hidden;
+            border-bottom: 1px dotted #555;
+        }
+
+        nav h1 {
+            float: left;
+            width: 20%;
+            margin-right: 60px;
+            margin-top: 0;
+            font-size: 0.9em;
+        }
+
+        nav h1 a:link, nav h1 a:visited {
+            color: #333;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: inline;
+            float right;
+        }
+
+        nav li {
+            float: right;
+
+            margin-left: 35px;
+            margin-right: 0;
+            margin-top: 2px;
+
+            font-size: 14px;
+        }
+
+        nav li a:hover {
+            color: #777;
+        }
+
+        ul {
+            list-style-type: none;
+            font-size: 12px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        ul#showreel {
+            width: 500px;
+
+            margin-left: auto;
+            margin-right: auto;
+
+            padding: 0;
+        }
+
+        ul#showreel li.section {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        ul#showreel_element {
+            overflow: auto;
+
+            width: 450px;
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            margin-bottom: 20px;
+
+            padding: 0;
+
+            /* border: solid 1px black; */
+        }
+
+        ul#showreel_element li {
+            margin: 0;
+            padding: 0;
+        }
+
+        li.description pre {
+            display: inline;
+
+            margin: 0;
+
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 0;
+            padding-bottom: 0;
+
+            color: #FFF;
+            font-family: monospace, Courier, "Courier New";
+
+            background-color: #666;
+            border-radius: 5px;
+        }
+
+        li.description p {
+            margin-top: 0;
+        }
+
+        span.date {
+            display: inline-block;
+            width: 100px;
+            margin-top: 2px;
+            font-family: Verdana, Monospace;
+            color: #777;
+        }
+
+        span.title {
+            width: 70%;
+        }
+
+        span.title a {
+            font-size: 13px;
+        }
+
+        p {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            font-size: 12px;
+            color: #222;
+        }
+
+        p.center_contact {
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        pre {
+            width: 95%;
+
+            margin-left: auto;
+            margin-right: auto;
+
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            font-size: 10px;
+        }
+
+        blockquote {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            font-style: italic;
+        }
+
+        span.red {
+            color: red;
+        }
+
+        span.green {
+            color: green;
+        }
+
+        span.blue {
+            color: blue;
+        }
+
+
+        a:link, a:visited {
+            color: #0e73d6;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .small {
+            font-size: 10px;
+        }
+
+        .quote {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        section {
+            clear: both;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section#home section#intro {
+            width: 400px;
+            font-size: 20px;
+        }
+
+        section#content section {
+            width: 650px;
+        }
+
+        section#content section ul li:before {
+            /* a hack to have dashes as a list style */
+            content: "-";
+            position: relative;
+            left: -5px;
+        }
+
+        section#content section#blog {
+            width: 100%;
+        }
+
+        img {
+            display: block;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 2px;
+        }
+
+        footer {
+            clear: both;
+            font-size: 10px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            padding-top: 10px;
+            border-top: 1px dotted #555;
+        }
+    </style>
 
 </head>
 <body>
@@ -40,32 +301,13 @@
 
     <section id="home">
         <section id="intro">
-            <p>I am a <span class="red"><b>Phd student</b></span>, <b>Machine
-            Learner</b>, <b>Avid user of Vim and Linux</b> and <b>Robotics
-            Hobbyist</b>.</p>
-
-            <p>I specialize in Evolutionary Algorithms, specifically Genetic Programming
-            and Genetic Algorithms. I am currently using them to solve a wide range of
-            problems from Symbolic Regression (Curve fitting but more powerful) to
-            classification problems.</p>
-
-            <h1>What is Symbolic Regression?</h1>
-            <p>Symbolic Regression (SR) is a type of automatic regression
-            analysis that finds the best model given a dataset, both in terms
-            of accuracy and simplicity.</p>
-
-            <p>The difference between SR and conventional regression
-            you may of heard before, is that SR does not assume anything of the
-            data, where as conventional regression seeks to optimize parameters
-            for a pre-specified model, usually defined by a statistian.</p>
-
+            <p>I a Phd dropout from St Andrews University, <b>Machine
+                Learner</b>, avid user of <b>Vim, Linux</b> and am a
+            <b>Robotics Hobbyist</b>.</p>
         </section>
 
-
         <ul id="showreel">
-            <li class="section">
-                Current Projects:
-            </li>
+            <h4>Projects:</h4>
 
             <ul id="showreel_element">
                 <li class="description">
@@ -85,10 +327,6 @@
                 </li>
             </ul>
 
-            <li class="section">
-                Other side projects:
-            </li>
-
             <ul id="showreel_element">
                 <li class="description">
                     <pre><code>ditto</code></pre> is a documentation system
@@ -98,6 +336,7 @@
                     and CSS.
                 </li>
             </ul>
+
             <ul id="showreel_element">
                 <li class="description">
                     <pre><code>munit</code></pre> is a minimalistic unit
@@ -107,6 +346,7 @@
                     but John Brewer's minunit does.
                 </li>
             </ul>
+
             <ul id="showreel_element">
                 <li class="description">
                     <pre><code>dstruct</code></pre> is a data structure
@@ -118,8 +358,6 @@
     </section>
 
     <section id="content">
-
-
     </section>
 
     <!-- <!&#45;&#45; HIGHLIGHT JS &#45;&#45;> -->
