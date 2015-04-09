@@ -22,7 +22,7 @@ a robot that could co-ordinate it-self to **push-off** with one of their legs,
 ![Running Sequence](./images/running_sequence.png)
 
 
-## But why the foot?  
+## But why the foot?
 Now the reason why I emphasised the foot, is because I believe the foot holds
 the key to the whole running motion. When we run we know what **feels right**
 and what **doesn't**, not because of the motion sensors in our ears, but
@@ -31,7 +31,7 @@ reiterate the problem of push-off and landing, the foot in my opinion is one of
 the most important body part that dictates the success of this phase, a flat
 footed robot (without sensors) is not going to help with this. And here is why:
 
-### Brain's Perception of Our Body 
+### Brain's Perception of Our Body
 There is a reason why our brains perceive our hands and foot the most. That is
 because there is more sensory cortex devoted to these areas. This helps you
 make finer movements and have a better sense of touch. So the distances on your
@@ -42,9 +42,9 @@ because they are more sensitive.
 
 This above person is called a Homunculus. It is an interesting word. It means
 “little man”.  A Canadian doctor by the name of Wilder Penfield while studying
-patients with epilepsy created maps of the brain. 
+patients with epilepsy created maps of the brain.
 
-### Our Feet are Amazing!  
+### Our Feet are Amazing!
 Look at your feet, imagine how difficult it would be to run if you wore wooden
 slippers, compared to running on bare feet. With a single foot, there are
 exactly **26 bones**, **33 joints** (20 of which are actively articulated), and
@@ -53,7 +53,7 @@ simply done this by **accident**, there is a reason behind the complex
 structure of our foot.
 
 
-# Summary 
+# Summary
 In summary, through evolution we have been able to do many amazing complex
 things without much thought. Translating our lower motor functions to robots is
 one of the most difficult challenges in robotics, as Moravec (1998: 15-16)

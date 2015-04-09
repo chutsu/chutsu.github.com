@@ -5,7 +5,7 @@
     <title>chutsu</title>
 
     <!-- JQUERY -->
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 
     <!-- GOOGLE ANALYTICS -->
     <script>
@@ -18,7 +18,7 @@
     </script>
 
     <!-- CUSTOM -->
-    <script src="js/marked.js"></script>
+    <!-- <script src="js/marked.js"></script> -->
     <!-- <script src="js/chutsu.js"></script> -->
     <!-- <script> -->
     <!--     chutsu.run(); -->
@@ -32,340 +32,158 @@
         }
 
         body {
-            width: 550px;
+            width: 600px;
+
             margin-left: auto;
             margin-right: auto;
             margin-top: 50px;
+
             text-align: justify;
             font-family: Verdana, Arial;
+            color: #222;
         }
 
         nav {
-            display: block;
-            overflow: hidden;
-            border-bottom: 1px dotted #555;
-        }
+            width: 100%;
+            font-size: 14px;
 
-        nav h1 {
-            float: left;
-            width: 20%;
-            margin-right: 60px;
-            margin-top: 0;
-            font-size: 0.9em;
-        }
-
-        nav h1 a:link, nav h1 a:visited {
-            color: #333;
-            text-decoration: none;
+            margin-bottom: 7%;
         }
 
         nav ul {
-            display: inline;
-            float right;
+            list-style-type: none;
+            display: block;
+            overflow: hidden;
         }
 
         nav li {
             float: right;
 
-            margin-left: 35px;
-            margin-right: 0;
-            margin-top: 2px;
+            margin-left: 10px;
 
-            font-size: 14px;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+
+            border: 1px solid #555;
+            border-radius: 3px;
         }
 
-        nav li a:hover {
-            color: #777;
+        nav li.website_logo {
+            float: left;
+            margin-left: 0px;
         }
 
-        ul {
+        nav li:hover {
+            color: #EEE;
+            background-color: #444;
+            cursor: pointer;
+        }
+
+        ul#project {
+            display: block;
+            overflow: hidden;
+            width: 90%;
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2%;
+            margin-bottom: 7%;
+
+            font-size: 0.8em;
+        }
+
+        ul#project li {
             list-style-type: none;
+        }
+
+        ul#project li.logo {
             font-size: 12px;
-            padding-left: 20px;
         }
 
-        li {
-            margin-bottom: 7px;
-        }
-
-        ul#showreel {
-            width: 500px;
-
-            margin-left: auto;
-            margin-right: auto;
-
-            padding: 0;
-        }
-
-        ul#showreel li.section {
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-
-        ul#showreel_element {
-            overflow: auto;
-
-            width: 450px;
-
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 10px;
-            margin-bottom: 20px;
-
-            padding: 0;
-
-            /* border: solid 1px black; */
-        }
-
-        ul#showreel_element li {
-            margin: 0;
-            padding: 0;
-        }
-
-        li.description pre {
-            display: inline;
-
-            margin: 0;
-
-            padding-left: 5px;
-            padding-right: 5px;
-            padding-top: 0;
-            padding-bottom: 0;
-
-            color: #FFF;
-            font-family: monospace, Courier, "Courier New";
-
-            background-color: #666;
-            border-radius: 5px;
-        }
-
-        li.description p {
-            margin-top: 0;
-        }
-
-        span.date {
-            display: inline-block;
-            width: 100px;
-            margin-top: 2px;
-            font-family: Verdana, Monospace;
-            color: #777;
-        }
-
-        span.title {
-            width: 70%;
-        }
-
-        span.title a {
-            font-size: 13px;
-        }
-
-        p {
-            margin-top: 25px;
-            margin-bottom: 25px;
-            font-size: 12px;
-            color: #222;
-        }
-
-        p.center_contact {
-            text-align: center;
-        }
-
-        h1, h2, h3 {
-            margin-top: 30px;
-            margin-bottom: 10px;
-            color: #222;
-        }
-
-        h1 {
-            font-size: 20px;
-        }
-
-        h2 {
-            font-size: 18px;
-        }
-
-        h3 {
-            font-size: 16px;
-        }
-
-        pre {
-            width: 95%;
-
-            margin-left: auto;
-            margin-right: auto;
-
-            padding-top: 10px;
-            padding-bottom: 10px;
-
-            font-size: 10px;
-        }
-
-        blockquote {
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-            font-style: italic;
-        }
-
-        span.red {
-            color: red;
-        }
-
-        span.green {
-            color: green;
-        }
-
-        span.blue {
-            color: blue;
-        }
-
-
-        a:link, a:visited {
-            color: #0e73d6;
+        ul#project li.logo a {
             font-weight: bold;
             text-decoration: none;
+            color: #6A99F0;
+            font-size: 1.2em;
         }
 
-        .small {
-            font-size: 10px;
-        }
-
-        .quote {
-            width: 70%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            font-size: 12px;
-            font-style: italic;
+        ul#project li.description {
+            /* float: right; */
+            /* width: 80%; */
         }
 
         section {
-            clear: both;
-            margin-top: 20px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-top: 5%;
         }
 
-        section#home section#intro {
-            width: 400px;
-            font-size: 20px;
+        section#projects h4 {
+            margin-bottom: 5%;
         }
 
-        section#content section {
-            width: 650px;
-        }
 
-        section#content section ul li:before {
-            /* a hack to have dashes as a list style */
-            content: "-";
-            position: relative;
-            left: -5px;
-        }
-
-        section#content section#blog {
-            width: 100%;
-        }
-
-        img {
-            display: block;
-            max-width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 50px;
-            margin-bottom: 50px;
-            padding: 2px;
-        }
-
-        footer {
-            clear: both;
-            font-size: 10px;
-            text-align: center;
-            margin-top: 50px;
-            margin-bottom: 30px;
-            padding-top: 10px;
-            border-top: 1px dotted #555;
-        }
     </style>
 
 </head>
 <body>
     <nav>
-        <h1><a href="#home">chutsu</a></h1>
         <ul>
-            <li>
-                <a href="#blog">blog</a>
-            </li>
+            <li class="website_logo" onclick="window.location.href='index.html'">chutsu</li>
+            <li onclick="window.location.href='about.html'">About</li>
+            <li onclick="window.location.href='projects.html'">Projects</li>
         </ul>
     </nav>
 
-    <section id="home">
-        <section id="intro">
-            <p>I a Phd dropout from St Andrews University, <b>Machine
-                Learner</b>, avid user of <b>Vim, Linux</b> and am a
-            <b>Robotics Hobbyist</b>.</p>
-        </section>
+    <section id="projects">
+        <h4>Projects:</h4>
+        <ul id="project">
+            <li class="logo">
+                <a href="http://github.com/chutsu/evolve">evolve</a>
+            </li>
+            <li class="description">
+                is an Evolutionary algorithms library written in C.  The
+                algorithm goal is to provide researchers or developers with a
+                platform for research or develop evolutionary algorithms.
+            </li>
+        </ul>
+        <ul id="project">
+            <li class="logo">
+                <a href="http://github.com/chutsu/cog">cog</a>
+            </li>
+            <li class="description">
+                is a common library in C (similar to Boost for C++, but for C).
+                It is heavily based on the code Zed Shaw produced in Learn C
+                the Hard Way.
+            </li>
+        </ul>
+        <ul id="project">
+            <li class="logo">
+                <a href="http://github.com/chutsu/playground">playground</a>
+            </li>
+            <li class="description">
+                similar to <code>evolve</code>, playground is an Evolutionary
+                algorithms library but written in Python. This project started
+                when I was doing my PhD up to the point where performance was
+                an issue.
+            </li>
+        </ul>
 
-        <ul id="showreel">
-            <h4>Projects:</h4>
-
-            <ul id="showreel_element">
-                <li class="description">
-                    <pre><code>evolve</code></pre> is an Evolutionary
-                    algorithms library written in C.  The algorithm goal is to
-                    provide researchers or developers with a platform for
-                    research or develop evolutionary algorithms.
-                </li>
-            </ul>
-            <ul id="showreel_element">
-                <li class="description">
-                    <pre><code>playground</code></pre> similar to
-                    <pre><code>evolve</code></pre> is an Evolutionary
-                    algorithms library but written in Python. This project
-                    started when I was doing my PhD up to the point where
-                    performance was an issue.
-                </li>
-            </ul>
-
-            <ul id="showreel_element">
-                <li class="description">
-                    <pre><code>ditto</code></pre> is a documentation system
-                    that allows developers to write their documentation in
-                    markdown plain text file. The System does not require a
-                    build process, it mainly consists only of HTML5, Javascript
-                    and CSS.
-                </li>
-            </ul>
-
-            <ul id="showreel_element">
-                <li class="description">
-                    <pre><code>munit</code></pre> is a minimalistic unit
-                    testing framework for C, less than 100 lines. The work is
-                    heavily based on John Brewer's minunit. The only real
-                    difference is that munit does not block if a tests fails,
-                    but John Brewer's minunit does.
-                </li>
-            </ul>
-
-            <ul id="showreel_element">
-                <li class="description">
-                    <pre><code>dstruct</code></pre> is a data structure
-                    suite implemented in C. It is heavily based on the code Zed
-                    Shaw produced in Learn C the Hard Way.
-                </li>
-            </ul>
+        <ul id="project">
+            <li class="logo">
+                <a href="http://github.com/chutsu/ditto">ditto</a>
+            </li>
+            <li class="description">
+                is a documentation system that allows developers to write their
+                documentation in markdown plain text file. The System does not
+                require a build process, it mainly consists only of HTML5,
+                Javascript and CSS.
+            </li>
         </ul>
     </section>
 
-    <section id="content">
-    </section>
 
-    <!-- <!&#45;&#45; HIGHLIGHT JS &#45;&#45;> -->
-    <!-- <link href="http://jmblog.github.com/color&#45;themes&#45;for&#45;highlightjs/css/themes/tomorrow.css" rel="stylesheet"> -->
-    <!-- <script src="http://yandex.st/highlightjs/7.5/highlight.min.js"></script> -->
-    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
-
-    <!-- <!&#45;&#45; MATHJAX &#45;&#45;> -->
+    <!-- MATHJAX -->
     <!-- <script type="text/x&#45;mathjax&#45;config"> -->
     <!--     MathJax.Hub.Config({ -->
     <!--         tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, -->
@@ -374,8 +192,19 @@
     <!-- </script> -->
     <!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX&#45;AMS&#45;MML_HTMLorMML" type="text/javascript"> </script> -->
 
-    <footer>
-        Designed By Chris Choi
-    </footer>
+    <!-- <footer> -->
+    <!--     Designed By Chris Choi -->
+    <!-- </footer> -->
+
+    <script>
+      function home_page() {
+        ;
+      }
+
+    </script>
+
+
+
+<!-- COG - tiny pixy -->
 </body>
 </html>
