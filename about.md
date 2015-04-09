@@ -3,7 +3,6 @@ I am a Phd student at Universtiy of St Andrews (Scotland), interested in:
 
 - Evolutionary Algorithms: Genetic Algorithms/ Programming
 - Evolutionary Robotics
-- Knowledge Discovery/ Data Mining
 
 If you wish to contact me you can reach me at:
 
