@@ -43,8 +43,7 @@
       }
 
       img {
-        max-width: 100%;
-        max-height: 70%;
+        display: block;
         margin-top: 5%;
       }
 
@@ -54,6 +53,23 @@
 
       .footnote {
 
+      }
+
+      .title_page {
+        padding-top: 25%;
+        text-align: center;
+      }
+
+      .center {
+        display: block;
+        height: 1024px;
+      }
+
+      .center img {
+        max-width: 100%;
+        max-height: 40%;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
@@ -71,6 +87,20 @@
 
       .pull-right ~ p {
           clear: both;
+      }
+
+      .middle-middle-custom {
+        width: 80%;
+        margin-top: 15%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.5em;
+        text-align: justify;
+      }
+
+      .middle-middle-custom img {
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .middle-custom {
@@ -162,6 +192,10 @@
           padding-top: 1em;
       }
 
+      .right-column img {
+          max-width: 90%;
+      }
+
     </style>
   </head>
   <body>
@@ -169,9 +203,9 @@
 
 name: inverse
 layout: true
-class: center, middle, inverse
+class: title_page, inverse
 ---
-# Introduction to Genetic Programming
+# Introduction to Evolutionary Algorithms
 [chris choi]
 
 ---
@@ -179,11 +213,8 @@ class: center, middle, inverse
 layout: false
 
 # Search Methods
-There are many types of search, Genetic Programming (GP) falls into the category of:
-- **Guided Random Search**.
-- as a class of **Evolutionary Algorithms** (EA).
 
-.center[
+.middle-middle-custom[
     ![search methods classification](./images/search_methods_classification.jpg)
 ]
 
@@ -191,15 +222,11 @@ There are many types of search, Genetic Programming (GP) falls into the category
 
 # Evolutionary Algorithms
 
-- Uses mechanisms inspired by _Biological Evolution_, such as:
-    - Natural Selection (Survival of the Fittest)
-    - Chromosomal Crossover
-    - Genetic Mutation
+.middle-middle-custom[
+- Evolutionary Algorithms are known to be **Meta-Heuristic Algorithms**
 
-- EAs are also classed as **Meta-Heuristic Algorithms**, where it is generally applied to
-  **"I know it when I see it problems"**
-
-- Uses a population of candidate solutions to sample the search space
+- **"I don't know what the answer looks like, but I will know it when I see it"**
+]
 
 ---
 
@@ -211,7 +238,17 @@ There are many types of search, Genetic Programming (GP) falls into the category
 
 ---
 
-name: how
+name: inverse
+layout: true
+class: title_page, inverse
+
+---
+
+# How does it work?
+
+---
+
+layout: false
 
 .left-column[
 ## Evolutionary Algorithm Requirements
@@ -229,7 +266,7 @@ For example:
 - Robotic Control
 
 For problems that are self-play such as *GO* or *Chess*, input data is **not
-needed**.
+needed**, because it is a unsupervised learning.
 ]
 
 ---
@@ -248,9 +285,7 @@ hand.
 For example, in curve fitting the chromosome is the mathematical equation,
 represented in a Tree data structure.
 
-.center[
-![Tree](./images/gp_tree.png)
-]
+.center[![Tree](./images/gp_tree.png)]
 ]
 
 ---
@@ -264,20 +299,14 @@ represented in a Tree data structure.
 
 .right-column[
 ## Fitness Function
-A function that is capable of comparing individuals.
+A function that is capable of comparing individuals. It is also known as the
 
-For example in the `MaxOne` problem the goal is to obtain a bit-string of all
-1s. The fitness function will favour a solution that has more 1s over those
-that has fewer.
+- **Evaluation Function**
+- **Cost Function**
+- etc...
 
-
-```remark
-    Solution 1: 110100
-    Solution 2: 110101
-
-    The MaxOne fitness function should prefer
-    solution 2, because it has more 1s.
-```
+For example in **Regression** a possible fitness function could be **Sum Squared
+Errors**.
 ]
 
 ---
@@ -307,93 +336,13 @@ Operators.
 
 ---
 
-# Genetic Algorithms (GA)
-
-- Invented by _John Holland_ 1970s
-- Encodes the problem as a _Fixed-Length Vector of Boolean Bit-String_
-
-
-### Pseudocode
-```remark
-    P = InitializePopulation()
-
-    while (Termination(P) is not True):
-        Evaluate(P)
-
-        Parents = Select(P)
-
-        NextGen = []
-        for i in Parents:
-            Children = Crossover(Parents[i])
-            NextGen.append(Mutate(Children[0]))
-            NextGen.append(Mutate(Children[1]))
-
-        P = NextGen
-```
-
----
-
-# Evolutionary Strategy (ES)
-
-- Invented by _Ingo Rechenberg_ in 1970s around, same time as GAs
-- Encodes the problems as a _Fixed-Length Vector of Floating-Points_
-
-
-### Pseudocode
-```remark
-    P = InitializePopulation()
-
-    while (Termination(P) is not True):
-        Evaluate(P)
-        Parent = Best(P)
-
-        NextGen = [Parent]
-        for i in range(Lamda):
-            Child = Mutate(Copy(Parent))
-            NextGen.append(child)
-
-        P = NextGen
-```
-
----
-
-# Difference between ES and GA
-
-Although first on first glance both ES and GA look very similar to each other,
-but on closer inspection they have subtle differences, namely:
-
-- **GA** uses an **integer coding scheme**, whereas **ES** uses a __real valued__
-  coding scheme
-
-- **ES** generally does not use a Selection Operator, it selects only the best
-
-- **ES** generally does not use a Crossover Operator
-
-- In practice both **ES** and **GA** are both very similar to each other
-
----
-
-# Genetic Programming (GP)
-
-- Invented by _Nichael Cramer_ in 1985.
-
-- Traditionally Uses a **Tree**, but can also use **Linear** or **Graph** as a data structure
-
-- Uses both **ES** or **GA** style loops
-
-- Uses similar genetic operators to **ES** and **GA**
-
-- The difference is GP outputs a ___program___ that performs a user-defined task
-
----
-
 name: inverse
 layout: true
-class: center, middle, inverse
+class: title_page, inverse
 
 ---
 
-## But what can GP do?
+# But what can GP do?
 
 ---
 
@@ -462,11 +411,11 @@ Demo of [playground](http://github.com/chutsu/playground) solving toy problems
 ]
 
 .right-column[
-### Classification
-Using a Tree data structure again, GP can evolve a decision tree to solve
-classification problems.
+  ### Classification
+  Using a Tree data structure again, GP can evolve a decision tree to solve
+  classification problems.
 
-![gp classification](./images/make_circles.png)
+  ![gp classification](./images/make_circles.png)
 ]
 
 ---
@@ -487,18 +436,16 @@ classification problems.
 ## Example Applications of GP
 ### - Symbolic Regression
 ### - Classification
-### - Robotic Control
+### - Neuro Evolution
 ]
 
 .right-column[
-### Robotic Control
-Resarchers at [Cornell's Creative Machines Lab](http://creativemachines.cornell.edu/evolved-quadruped-gaits)
-has used Evolutionary Algorithms to evolve gaits for physical robots.
+### Neuro Evolution
 
 <iframe
     width="500
     " height="300"
-    src="//www.youtube.com/embed/N-2XVjwbTPY"
+    src="//www.youtube.com/embed/qv6UVOQ0F44"
     frameborder="0"
     allowfullscreen
 >
@@ -509,80 +456,31 @@ has used Evolutionary Algorithms to evolve gaits for physical robots.
 
 name: inverse
 layout: true
-class: center, middle, inverse
+class: title_page, inverse
 
 ---
 
-## Pros and Cons of GP
+# Pros and Cons
 
 ---
 
 layout: false
 
-# GP Advantages
+# Advantages
 .middle-custom[
 ## - No Prior Assumtions Required
-]
-
-
----
-
-# GP Advantages
-.middle-custom[
-## - No Prior Assumtions Required
-## - Good for not well known problems
-]
-
----
-
-# GP Advantages
-.middle-custom[
-## - No Prior Assumtions Required
-## - Good for not well known problems
-## - Inherently Parallel
-]
-
----
-
-# GP Advantages
-.middle-custom[
-## - No Prior Assumtions Required
-## - Good for not well known problems
+## - Good for not well understood problems
 ## - Inherently Parallel
 ## - Domain Independent
 ]
 
 ---
 
-# GP Disadvantages
-.middle-custom[
-## - Takes a lot of compute resources
-]
-
----
-
-# GP Disadvantages
+# Disadvantages
 .middle-custom[
 ## - Takes a lot of compute resources
 ## - Have to define a good fitness function
-]
-
----
-
-# GP Disadvantages
-.middle-custom[
-## - Takes a lot of compute resources
-## - Have to define a good fitness function
-## - Difficult to configure parameters
-]
-
----
-
-# GP Disadvantages
-.middle-custom[
-## - Takes a lot of compute resources
-## - Have to define a good fitness function
-## - Difficult to configure parameters
+## - Optimal parameters can be difficult
 ## - Bloat
 ]
 
@@ -590,248 +488,15 @@ layout: false
 
 name: inverse
 layout: true
-class: center, middle, inverse
+class: title_page, inverse
 
 ---
 
-## No Free Lunch Theorem (NFLT)
+# Questions?
 
 ---
 
-layout: false
-
-# No Free Lunch Theorem (NFLT)
-The No Free Lunch Theorem (NFLT) developed by Wolpert and Macready (1997)
-informally states:
-
-```remark
-If prior assumptions about the optimazation problem cannot be made and
-incorporated into the optimization algorithm, it cannot be expected to perform
-better than other algorithms.
-```
-
-Or
-
-```remark
-In black box scenearios if algorithm x performs betterhn than algorithm y in
-certain types of problem, it is likely that the reverse is true for other cases.
-```
-
----
-
-# Free Lunches
-
-.middle-custom[
-Woodward (2003) however has reasoned that Free Lunches do exists, but the
-question is no longer whether the black box in question is using either GA or
-GP to solve optimization problems, but rahter how the candidate solutions are
-represented and interpreted.
-]
-
----
-
-# GA - One to One Mapping
-_Generally_ .red[*] GA problems have a __one-to-one__ mapping between genotype
-and phenotype.  i.e. Problem encoding to the cost function.
-
-.center[
-    ![GA One to One Mapping](./images/ga_one_to_one.jpg)
-]
-
-.footnote[.red[*] Not always the case as GAs can also have a Many-to-One mapping]
----
-
-# GP - Many to One Mapping
-GP problems on the other hand, the problem encoding usually have a
-**many-to-one** mapping between problem encoding and functions.
-
-.center[
-![GP Many to One Mapping](./images/gp_many_to_one.jpg)
-]
-
-**NOTE**: This is not to say that GA can't exhibit the same mapping, but the
-general case is this. GA can also have problem encoding that exhibit many-to-one
-mappings.
-
----
-
-# Free Lunch Example
-
-Woodward (2003) has shown that if we have GP algorithm $P$ and $Q$, let $T_p$
-and $T_q$ be time-ordered sets of trees visted by algorithm $P$ and $Q$:
-
-\begin{equation}
-    T_p = \\{ +ba, a, b, +aa, +bb, +ab \\}
-\end{equation}
-
-\begin{equation}
-    T_q = \\{ +ab, +ba, a, b, +aa, +bb \\}
-\end{equation}
-
-If $+ab$ is the function we need to solve the problem, then $P$ and $Q$ will
-find the solution at their first visit. However for any other function, $P$
-will always outperform $Q$ thereby invalidating NFLT.
-
----
-
-# Why does NFLT matter?
-
-.middle-custom[
-It matters because with NFLT we can begin to talk theoretically whether there
-are __Free Lunches__.
-
-It is not meant to be seen as a limiting factor, on the contrary it should
-drive us to define classes of problems being solved and algorithms being
-developed or used more carefully.
-]
-
----
-
-name: inverse
-layout: true
-class: center, middle, inverse
-
----
-
-## The Parameter Setting Problem in Evolutionary Algorithms
-### [Or, difficulties in using EAs]
-
-
----
-
-layout: false
-
-# Parameter Setting Problem
-
-.middle-custom[
-As mentioned earlier, there are alot of parameters to configure in an
-Evolutioanry Algorithm, such as:
-
-- Selection
-- Crossover
-- Mutation
-
-method and its parameters
-]
-
-
----
-
-# Parameter Setting Types
-
-There are two general types of Parameter setting, they are:
-
-- **Parameter Tuning** (PT)
-- **Parameter Control** (PC)
-
-Parameter Setting Taxonomy:
-.center[
-![Parameter Setting Types](./images/param_setting_taxonomy.png)
-]
-
----
-
-# Scenarios Where EAs Are Used
-
-.middle-custom[
-There are generally two types of problem scenarios where EAs are used:
-
-- **One-off problems**: where the problem is solved only once, Where empahsis
-  is on the quality of the solution, over computational time.
-
-- **Repetitive problems**: are scenarios where many different instances of
-  the same problem are solved multiple times.
-]
-
----
-
-# Parameter Tuning
-
-- **Simple Parameter Sweep**: attepts all possible parameters the EA can run
-with. However it also provides opportunities for combinatorial explosions of
-parameter value combinations, making this approach impractical.
-
-- **Nested EA**: where the problem sovling EA is paired with another meta-EA
-that evolves the parameters.
-
-- **Racing scheme**: Maron et al (1997) used racing algorithm to perform basic
-ranking and selection to select parameters.
-
-- **Racing and Meta-EAs**: Yuan and Gallagher (2007) combined both racing and
-Meta-EAs to reduce number of parameter vectors and number of tests per parameter
-vector needed to find the optimal parameter.
-
----
-
-# Parameter Control
-
-- **Adaptive Population Size**: is a technique first introduced by Arabas et al
-(1994), it minimizes the algorithmic component that requires the most compute
-resource, which is the evaluation of the population.
-
-- **Adaptive Probabilities**: another area worth optimizing are the crossover
-and mutation probabilities $p_c$ and $p_m$. Introduced by Srinivas and Patnaik
-(1994).
-
-
----
-
-# Parameter Setting Conclusion
-
-- Eiben et al (1999) has shown that static parameters seems to be
-  inappropriate, as any run of an EA is an intrinsically dynamic, adaptive
-  process.
-
-- It is currently unclear just "how much parameter control" might be useful. Is
-  it feasible to consider the whole search space of evolutionary algorithms and
-  allow the algorithm to select (and change) the representation of individuals
-  together with operators?
-
-- At the same time should the algorithm control probabilities of the operators
-  used together with population size and selection method?
-
----
-
-name: inverse
-layout: true
-class: center, middle, inverse
-
----
-
-## Wrapping Up!
-
----
-
-layout: false
-
-# Summary to the Introduction to GP
-
-- **Genetic Programming** is awesome, you can apply it to a wide range of
-  problems with little knowledge of the problem.
-
-- But it also has its drawbacks, namely it requires a lot of **compute resources**
-
-- **No Free Lunch Theorem (NFLT)** is a framework used to encourage us to talk
-  about which class of problems do certain optimization algorithms do best in.
-  Woodward (2003) argues depending on the problem, there could be free lunches.
-
-- Using EAs can be problematic because of the **Parameter Setting Problem**, it
-  is unclear whether **Parameter Control** is worth doing and how much "control"
-  is adequate.
-
----
-
-name: inverse
-layout: true
-class: center, middle, inverse
-
----
-
-## Thank you!
-
----
-
-## References
+# References
 
 ---
 
