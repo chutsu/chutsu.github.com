@@ -37,6 +37,9 @@ nature has to offer.
 
 
 ## Presentations
+- 2015
+    - Choi, C. (2015, October). [Introduction to Evolutionary
+      Algorithms][evo_algo]. Presented for the WAVElab.
 - 2013
     - **Choi, C.** (2013, March). What am I doing? Presented at The Burn . As
       part of the PhD program at the School of Computer Science.
@@ -73,6 +76,8 @@ nature has to offer.
 [dbench]: http://chutsu.github.com/presentations/nosql_db-2013/nosql_db.pdf
 [JSIC]: http://www.jisc.ac.uk/
 [collab]: http://www.analyzingsocialmedia.org/
+[evo_algo]: http://chutsu.github.com/presentations/wavelab_intro/
+ 
 
 [witlr]: http://www.youtube.com/watch?v=EGiZCwXfVYM&t=0m37s
 [streamy]: https://www.youtube.com/watch?v=JjMc1OaKEU0
