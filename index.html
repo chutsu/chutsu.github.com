@@ -150,13 +150,24 @@
 
       top: 50%;
       left: 50%;
-      width: 60%;
+
+      max-width: 95%;
+      max-height: 95%;
 
       font-size: 50px;
       color: white;
 
       transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
+
+			/* disable highlight */
+			-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none; /* Safari */
+				-khtml-user-select: none; /* Konqueror HTML */
+					-moz-user-select: none; /* Firefox */
+						-ms-user-select: none; /* Internet Explorer/Edge */
+								user-select: none; /* Non-prefixed version, currently
+																			supported by Chrome and Opera */
 
       border-radius: 0.1em;
     }
