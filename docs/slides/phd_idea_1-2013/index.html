@@ -1,0 +1,465 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+
+    <!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: { equationNumbers: { autoNumber: "AMS" }}
+        });
+    </script>
+    <script
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+        type="text/javascript">
+    </script>
+
+
+    <style>
+        .slide.cover {
+            color: white;
+        }
+
+        .slide.cover h2 {
+            margin-top: 20%;
+            text-align: center;
+            color: white;
+        }
+
+        .slide.cover p {
+            margin-top: 5%;
+            text-align: center;
+            font-style: italic;
+            font-size: 20px;
+        }
+
+        .slide.cover img {
+            max-width: 100%;
+            max-height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .slide h2 {
+            color: #666;
+            margin: 0 0 37px;
+        }
+
+        .slide h3 {
+            font: bold 35px/1 "PT Sans Narrow", sans-serif;
+            color: #666;
+            margin: 0 0 15px;
+        }
+
+        .slide p {
+            margin-bottom: 0;
+            color: #333;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .slide p.list_header {
+            margin-top: 5%;
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+
+        .slide ul {
+            font-size: 0.8em;
+            margin-bottom: 1%;
+        }
+
+        .slide li {
+            margin-left: 5%;
+        }
+
+        ul.ref {
+            list-style-image: none;
+            /* position: absolute; */
+            width: 60%;
+            /* bottom: 20%; */
+            color: #666;
+            font-size: 0.5em;
+        }
+
+        ul.ref>li:before {
+            content: none;
+        }
+
+        p.ref {
+            position: absolute;
+            width: 80%;
+            bottom: 20%;
+            color: #666;
+            font-size: 0.6em;
+        }
+
+        p.authors {
+            color: #FFF;
+            font-size: 16px;
+        }
+
+        span.bigger {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        span.red {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #E41B17;
+        }
+
+        div.latex_math {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 0.7em;
+
+        }
+
+        div.center_everything {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20%;
+        }
+
+        div.center_everything ul {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .slide img {
+            display: block;
+            max-width: 95%;
+            max-height: 65%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+        }
+
+    </style>
+
+</head>
+
+
+<body class="list">
+	<header class="caption">
+        <h1>
+            Using Interestingness Measures to Drive System Configurations
+            during Runtime
+        </h1>
+        <p>By Chris Choi and Tom Kelsey (University of St Andrews)</p>
+	</header>
+
+	<section class="slide cover" id="Cover">
+        <div>
+            <h2>
+                Using Interestingness Measures to Drive System Configurations
+                during Runtime
+            </h2>
+            <p class="authors">
+                By Chris Choi and Tom Kelsey (University of St Andrews)
+            </p>
+            <img src="imgs/computer_brain.png" alt="Computer/Brain"/>
+        </div>
+    </section>
+
+	<section class="slide">
+        <div>
+            <h2>What are Interestingness Measures?</h2>
+            <figure>
+            <blockquote>
+                <p>Interestingness measures play an important role in
+                <span class="bigger">data mining</span> ... These measures are
+                intended for <span class="red">selecting and ranking
+                patterns</span> according to their potential interest to the
+                user. Good measures also allow the <span class="red">time
+                and space costs</span> of the mining process
+                <span class="red">to be reduced</span>. [1]</p>
+            </blockquote>
+            </figure>
+            <figcaption>
+                <p class="ref">
+                    [1] Geng, Liqiang, and Howard J. Hamilton.
+                    <i>"Interestingness measures for data mining: A survey."</i>
+                    ACM Computing Surveys (CSUR) 38.3 (2006): 9.
+                </p>
+            </figcaption>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Applications of Interestingness Measures</h2>
+            <img src="imgs/im-application.jpg">
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Types of Interestingness Measures</h2>
+            <img src="imgs/im-types.png">
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Objective Measures (Probability Based): Brief Examples</h2>
+
+            <h3>Generality</h3>
+            <div class="latex_math">
+                \[
+                    \textbf{Support  } P(AB) \\
+                    \textbf{Coverage  } P(A)
+                \]
+            </div>
+
+            <h3>Reliability</h3>
+            <div class="latex_math">
+                \[
+                    \textbf{Confidence  } P(B|A) \\
+                    \textbf{Added Value  } P(B|A) - P(B) \\
+                    \textbf{Lift  } \frac{P(\frac{B}{A})}{P(B)}
+                \]
+            </div>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Objective Measures (Form-Dependent): Brief Examples</h2>
+            <h3>Pecuilarity</h3>
+            <p>
+                Pecuilarity can be measured using <b>neighbourhood-based
+                unexpectedness measure</b>. The idea is that if a rule has
+                a different consequent from neighbouring rules, it is
+                interesting.
+            </p>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Subjective Measures: Brief Examples</h2>
+            <h3>Unexpectedness and Novelty</h3>
+            <p>Represents user background knowledge. Appropriate when:</p>
+            <ul>
+                <li>User background knowledge varies</li>
+                <li>Interests of users vary</li>
+                <li>Background knowledge of users evolve</li>
+            </ul>
+
+            <p>Subjective knowledge is represented using:</p>
+            <ul>
+                <li>Predicate Formulas in the First-Order Logic</li>
+                <li>If-else rules</li>
+            </ul>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>What are we trying to do differently?</h2>
+            <p>Attempt to mitigate <span class="red">configuration
+            problems</span> in computer science by using interestingness
+            measures to <span class="red">guide the configurations</span>
+            <span class="bigger">during runtime</span>.</p>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Why?</h2>
+            <h3>Because:</h3>
+            <ul>
+                <li>
+                    most configurations are
+                    <span class="bigger">performed before execution</span>
+                </li>
+                <li>
+                have to <span class="bigger">run multiple times</span> to
+                <span class="bigger">find optimal configuration</span>
+                </li>
+                <li>
+                    configuration may lead to <span class="bigger">infinite loop</span>
+                </li>
+            </ul>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Example Use Case</h2>
+            <div class="center_everything">
+                <h3>Configuring a Genetic Algorithm to Solve a Problem</h3>
+            </div>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>How does a Genetic Algorithm (GA) Work?</h2>
+            <h3>Hello World Example</h3>
+            <img src="imgs/genetic_algorithm_process.png">
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Using Interestingness Measures to Guide a GA Process</h2>
+            <img src="imgs/im-ga.png">
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Pros</h2>
+            <h3>
+                In addition to advantages mentioned before, we believe this
+                approach:
+            </h3>
+            <ul>
+                <li>
+                    <span class="red">Adds more dimensions</span> to the
+                    <span class="red">cost function</span>
+                </li>
+
+                <li>
+                    <span class="red">Can use to build a Machine Learning
+                    Configurator</span>, by allowing <span class="bigger">
+                    subjective</span> interesting-ness measures the
+                    <span class="bigger">ability to change</span>
+                </li>
+            </ul>
+
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Cons</h2>
+            <h3>But there are also potential disadvantages:</h3>
+            <ul>
+                <li>
+                    It <span class="red">could be more trouble that its worth
+                    </span> from a performance and development stand point
+                </li>
+                <li>
+                    <span class="red">Cannot guarantee optimal results</span>,
+                </li>
+                <li>
+                    Maybe <span class="red">more geared towards online systems
+                    </span>, or systems with real time constraints
+                <li>
+                    More importantly, we <span class="red">don't know if it
+                    would work</span>
+                </li>
+
+            </ul>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Aims</h2>
+            <ul>
+                <li>
+                    Investigate how the measures can be useful in guiding a GA,
+                    <span class="bigger">and more . . .</span>
+                </li>
+                <li>
+                    Potentially a paper in <span class="bigger">Coordination
+                    Models, Languages and Applications. ACM Symposium on
+                    Applied Computing Conference 2014.</span>
+                </li>
+                <li>
+                    also . . .
+                </li>
+            </ul>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Aims - Part 2</h2>
+            <p><span class="bigger">Additionally</span><p>
+            <h3>
+                AI Journal: Special Issue on Combining Constraint
+                Solving with Mining and Learning
+            </h3>
+            <ul>
+                <!-- <li> -->
+                <!--     <span class="bigger"> -->
+                <!--     </span> -->
+                <!-- </li> -->
+                <li>
+                    Aims to overlap <b>Constaints</b>, <b>Data Mining</b> and
+                    <b>Machine Learning</b> techniques
+                </li>
+                <li>
+                    Maybe it is something the Constraints Group is interested?
+                </li>
+            </ul>
+        </div>
+    </section><!-- end of slide -->
+
+    <section class="slide">
+        <div>
+            <h2>Thank you!</h2>
+            <h3>References:</h3>
+            <ul class="ref">
+                <li>
+                    [1] Geng, Liqiang, and Howard J. Hamilton.
+                    <i>
+                        "Interestingness measures for data mining: A survey."
+                    </i>
+                    ACM Computing Surveys (CSUR) 38.3 (2006): 9.
+                </li>
+
+                <li>
+                    [2] McGarry, Ken.
+                    <i>
+                        "A survey of interestingness measures for knowledge
+                        discovery."
+                    </i>
+                    The knowledge engineering review 20.01 (2005): 39-61.
+                </li>
+                <li>
+                    [3] Bharadwaj, Kamal K., and Basheer M. Al-Maqaleh.
+                    <i>
+                        "Evolutionary approach for automated discovery of
+                        censored production rules."
+                    </i>
+                    Trans Eng Comput Technol 10 (2005): 147-152.
+                </li>
+                <li>
+                    [4] Vashishtha, Jyoti, Dharminder Kumar, and Saroj Ratnoo.
+                    <i>
+                        "Revisiting Interestingness Measures for Knowledge
+                        Discovery in Databases."
+                    </i>
+                    Advanced Computing & Communication Technologies (ACCT),
+                    2012 Second International Conference on. IEEE, 2012.
+                </li>
+            </ul>
+
+        </div>
+    </section><!-- end of slide -->
+
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+    -->
+    <div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2010–2013 Vadim Makeev — pepelsbey.net -->
+	<!-- Photos by John Carey — fiftyfootshadows.net -->
+</body>
+</html>

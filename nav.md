@@ -1,2 +1,0 @@
-# [chutsu](#home)
-- [blog](#blog)
