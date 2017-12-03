@@ -3,104 +3,165 @@
 <head>
   <title>chutsu</title>
 
-<style>
-  body {
-    width: 42em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5em;
+  <style>
+    body {
+      width: 42em;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 5em;
 
-    font-size: 0.8em;
-    font-family: Helvetica, Arial;
-    text-align: justify;
-    color: #333;
-  }
+      font-size: 0.8em;
+      font-family: Helvetica, Arial;
+      text-align: justify;
+      color: #333;
+    }
 
-  a:link, a:visited {
-    color: blue;
-    text-decoration: none;
-  }
+    a:link, a:visited {
+      color: blue;
+      text-decoration: none;
+    }
 
-  iframe{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    iframe{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-  img#photo_me {
-    float: left;
-    width: 10em;
+    img#photo_me {
+      float: left;
+      width: 10em;
 
-    margin-right: 2em;
-    margin-bottom: 1em;
+      margin-right: 2em;
+      margin-bottom: 1em;
 
-    border-radius: 5em;
-  }
+      border-radius: 5em;
+    }
 
-  div#intro {
-    font-size: 1.0em;
-  }
+    div#intro {
+      font-size: 1.0em;
+    }
 
-  div#intro p {
-    padding-top: 0.6em;
-  }
+    div#intro p {
+      padding-top: 0.6em;
+    }
 
-  div#intro b#name {
-    font-size: 1.1em;
-    color: #333;
-  }
+    div#intro b#name {
+      font-size: 1.1em;
+      color: #333;
+    }
 
-  div#projects {
-    float: clear;
-    margin-top: 5.0em;
-  }
+    div#projects {
+      float: clear;
+      margin-top: 5.0em;
+    }
 
-  div#projects h1 {
-    font-size: 1.6em;
-    text-decoration: underline;
-  }
+    div#projects h1 {
+      font-size: 1.6em;
+      text-decoration: underline;
+    }
 
-  div#projects div.project {
-    margin-bottom: 5.0em;
-  }
+    div#projects div.project {
+      margin-bottom: 5.0em;
+    }
 
-  div#projects div.project h1 {
-    margin-bottom: 0.8em;
-    font-size: 1.2em;
-    text-decoration: none;
-  }
+    div#projects div.project h1 {
+      margin-bottom: 0.8em;
+      font-size: 1.2em;
+      text-decoration: none;
+    }
 
-  div#projects div.project p {
-    font-size: 1.1em;
-  }
+    div#projects div.project p {
+      font-size: 1.1em;
+    }
 
-  div#projects div.project ul {
-    display: inline-block;
-    width: 100%;
-    list-style: none;
-    margin: 0;
-    margin-bottom: 1.0em;
-    padding: 0;
-  }
+    div#projects div.project ul {
+      display: inline-block;
+      width: 100%;
+      list-style: none;
+      margin: 0;
+      margin-bottom: 1.0em;
+      padding: 0;
+    }
 
-  div#projects div.project li {
-    float: left;
-  }
+    div#projects div.project li {
+      float: left;
+    }
 
-  div#projects div.project li.title {
-    font-weight: bold;
-    font-size: 1.3em;
-    margin-right: 1em;
-    margin-bottom: 0.3em;
-  }
+    div#projects div.project li.title {
+      font-weight: bold;
+      font-size: 1.3em;
+      margin-right: 1em;
+      margin-bottom: 0.3em;
+    }
 
-  div#projects div.project li.date {
-    float: right;
-    font-weight: bold;
-    font-size: 1.0em;
-  }
+    div#projects div.project li.date {
+      float: right;
+      font-weight: bold;
+      font-size: 1.0em;
+    }
 
-</style>
+    div#projects div.project div.slideshow {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    div#projects div.project div.slideshow img {
+      margin-left: 0.1em;
+      margin-right: 0.1em;
+      border-radius: 0.2em;
+    }
+
+    div#projects div.project div.slideshow img:hover {
+      cursor: pointer;
+    }
+
+    #overlay {
+      position: fixed; /* Sit on top of the page content */
+      display: none; /* Hidden by default */
+      width: 100%; /* Full width (cover the whole page) */
+      height: 100%; /* Full height (cover the whole page) */
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+      z-index: 2;  /* Specify a stack order in case you're using a different order for other elements */
+      cursor: pointer; /* Add a pointer on hover */
+    }
+
+    #overlay-image {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+      width: 60%;
+
+      font-size: 50px;
+      color: white;
+
+      transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+
+      border-radius: 0.1em;
+    }
+
+  </style>
+
+  <script>
+    function overlay_on(el) {
+      var image_src = el.getAttribute("src");
+      var overlay = document.getElementById("overlay");
+      var overlay_image = document.getElementById("overlay-image");
+
+      overlay.style.display = "block";
+      overlay_image.setAttribute("src", image_src);
+    }
+
+    function overlay_off() {
+      var overlay = document.getElementById("overlay");
+      overlay.style.display = "none";
+    }
+  </script>
 
 </head>
 <body>
@@ -115,8 +176,13 @@
     focus is on realtime visual odometry specifically for quadrotors where
     compute resources are limited. </p>
 
-    <div id="cv_button">My resume: <a href="./docs/cv.pdf">download</a></div>
+    <div id="cv_button">My resume: <a href="docs/cv.pdf">download</a></div>
     <div id="contact_button">My email: chutsu(at)gmail.com</div>
+  </div>
+
+
+  <div id="overlay" onclick="overlay_off()">
+    <img id="overlay-image" src="images/zazu/DSC_8369.JPG"></img>
   </div>
 
   <div id="projects">
@@ -142,6 +208,14 @@
         see here</a>)
       </p>
 
+      <div class="slideshow">
+        <center>
+          <img onclick="overlay_on(this)" width="100" src="images/zazu/1.jpg"></img>
+          <img onclick="overlay_on(this)" width="100" src="images/zazu/2.jpg"></img>
+          <img onclick="overlay_on(this)" width="100" src="images/zazu/3.jpg"></img>
+          <img onclick="overlay_on(this)" width="100" src="images/zazu/4.jpg"></img>
+        </center>
+      </div>
     </div>
 
     <div class="project">
@@ -161,6 +235,15 @@
       vehicle and the quadrotor, the only information the quadrotor has about
       the ground vehicle is the fiducial marker size on the landing
       platform.</p>
+
+      <div class="slideshow">
+        <center>
+          <img onclick="overlay_on(this)" width="133" src="images/anastasia/landing.png"></img>
+          <img onclick="overlay_on(this)" height="75" src="images/anastasia/anastasia.jpg"></img>
+          <img onclick="overlay_on(this)" width="100" src="images/illum_invar_apriltag/grey_apriltag.png"></img>
+          <img onclick="overlay_on(this)" width="100" src="images/illum_invar_apriltag/grey_illum_invar.png"></img>
+        </center>
+      </div>
     </div>
   <div>
 
