@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Notes</title>
+  </head>
+  <body>
+
+<style>
+pre.inline {
+  display: inline;
+}
+
+pre code {
+  display: block;
+  padding: 10px;
+  font-size: 0.85em;
+}
+
+body {
+  width: 700px;
+  font-family: times;
+  font-size: 1.1em;
+  text-align: justify;
+}
+</style>
+
+  <script>
+    function escape_regexp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+    }
+
+    var converter = new showdown.Converter();
+    var text = document.getElementById("markdown").innerHTML;
+    document.getElementById("markdown").innerHTML = converter.makeHtml(text);
+  </script>
+
+
+  </body>
+</html>

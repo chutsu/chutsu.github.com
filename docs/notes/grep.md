@@ -1,4 +1,6 @@
-# grep
+- Search within a single file
+- Search recursively in a directory
+
 
 ## Search within a single file
 
