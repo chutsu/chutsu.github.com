@@ -228,6 +228,3 @@ contents of location at which it points are mutable.
     const char * const
 
 is an immutable pointer to an immutable character/string.
-
-
-

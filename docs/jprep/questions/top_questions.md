@@ -12,13 +12,17 @@
 - Given two arrays, [1,2,3,4,5] and [2,3,1,0,5] find which number is not
   present in the second array
 - How do you find the second highest number in an integer array?
-- Given an array of strings, write an algorithm that returns an array of array of strings, in which each subarray contains the strings of the input that have the same set of characters, the same number of times. Eg: input ["art", "rat", "tar", "artt", "are", "tart"] creates output [["art", "rat", "tar"], ["are"], ["artt", "tart"]]
+- Given an array of strings, write an algorithm that returns an array of array of
+strings, in which each subarray contains the strings of the input that have the
+same set of characters, the same number of times. Eg: input ["art", "rat",
+"tar", "artt", "are", "tart"] creates output [["art", "rat", "tar"], ["are"],
+["artt", "tart"]]
 
 
 # Linked List
 - How do you find middle element of a linked list in a single pass?
 - How do you find the 3rd element from last in single pass?
-- How do you find if there is any loop in singly linked list? 
+- How do you find if there is any loop in singly linked list?
 - How do you find the start of the loop in a singly linked list?
 - How do you reverse a singly linked list?
 

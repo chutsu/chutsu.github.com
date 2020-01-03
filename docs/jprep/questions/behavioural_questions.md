@@ -92,17 +92,17 @@ new position is ideal for you and why you’ll be a great fit for their company.
 If you've already left your previous job (or you were fired), suggests the
 following:
 
-    - **If you got fired**: Do not trash your last boss or company. Tell them that
-      you were unfortunately let go, that you understand their reasoning and
-      you've recognized areas that you need to improve in, and then tell them
-      how you will be a better employee because of it.
-    - **If you got laid off**: Again, do not trash your last boss or company. Tell
-      them that you were let go, and that you understand the circumstances
-      behind their decision; that you are committed to your future and not
-      dwelling on the past; and that you are ready to apply everything that you
-      learned in your last role to a new company.
-    - **If you quit**: Do not go into details about your unhappiness or
-      dissatisfaction. Instead, tell them that while you valued the experience
-      and education that you received, you felt that the time had come to seek
-      out a new opportunity, to expand your skills and knowledge, and to find a
-      company with which you could grow.
+  - **If you got fired**: Do not trash your last boss or company. Tell them that
+    you were unfortunately let go, that you understand their reasoning and
+    you've recognized areas that you need to improve in, and then tell them
+    how you will be a better employee because of it.
+  - **If you got laid off**: Again, do not trash your last boss or company. Tell
+    them that you were let go, and that you understand the circumstances
+    behind their decision; that you are committed to your future and not
+    dwelling on the past; and that you are ready to apply everything that you
+    learned in your last role to a new company.
+  - **If you quit**: Do not go into details about your unhappiness or
+    dissatisfaction. Instead, tell them that while you valued the experience
+    and education that you received, you felt that the time had come to seek
+    out a new opportunity, to expand your skills and knowledge, and to find a
+    company with which you could grow.
