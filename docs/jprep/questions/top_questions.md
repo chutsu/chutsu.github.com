@@ -1,5 +1,5 @@
 # String
-- Write code to heck a string is palindrome or not
+- Write code to check a string is palindrome or not
 - Write a function which will remove any given character from a string
 - Print all permutation of String both iterative and recursive way
 - Write a function to find out longest palindrome in a give string
