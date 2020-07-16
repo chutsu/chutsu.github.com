@@ -21,7 +21,7 @@ Or in discrete form:
 \end{align}
 
 The gradient descent method in 1 variable is implemented as follows. The method
-starts witha  function $f$ defined over the real numbers $x$, the function's
+starts with a function $f$ defined over the real numbers $x$, the function's
 derivative $f^{\prime}$, and an initial guess $x_{0}$ for a root of the
 function $f$. If the function satisfies the assumptions made in the derivation
 of the formula and the initial guess is close, then a better approximation

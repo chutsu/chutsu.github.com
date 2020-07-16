@@ -8,7 +8,7 @@ SVD.
 However, if we have noisy data $x_{1}$ and $x_{2}$ where the correspondences
 are not exact or correct then we have **no guarantee** that:
 
-1. $R$ and $T$ are as close as possible to the true solution
+1. $R$ and $t$ are as close as possible to the true solution
 2. Consistent recontruction can be obtained
 
 In order to take noise and statistical fluctuation into account, one can revert
